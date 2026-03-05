@@ -1,3 +1,9 @@
 const String kOnBoadrdingViewSeen = 'OnBoardingViewSeen';
-const double kHoriztailPadding=16;
-const double kVerticalPadding=16;
+const double kHoriztailPadding = 16;
+const double kHoriztailPadding4 = 4;
+const double kHoriztailPadding8 = 8;
+const double kVerticalPadding16 = 16;
+const double kVerticalPadding8 = 8;
+const double kVerticalPadding12 = 12;
+const double kVerticalPadding24 = 24;
+const double kVerticalPadding36 = 36;
