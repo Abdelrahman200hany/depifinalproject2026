@@ -1,8 +1,11 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/serviecs/shared_prefs_services/shared_prefs.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
+import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
+import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -21,7 +24,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xE52D6CDF),
+      backgroundColor: const Color(0xE52D6CDF),
       body: Center(
         child: ZoomIn(
           curve: Curves.bounceIn,
@@ -38,7 +41,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   void _splashNavigation() {
     Future.delayed(Duration(seconds: 4), () {
-      // Navigator.pushReplacementNamed(context, SignView.routeName);
+      final bool isOnBoardingSeen = Prefs.getBool(kOnBoadrdingViewSeen);
+      if (isOnBoardingSeen) {
+        Navigator.pushReplacementNamed(context, SignInView.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+      }
     });
   }
 }
