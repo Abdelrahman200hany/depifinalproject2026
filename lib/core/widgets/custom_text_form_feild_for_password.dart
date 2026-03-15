@@ -7,9 +7,11 @@ class CustomTextFormFieldForPasswoed extends StatefulWidget {
     super.key,
     this.onSaved,
     this.hint = 'كلمة المرور',
+    this.labelText
   });
   final String hint;
   final void Function(String?)? onSaved;
+  final String ?labelText;
 
   @override
   State<CustomTextFormFieldForPasswoed> createState() =>
@@ -23,6 +25,7 @@ class _CustomTextFormFieldForPasswoedState
   @override
   Widget build(BuildContext context) {
     return CustomTextFormFeild(
+      labelText: widget.labelText,
       hint: widget.hint,
       textInputType: TextInputType.visiblePassword,
       isHidden: isHidden,
