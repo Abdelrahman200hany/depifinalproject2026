@@ -7,6 +7,7 @@ import 'package:depifinalproject/core/widgets/custom_text_bottom.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/core/widgets/custom_text_form_feild.dart';
 import 'package:depifinalproject/core/widgets/custom_text_form_feild_for_password.dart';
+import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/widgets/custom_asked_text_buttom.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/widgets/custom_or_divider.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +81,9 @@ class SignInViewBody extends StatelessWidget {
               ),
               SizedBox(height: 24.0),
               CustomAskedTextButtom(
+                onTap: () {
+                  Navigator.pushNamed(context, SignUpView.routeName);
+                },
                 fristText: 'ليس لديك حساب؟ ',
                 secondText: ' إنشاء حساب',
               ),

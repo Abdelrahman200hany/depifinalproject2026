@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class CustomTextFormFeild extends StatelessWidget {
   const CustomTextFormFeild({
     super.key,
-    required this.hint,
+    this.hint,
     this.suffixIcon,
     required this.textInputType,
     this.isHidden = false,
@@ -13,7 +13,7 @@ class CustomTextFormFeild extends StatelessWidget {
     this.labelText,
   });
 
-  final String hint;
+  final String? hint;
   final String? labelText;
   final IconButton? suffixIcon;
   final TextInputType textInputType;
