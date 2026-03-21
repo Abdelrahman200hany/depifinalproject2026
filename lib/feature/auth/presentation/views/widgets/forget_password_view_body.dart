@@ -1,7 +1,6 @@
 import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
-import 'package:depifinalproject/core/widgets/custom_bottom_with_icon.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/core/widgets/custom_text_form_feild.dart';
 import 'package:flutter/material.dart';
