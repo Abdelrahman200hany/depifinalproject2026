@@ -1,3 +1,4 @@
+import 'package:depifinalproject/feature/auth/presentation/views/forget_password_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
@@ -14,6 +15,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SignInView());
     case SignUpView.routeName:
       return MaterialPageRoute(builder: (context) => const SignUpView());
+    case ForgetPasswordView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ForgetPasswordView(),
+      );
 
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());

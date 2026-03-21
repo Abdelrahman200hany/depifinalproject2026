@@ -19,85 +19,87 @@ class SignUpViewBody extends StatelessWidget {
       appBar: CustomAppBar(title: 'انشاء حساب جديد ', wantedIconBack: true),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: kHoriztailPadding),
-        child: ListView(
-          children: [
-            const SizedBox(height: 20),
-            Text(
-              'مرحباً بك في فلاش',
-              style: AppStyle.styleBold23(
-                context,
-              ).copyWith(color: Colors.black),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'قم بتعبئة البيانات التالية لتبدأ رحلتك معنا',
-              style: AppStyle.styleSRegular13(context),
-            ),
-            const SizedBox(height: 24),
-
-            CustomTextFormFeild(
-              textInputType: TextInputType.name,
-              labelText: 'الاسم الكامل',
-            ),
-            const SizedBox(height: 16),
-            CustomTextFormFeild(
-              textInputType: TextInputType.emailAddress,
-              labelText: 'البريد الإلكتروني',
-            ),
-            const SizedBox(height: 16),
-            CustomTextFormFeild(
-              textInputType: TextInputType.phone,
-              labelText: 'رقم الهاتف',
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomDropDownButtom(
-                    itemsList: AppDataList.egyptGovernorates,
-                    hint: 'اختر المدينة',
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Text(
+                'مرحباً بك في فلاش',
+                style: AppStyle.styleBold23(
+                  context,
+                ).copyWith(color: Colors.black),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'قم بتعبئة البيانات التالية لتبدأ رحلتك معنا',
+                style: AppStyle.styleSRegular13(context),
+              ),
+              const SizedBox(height: 24),
+          
+              CustomTextFormFeild(
+                textInputType: TextInputType.name,
+                labelText: 'الاسم الكامل',
+              ),
+              const SizedBox(height: 16),
+              CustomTextFormFeild(
+                textInputType: TextInputType.emailAddress,
+                labelText: 'البريد الإلكتروني',
+              ),
+              const SizedBox(height: 16),
+              CustomTextFormFeild(
+                textInputType: TextInputType.phone,
+                labelText: 'رقم الهاتف',
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomDropDownButtom(
+                      itemsList: AppDataList.egyptGovernorates,
+                      hint: 'اختر المدينة',
+                    ),
                   ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: CustomDropDownButtom(
-                    hint: 'نوع الحساب',
-                    itemsList: AppDataList.userType,
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: CustomDropDownButtom(
+                      hint: 'نوع الحساب',
+                      itemsList: AppDataList.userType,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextFormFieldForPasswoed(
-                    hint: '********',
-                    labelText: 'كلمة المرور',
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextFormFieldForPasswoed(
+                      hint: '********',
+                      labelText: 'كلمة المرور',
+                    ),
                   ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: CustomTextFormFieldForPasswoed(
-                    hint: '********',
-                    labelText: 'تأكيد كلمة المرور',
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: CustomTextFormFieldForPasswoed(
+                      hint: '********',
+                      labelText: 'تأكيد كلمة المرور',
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            AcceptsTermWidget(onChange: (value) {}, onTap: () {}),
-            const SizedBox(height: 16),
-            CustomTextBottomWithBackground(text: 'إنشاء حساب', ontap: () {}),
-            const SizedBox(height: 16),
-            CustomAskedTextButtom(
-              fristText: 'لديك حساب بالفعل؟ ',
-              secondText: 'تسجيل الدخول',
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+                ],
+              ),
+              const SizedBox(height: 16),
+              AcceptsTermWidget(onChange: (value) {}, onTap: () {}),
+              const SizedBox(height: 16),
+              CustomTextBottomWithBackground(text: 'إنشاء حساب', ontap: () {}),
+              const SizedBox(height: 16),
+              CustomAskedTextButtom(
+                fristText: 'لديك حساب بالفعل؟ ',
+                secondText: 'تسجيل الدخول',
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
