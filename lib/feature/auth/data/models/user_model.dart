@@ -12,7 +12,7 @@ class UserModel extends UserEntity {
     required super.userCity,
   });
 
-  //convert the firebase user to Custom user model
+  //convert the firebase user to Custom user model used in google and fackbook auht
   factory UserModel.fromFirebaseUser(User user) {
     return UserModel(
       userType: '',

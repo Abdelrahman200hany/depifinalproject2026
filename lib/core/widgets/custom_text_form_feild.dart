@@ -27,7 +27,7 @@ class CustomTextFormFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 54,
+      // height: 54,
       width: double.infinity,
       child: TextFormField(
         controller: controller,
@@ -37,6 +37,8 @@ class CustomTextFormFeild extends StatelessWidget {
         obscureText: isHidden,
         keyboardType: textInputType,
         decoration: InputDecoration(
+          // helperText: " ",
+          errorStyle: TextStyle(fontSize: 12),
           labelText: labelText,
           fillColor: const Color(0xffF9FAFA),
           labelStyle: AppStyle.styleBold13(context),
