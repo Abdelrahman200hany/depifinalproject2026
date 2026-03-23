@@ -1,0 +1,143 @@
+abstract class AppValidation {
+  // 🧠 Internal helper — يتحقق من null أو empty
+  static String? _checkEmpty(String? value,
+      {String message = "هذا الحقل مطلوب"}) {
+    if (value == null || value.trim().isEmpty) {
+      return message;
+    }
+    return null;
+  }
+
+  // 🟥 Required
+  static String? requiredField(String? value,
+      {String message = "هذا الحقل مطلوب"}) {
+    return _checkEmpty(value, message: message);
+  }
+
+  // 📧 Email
+  static String? email(String? value) {
+    final emptyCheck = _checkEmpty(value,
+        message: "البريد الإلكتروني مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    final emailRegex =
+        RegExp(r'^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$');
+
+    if (!emailRegex.hasMatch(value!.trim())) {
+      return "بريد إلكتروني غير صالح";
+    }
+
+    return null;
+  }
+
+  // 🔒 Password
+  static String? password(String? value,
+      {int minLength = 6}) {
+    final emptyCheck =
+        _checkEmpty(value, message: "كلمة المرور مطلوبة");
+    if (emptyCheck != null) return emptyCheck;
+
+    if (value!.length < minLength) {
+      return "كلمة المرور يجب ألا تقل عن $minLength أحرف";
+    }
+
+    return null;
+  }
+
+  // 📱 Phone (Egyptian example)
+  static String? phone(String? value) {
+    final emptyCheck =
+        _checkEmpty(value, message: "رقم الهاتف مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    final phoneRegex = RegExp(r'^01[0-9]{9}$');
+
+    if (!phoneRegex.hasMatch(value!.trim())) {
+      return "رقم هاتف غير صحيح";
+    }
+
+    return null;
+  }
+
+  // 🧑 Name
+  static String? name(String? value,
+      {int minLength = 2}) {
+    final emptyCheck =
+        _checkEmpty(value, message: "الاسم مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    if (value!.trim().length < minLength) {
+      return "الاسم قصير جدًا";
+    }
+
+    return null;
+  }
+
+  // 🔢 Numeric Only
+  static String? numeric(String? value) {
+    final emptyCheck =
+        _checkEmpty(value, message: "هذا الحقل مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    if (double.tryParse(value!) == null) {
+      return "يجب إدخال أرقام فقط";
+    }
+
+    return null;
+  }
+
+  // 🔠 Min Length
+  static String? minLength(String? value, int length) {
+    final emptyCheck =
+        _checkEmpty(value, message: "هذا الحقل مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    if (value!.length < length) {
+      return "يجب ألا يقل عن $length أحرف";
+    }
+
+    return null;
+  }
+
+  // 🔡 Max Length
+  static String? maxLength(String? value, int length) {
+    final emptyCheck =
+        _checkEmpty(value, message: "هذا الحقل مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    if (value!.length > length) {
+      return "يجب ألا يزيد عن $length أحرف";
+    }
+
+    return null;
+  }
+
+  // 🔐 Confirm Password
+  static String? confirmPassword(
+      String? value, String originalPassword) {
+    final emptyCheck =
+        _checkEmpty(value, message: "تأكيد كلمة المرور مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    if (value != originalPassword) {
+      return "كلمتا المرور غير متطابقتين";
+    }
+
+    return null;
+  }
+
+  // 🔤 Username (letters + numbers)
+  static String? username(String? value) {
+    final emptyCheck =
+        _checkEmpty(value, message: "اسم المستخدم مطلوب");
+    if (emptyCheck != null) return emptyCheck;
+
+    final usernameRegex = RegExp(r'^[a-zA-Z0-9_]+$');
+
+    if (!usernameRegex.hasMatch(value!)) {
+      return "اسم المستخدم غير صالح";
+    }
+
+    return null;
+  }
+}

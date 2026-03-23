@@ -10,11 +10,11 @@ class CustomDropDownButtom extends StatefulWidget {
     super.key,
     required this.hint,
     required this.itemsList,
-    this.onSaved,
+    required this.onSaved,
   });
   final String hint;
   final List<String> itemsList;
-  final void Function(String?)? onSaved;
+  final ValueChanged<String> onSaved;
 
   @override
   State<CustomDropDownButtom> createState() => _CustomDropDownButtomState();
@@ -40,11 +40,9 @@ class _CustomDropDownButtomState extends State<CustomDropDownButtom> {
       onChanged: (value) {
         setState(() {
           selectedCity = value;
+          widget.onSaved(value!);
         });
       },
-
-      // الحفظ النهائي بعد submit
-      onSaved: widget.onSaved,
 
       // التحقق من صحة الاختيار
       validator: (value) {

@@ -11,6 +11,8 @@ class CustomTextFormFeild extends StatelessWidget {
     this.isHidden = false,
     this.onSaved,
     this.labelText,
+    this.validator,
+    this.controller,
   });
 
   final String? hint;
@@ -18,21 +20,18 @@ class CustomTextFormFeild extends StatelessWidget {
   final IconButton? suffixIcon;
   final TextInputType textInputType;
   final bool isHidden;
+  final String? Function(String?)? validator;
 
   final void Function(String?)? onSaved;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 54,
       width: double.infinity,
       child: TextFormField(
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'هذا الحقل مطلوب';
-          } else {
-            return null;
-          }
-        },
+        controller: controller,
+        validator: validator,
         onSaved: onSaved,
         cursorColor: AppColor.kPrimaryColor,
         obscureText: isHidden,

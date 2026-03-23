@@ -3,10 +3,14 @@ import 'package:depifinalproject/feature/auth/presentation/views/widgets/custom_
 import 'package:flutter/material.dart';
 
 class AcceptsTermWidget extends StatelessWidget {
-  const AcceptsTermWidget({super.key, this.onTap, required this.onChange});
+  const AcceptsTermWidget({
+    super.key,
+    this.conditionOnTap,
+    required this.onChange,
+  });
   final ValueChanged<bool> onChange;
 
-  final void Function()? onTap;
+  final void Function()? conditionOnTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,7 +27,7 @@ class AcceptsTermWidget extends StatelessWidget {
             textAlign: TextAlign.start,
             fristText: 'بإنشاء الحساب، أنت توافق على ',
             secondText: 'الشروط والأحكام',
-            onTap: onTap,
+            onTap: conditionOnTap,
           ),
         ),
       ],

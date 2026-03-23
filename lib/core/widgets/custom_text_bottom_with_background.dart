@@ -2,11 +2,16 @@ import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomTextBottomWithBackground extends StatelessWidget {
-  const CustomTextBottomWithBackground({super.key, this.ontap, required this.text});
+  const CustomTextBottomWithBackground({
+    super.key,
+    this.ontap,
+    required this.text,
+    this.isLoading = false,
+  });
   final void Function()? ontap;
   final String text;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,13 +20,15 @@ class CustomTextBottomWithBackground extends StatelessWidget {
       child: TextButton(
         onPressed: ontap,
         style: TextButton.styleFrom(
-          backgroundColor:AppColor.kPrimaryColor,
+          backgroundColor: AppColor.kPrimaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(16),
           ),
         ),
         child: Center(
-          child: Text(text, style: AppStyle.styleBold16(context)),
+          child: isLoading
+              ? Center(child: CircularProgressIndicator(color: Colors.white))
+              : Text(text, style: AppStyle.styleBold16(context)),
         ),
       ),
     );
