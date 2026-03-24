@@ -1,5 +1,7 @@
 import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/widgets/custom_bottom_navigation_bar.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_view.dart';
 import 'package:flutter/material.dart';
 
 class MainViewBody extends StatefulWidget {
@@ -22,7 +24,7 @@ class _MainViewBodyState extends State<MainViewBody> {
       ),
       body: IndexedStack(
         index: currentSeletedIndex,
-        children: [HomeView(), SizedBox(), SizedBox(), SizedBox()],
+        children: [HomeView(), OrderView(), OrderDetailsView(), SizedBox()],
       ),
     );
   }
