@@ -2,7 +2,6 @@ import 'package:depifinalproject/feature/home/presentation/views/home_view.dart'
 import 'package:depifinalproject/feature/main_view/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-
 class MainViewBody extends StatefulWidget {
   const MainViewBody({super.key});
 

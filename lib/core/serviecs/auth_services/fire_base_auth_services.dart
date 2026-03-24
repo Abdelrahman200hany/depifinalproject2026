@@ -13,9 +13,20 @@ class FirebaseAuthServiecs {
   }
 
   // check if the user was sign in or not to save user state in local storage
-  bool isSignedIn() {
+  // bool isSignedIn() {
+  //
+  //   return firebaseAuthInstance.currentUser != null;
+  // }
+  Future<bool> isSignedIn() async {
     log('the error code in FirebaseAuthServiecs.isSignedIn ');
-    return firebaseAuthInstance.currentUser != null;
+    final user = firebaseAuthInstance.currentUser;
+    if (user == null) return false;
+
+    // Reload to get latest user info
+    await user.reload();
+
+    // تأكد إن البريد مفعل
+    return user.emailVerified;
   }
 
   // 🟫 هل البريد مفعل؟
@@ -31,11 +42,10 @@ class FirebaseAuthServiecs {
   // Future<void> sendEmailVerification() async {
   //  await firebaseAuthInstance.currentUser!.sendEmailVerification();
 
-    
   // }
   Future<void> sendEmailVerification(User user) async {
-  await user.sendEmailVerification();
-}
+    await user.sendEmailVerification();
+  }
 
   // 🚪 تسجيل الخروج
   Future<void> signOut() async {

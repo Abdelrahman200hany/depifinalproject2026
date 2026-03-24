@@ -15,6 +15,7 @@ class CustomBottomNavigationBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
+      // reverseDuration: Duration(microseconds: 100),
       firstChild: ActiveBottomNavigationBarItem(
         activeIcon: item.activeIcon,
         name: item.name,
@@ -25,9 +26,9 @@ class CustomBottomNavigationBarItem extends StatelessWidget {
       crossFadeState: isActive
           ? CrossFadeState.showFirst
           : CrossFadeState.showSecond,
-      duration: Duration(milliseconds: 100),
-      firstCurve: Curves.easeIn,
-      secondCurve: Curves.easeOut,
+      duration: Duration(milliseconds: 75),
+      firstCurve: Curves.linear,
+      secondCurve: Curves.linear,
     );
   }
 }

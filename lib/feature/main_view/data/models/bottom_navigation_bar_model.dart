@@ -1,7 +1,7 @@
-import 'package:depifinalproject/core/utils/assets.dart';
+import 'package:flutter/material.dart';
 
 class BottomNavigationBarItemModel {
-  final String activeIcon, notActiveIcon;
+  final IconData activeIcon, notActiveIcon;
   final String name;
 
   BottomNavigationBarItemModel({
@@ -12,25 +12,48 @@ class BottomNavigationBarItemModel {
 
   static List<BottomNavigationBarItemModel> get bottomNavigationBarItems => [
     BottomNavigationBarItemModel(
-      activeIcon: Assets.imagesActiveHome,
-      notActiveIcon: Assets.imagesNotActiveHome,
+      activeIcon: Icons.home_outlined,
+      notActiveIcon: Icons.home_sharp,
       name: 'الرئيسية',
     ),
     BottomNavigationBarItemModel(
-      activeIcon: Assets.imagesActiveBox,
-      notActiveIcon: Assets.imagesNotActiveBox,
+      activeIcon: Icons.local_shipping_outlined,
+      notActiveIcon: Icons.local_shipping_rounded,
       name: 'الطرود',
     ),
     BottomNavigationBarItemModel(
-      activeIcon: Assets.imagesActiveBalance,
-      notActiveIcon: Assets.imagesNotActiveBalance,
+      activeIcon: Icons.payments_outlined,
+      notActiveIcon: Icons.payment_outlined,
       name: 'الرصيد',
     ),
 
     BottomNavigationBarItemModel(
-      activeIcon: Assets.imagesActiveProfile,
-      notActiveIcon: Assets.imagesNotActiveProfile,
-      name: 'حسابي',
+      activeIcon: Icons.menu_open,
+      notActiveIcon: Icons.menu_rounded,
+      name: 'القائمة',
     ),
   ];
+  // static List<BottomNavigationBarItemModel> get bottomNavigationBarItems => [
+  //   BottomNavigationBarItemModel(
+  //     activeIcon: Assets.imagesActiveHome,
+  //     notActiveIcon: Assets.imagesNotActiveHome,
+  //     name: 'الرئيسية',
+  //   ),
+  //   BottomNavigationBarItemModel(
+  //     activeIcon: Assets.imagesActiveBox,
+  //     notActiveIcon: Assets.imagesNotActiveBox,
+  //     name: 'الطرود',
+  //   ),
+  //   BottomNavigationBarItemModel(
+  //     activeIcon: Assets.imagesActiveBalance,
+  //     notActiveIcon: Assets.imagesNotActiveBalance,
+  //     name: 'الرصيد',
+  //   ),
+
+  //   BottomNavigationBarItemModel(
+  //     activeIcon: Assets.imagesActiveProfile,
+  //     notActiveIcon: Assets.imagesNotActiveProfile,
+  //     name: 'حسابي',
+  //   ),
+  // ];
 }

@@ -15,7 +15,7 @@ class SignUpBlocBuilder extends StatelessWidget {
           showfaulireSnackBar(context, message: state.errorMessage);
         }
         if (state is SignUpSuccess) {
-          showfaulireSnackBar(
+          showSuccessSnackBar(
             context,
             message: 'مبروك تم انشاء الحساب الرجاء التوجه الي البريد للتفعيل ',
           );

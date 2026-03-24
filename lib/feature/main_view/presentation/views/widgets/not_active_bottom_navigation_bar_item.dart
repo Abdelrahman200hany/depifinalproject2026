@@ -1,22 +1,16 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:depifinalproject/core/utils/app_color.dart';
+import 'package:flutter/material.dart';
 
 class NotActiveBottomNavigationBarItem extends StatelessWidget {
   const NotActiveBottomNavigationBarItem({
     super.key,
     required this.notActiveIcon,
   });
-
-  final String notActiveIcon;
+  final IconData notActiveIcon;
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SvgPicture.asset(
-        notActiveIcon,
-        fit: BoxFit.scaleDown,
-        height: 28,
-        width: 28,
-      ),
+      child: Icon(notActiveIcon, color: AppColor.kGreyAppColor, size: 22),
     );
   }
 }

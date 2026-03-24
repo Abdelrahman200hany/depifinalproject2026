@@ -1,7 +1,6 @@
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
 
 class ActiveBottomNavigationBarItem extends StatelessWidget {
   const ActiveBottomNavigationBarItem({
@@ -9,7 +8,8 @@ class ActiveBottomNavigationBarItem extends StatelessWidget {
     required this.activeIcon,
     required this.name,
   });
-  final String activeIcon, name;
+  final String name;
+  final IconData activeIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +30,7 @@ class ActiveBottomNavigationBarItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(22),
               ),
               child: Center(
-                child: SvgPicture.asset(
-                  activeIcon,
-                  fit: BoxFit.scaleDown,
-                  height: 24,
-                  width: 24
-                  ,
-                ),
+                child: Icon(activeIcon, color: Colors.white, size: 16),
               ),
             ),
 
