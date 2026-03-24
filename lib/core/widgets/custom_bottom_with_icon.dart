@@ -2,8 +2,8 @@ import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
 
-class CustomBottom extends StatelessWidget {
-  const CustomBottom({
+class CustomSocailButtom extends StatelessWidget {
+  const CustomSocailButtom({
     super.key,
     required this.icon,
     required this.text,

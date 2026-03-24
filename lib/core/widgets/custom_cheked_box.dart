@@ -1,3 +1,4 @@
+import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomChekedBox extends StatefulWidget {
@@ -13,6 +14,7 @@ class _CustomChekedBoxState extends State<CustomChekedBox> {
   @override
   Widget build(BuildContext context) {
     return Checkbox(
+      activeColor: AppColor.kPrimaryColor,
       value: isChecked,
       onChanged: (value) {
         isChecked = value!;
