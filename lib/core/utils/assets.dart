@@ -54,6 +54,10 @@ class Assets {
   /// asstes/images/on_boarding_two.png
   static const String imagesOnBoardingTwo = "asstes/images/on_boarding_two.png";
 
+  /// Assets for imagesPositionLine
+  /// asstes/images/position_line.svg
+  static const String imagesPositionLine = "asstes/images/position_line.svg";
+
   /// Assets for imagesRemove
   /// asstes/images/remove.png
   static const String imagesRemove = "asstes/images/remove.png";
