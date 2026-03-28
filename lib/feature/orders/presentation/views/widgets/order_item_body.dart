@@ -27,7 +27,7 @@ class OrderItemBody extends StatelessWidget {
           children: [
             Icon(
               Icons.my_location_outlined,
-              color: AppColor.kPrimaryColor.withValues(alpha: 0.5),
+              color: AppColor.kGreyAppColor.withValues(alpha: 0.8),
             ),
             SizedBox(width: 8),
             Text(
@@ -39,7 +39,7 @@ class OrderItemBody extends StatelessWidget {
               'من',
               style: AppStyle.styleSemiBold16(
                 context,
-              ).copyWith(color: AppColor.kPrimaryColor),
+              ).copyWith(color: AppColor.kGreyAppColor),
             ),
           ],
         ),
@@ -67,7 +67,7 @@ class OrderItemBody extends StatelessWidget {
           children: [
             Icon(
               Icons.edit_location_alt,
-              color: Colors.red.withValues(alpha: 0.5),
+              color: AppColor.kPrimaryColor.withValues(alpha: 0.8),
             ),
             SizedBox(width: 8),
             Text(
@@ -79,7 +79,7 @@ class OrderItemBody extends StatelessWidget {
               'الي',
               style: AppStyle.styleSemiBold16(
                 context,
-              ).copyWith(color: Colors.red),
+              ).copyWith(color:  AppColor.kGreyAppColor),
             ),
           ],
         ),

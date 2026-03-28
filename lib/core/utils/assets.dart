@@ -18,13 +18,33 @@ class Assets {
   /// asstes/images/active_profile.svg
   static const String imagesActiveProfile = "asstes/images/active_profile.svg";
 
+  /// Assets for imagesBoxIcon
+  /// asstes/images/box_icon.png
+  static const String imagesBoxIcon = "asstes/images/box_icon.png";
+
+  /// Assets for imagesDollarIcon
+  /// asstes/images/dollar_icon.png
+  static const String imagesDollarIcon = "asstes/images/dollar_icon.png";
+
   /// Assets for imagesGoogleIcon
   /// asstes/images/google_icon.svg
   static const String imagesGoogleIcon = "asstes/images/google_icon.svg";
 
+  /// Assets for imagesLocationIcon
+  /// asstes/images/location_icon.png
+  static const String imagesLocationIcon = "asstes/images/location_icon.png";
+
   /// Assets for imagesLogo
   /// asstes/images/logo.svg
   static const String imagesLogo = "asstes/images/logo.svg";
+
+  /// Assets for imagesMap1
+  /// asstes/images/map_1.png
+  static const String imagesMap1 = "asstes/images/map_1.png";
+
+  /// Assets for imagesMap2
+  /// asstes/images/map_2.png
+  static const String imagesMap2 = "asstes/images/map_2.png";
 
   /// Assets for imagesNotActiveBalance
   /// asstes/images/not_active_balance.svg
@@ -58,8 +78,16 @@ class Assets {
   /// asstes/images/position_line.svg
   static const String imagesPositionLine = "asstes/images/position_line.svg";
 
+  /// Assets for imagesProductImage
+  /// asstes/images/product_image.png
+  static const String imagesProductImage = "asstes/images/product_image.png";
+
   /// Assets for imagesRemove
   /// asstes/images/remove.png
   static const String imagesRemove = "asstes/images/remove.png";
+
+  /// Assets for imagesTrueIcon
+  /// asstes/images/true_icon.png
+  static const String imagesTrueIcon = "asstes/images/true_icon.png";
 }
 

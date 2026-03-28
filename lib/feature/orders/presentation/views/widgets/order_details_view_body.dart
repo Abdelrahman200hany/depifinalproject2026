@@ -143,7 +143,7 @@ class FinancialDataWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CardWidget(
       title: 'البيانات المالية',
-      iconPath: 'asstes/images/\$_icon.png',
+      iconPath: 'asstes/images/dollar_icon.png',
       children: [
         RowItem(title: 'مبلغ التحصيل', value: '250 ر.س'),
         RowItem(title: 'عربون', value: '50 ر.س'),
