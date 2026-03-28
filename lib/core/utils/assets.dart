@@ -18,13 +18,37 @@ class Assets {
   /// asstes/images/active_profile.svg
   static const String imagesActiveProfile = "asstes/images/active_profile.svg";
 
+  /// Assets for imagesArrowRight
+  /// asstes/images/arrow-right.svg
+  static const String imagesArrowRight = "asstes/images/arrow-right.svg";
+
+  /// Assets for imagesBox
+  /// asstes/images/box.svg
+  static const String imagesBox = "asstes/images/box.svg";
+
+  /// Assets for imagesCamera
+  /// asstes/images/Camera.svg
+  static const String imagesCamera = "asstes/images/Camera.svg";
+
   /// Assets for imagesGoogleIcon
   /// asstes/images/google_icon.svg
   static const String imagesGoogleIcon = "asstes/images/google_icon.svg";
 
+  /// Assets for imagesInfoCircle
+  /// asstes/images/info-circle.svg
+  static const String imagesInfoCircle = "asstes/images/info-circle.svg";
+
   /// Assets for imagesLogo
   /// asstes/images/logo.svg
   static const String imagesLogo = "asstes/images/logo.svg";
+
+  /// Assets for imagesMagicpen
+  /// asstes/images/magicpen.svg
+  static const String imagesMagicpen = "asstes/images/magicpen.svg";
+
+  /// Assets for imagesMyphoto
+  /// asstes/images/myphoto.jpg
+  static const String imagesMyphoto = "asstes/images/myphoto.jpg";
 
   /// Assets for imagesNotActiveBalance
   /// asstes/images/not_active_balance.svg
@@ -41,6 +65,10 @@ class Assets {
   /// Assets for imagesNotActiveProfile
   /// asstes/images/not_active_profile.svg
   static const String imagesNotActiveProfile = "asstes/images/not_active_profile.svg";
+
+  /// Assets for imagesNotification
+  /// asstes/images/notification.svg
+  static const String imagesNotification = "asstes/images/notification.svg";
 
   /// Assets for imagesOnBoardingOne
   /// asstes/images/on_boarding_one.png
