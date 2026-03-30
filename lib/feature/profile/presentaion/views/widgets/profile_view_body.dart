@@ -47,6 +47,10 @@ class ProfileViewBody extends StatelessWidget {
               ),
 
               CustomProfileSecDetails(
+                title: 'توثيق الحساب',
+                icon: Icons.verified_outlined,
+              ),
+              CustomProfileSecDetails(
                 title: 'المدفوعات',
                 icon: Icons.payments_outlined,
               ),
