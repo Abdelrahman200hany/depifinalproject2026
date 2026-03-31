@@ -8,10 +8,13 @@ class CustomTextBottomWithBackground extends StatelessWidget {
     this.ontap,
     required this.text,
     this.isLoading = false,
+    this.backgroundColor,
   });
   final void Function()? ontap;
   final String text;
   final bool isLoading;
+  final Color? backgroundColor;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +23,7 @@ class CustomTextBottomWithBackground extends StatelessWidget {
       child: TextButton(
         onPressed: ontap,
         style: TextButton.styleFrom(
-          backgroundColor: AppColor.kPrimaryColor,
+          backgroundColor: backgroundColor ?? AppColor.kPrimaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(16),
           ),

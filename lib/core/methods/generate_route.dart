@@ -3,6 +3,8 @@ import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.da
 import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_view.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/profile_view.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
@@ -23,6 +25,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(
         builder: (context) => const ForgetPasswordView(),
+      );
+      case OrderDetailsView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const OrderDetailsView(),
+      );
+       case OrderView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const OrderView(),
       );
 
 case ProfileView.routeName:
