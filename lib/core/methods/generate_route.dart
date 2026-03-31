@@ -5,6 +5,8 @@ import 'package:depifinalproject/feature/main_view/presentation/views/main_view.
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_view.dart';
+import 'package:depifinalproject/feature/profile/presentaion/views/profile_view.dart';
+import 'package:depifinalproject/feature/profile/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +35,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => const OrderView(),
       );
 
+case ProfileView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ProfileView(),
+      );
+      case AboutUsViewBody.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const AboutUsViewBody(),
+      );
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());
   }
