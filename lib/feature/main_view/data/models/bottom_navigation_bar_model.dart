@@ -22,9 +22,9 @@ class BottomNavigationBarItemModel {
       name: 'الطرود',
     ),
     BottomNavigationBarItemModel(
-      activeIcon: Icons.payments_outlined,
-      notActiveIcon: Icons.payment_outlined,
-      name: 'الرصيد',
+      activeIcon: Icons.local_offer_outlined,
+      notActiveIcon: Icons.local_offer_rounded,
+      name: 'عروضي',
     ),
 
     BottomNavigationBarItemModel(

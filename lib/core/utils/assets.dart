@@ -18,13 +18,6 @@ class Assets {
   /// asstes/images/active_profile.svg
   static const String imagesActiveProfile = "asstes/images/active_profile.svg";
 
-  /// Assets for imagesBoxIcon
-  /// asstes/images/box_icon.png
-  static const String imagesBoxIcon = "asstes/images/box_icon.png";
-
-  /// Assets for imagesDollarIcon
-  /// asstes/images/dollar_icon.png
-  static const String imagesDollarIcon = "asstes/images/dollar_icon.png";
   /// Assets for imagesArrowRight
   /// asstes/images/arrow-right.svg
   static const String imagesArrowRight = "asstes/images/arrow-right.svg";
@@ -33,9 +26,17 @@ class Assets {
   /// asstes/images/box.svg
   static const String imagesBox = "asstes/images/box.svg";
 
+  /// Assets for imagesBoxIcon
+  /// asstes/images/box_icon.png
+  static const String imagesBoxIcon = "asstes/images/box_icon.png";
+
   /// Assets for imagesCamera
   /// asstes/images/Camera.svg
   static const String imagesCamera = "asstes/images/Camera.svg";
+
+  /// Assets for imagesDollarIcon
+  /// asstes/images/dollar_icon.png
+  static const String imagesDollarIcon = "asstes/images/dollar_icon.png";
 
   /// Assets for imagesGoogleIcon
   /// asstes/images/google_icon.svg
@@ -44,13 +45,14 @@ class Assets {
   /// Assets for imagesLocationIcon
   /// asstes/images/location_icon.png
   static const String imagesLocationIcon = "asstes/images/location_icon.png";
-  /// Assets for imagesInfoCircle
-  /// asstes/images/info-circle.svg
-  static const String imagesInfoCircle = "asstes/images/info-circle.svg";
 
   /// Assets for imagesLogo
   /// asstes/images/logo.svg
   static const String imagesLogo = "asstes/images/logo.svg";
+
+  /// Assets for imagesMagicpen
+  /// asstes/images/magicpen.svg
+  static const String imagesMagicpen = "asstes/images/magicpen.svg";
 
   /// Assets for imagesMap1
   /// asstes/images/map_1.png
@@ -59,9 +61,6 @@ class Assets {
   /// Assets for imagesMap2
   /// asstes/images/map_2.png
   static const String imagesMap2 = "asstes/images/map_2.png";
-  /// Assets for imagesMagicpen
-  /// asstes/images/magicpen.svg
-  static const String imagesMagicpen = "asstes/images/magicpen.svg";
 
   /// Assets for imagesMyphoto
   /// asstes/images/myphoto.jpg
