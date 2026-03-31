@@ -10,7 +10,7 @@ class CustomDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       height: 20,
-      color: AppColor.kGreyAppColor.withValues(alpha: 0.2),
+      color: AppColor.kGreyAppColor.withValues(alpha: 0.4),
     );
   }
 }
