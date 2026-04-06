@@ -1,4 +1,5 @@
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
+import 'package:depifinalproject/feature/home/presentation/views/add_order.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_buttons_bar_for_order_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_list.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,12 @@ class OrderViewBody extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add, color: Colors.white),
+          onPressed: () {
+            Navigator.pushNamed(context, AddOrderView.routeName);
+          },
+        ),
         appBar: CustomAppBar(title: 'طلباتي'),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),

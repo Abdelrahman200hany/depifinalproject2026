@@ -38,8 +38,7 @@ class Flash extends StatelessWidget {
       locale: Locale('ar'),
       builder: DevicePreview.appBuilder,
       theme: ThemeData(
-       
-        colorScheme: ColorScheme.light( primary: AppColor.kPrimaryColor),
+        colorScheme: ColorScheme.light(primary: AppColor.kPrimaryColor),
         scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,

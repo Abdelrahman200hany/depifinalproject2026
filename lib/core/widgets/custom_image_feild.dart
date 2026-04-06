@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -21,22 +22,32 @@ class _ImageFiledState extends State<ImageFiled> {
       children: [
         Skeletonizer(
           enabled: isLoading,
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(36),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey.shade300),
-            ),
-            child: Center(
-              child: Center(
-                child: IconButton(
-                  onPressed: _pickImageFromGalary,
-                  icon: fileImage == null
-                      ? Icon(Icons.image_outlined, size: 120)
-                      : Image.file(fileImage!, fit: BoxFit.scaleDown),
-                ),
+          child: GestureDetector(
+            onTap: _pickImageFromGalary,
+            child: Container(
+              width: double.infinity,
+              height: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.grey.shade300),
               ),
+              child: fileImage == null
+                  ? Center(
+                      child: Icon(
+                        Icons.file_upload_outlined,
+                        size: 120,
+                        color: AppColor.kPrimaryColor.withValues(alpha: 0.5),
+                      ),
+                    )
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.file(
+                        fileImage!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: double.infinity,
+                      ),
+                    ),
             ),
           ),
         ),
@@ -68,8 +79,12 @@ class _ImageFiledState extends State<ImageFiled> {
 
       final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
-      fileImage = File(image!.path);
-      widget.onFileChang(fileImage!);
+      // fileImage = File(image!.path);
+      // widget.onFileChang(fileImage!);
+      if (image != null) {
+        fileImage = File(image.path);
+        widget.onFileChang(fileImage);
+      }
     } catch (e) {
       isLoading = false;
       setState(() {});

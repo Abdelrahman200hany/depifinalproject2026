@@ -28,7 +28,7 @@ class _CustomDropDownButtomState extends State<CustomDropDownButtom> {
     return DropdownButtonFormField2<String>(
       // valueListenable: selectedCity,
       value: selectedCity,
-      hint: Text(widget.hint),
+      hint: Text(widget.hint, style: AppStyle.styleSRegular16(context)),
       items: widget.itemsList.map((city) {
         return DropdownMenuItem<String>(
           value: city,

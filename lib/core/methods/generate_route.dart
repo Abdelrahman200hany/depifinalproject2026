@@ -1,6 +1,8 @@
 import 'package:depifinalproject/feature/auth/presentation/views/forget_password_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.dart';
+import 'package:depifinalproject/feature/home/presentation/views/add_order.dart';
+import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view.dart';
@@ -26,23 +28,19 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const ForgetPasswordView(),
       );
-      case OrderDetailsView.routeName:
-      return MaterialPageRoute(
-        builder: (context) => const OrderDetailsView(),
-      );
-       case OrderView.routeName:
-      return MaterialPageRoute(
-        builder: (context) => const OrderView(),
-      );
+    case OrderDetailsView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrderDetailsView());
+    case OrderView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrderView());
 
-case ProfileView.routeName:
-      return MaterialPageRoute(
-        builder: (context) => const ProfileView(),
-      );
-      case AboutUsViewBody.routeName:
-      return MaterialPageRoute(
-        builder: (context) => const AboutUsViewBody(),
-      );
+    case ProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const ProfileView());
+    case AboutUsViewBody.routeName:
+      return MaterialPageRoute(builder: (context) => const AboutUsViewBody());
+    case HomeView.routeName:
+      return MaterialPageRoute(builder: (context) => const HomeView());
+          case AddOrderView.routeName:
+      return MaterialPageRoute(builder: (context) => const AddOrderView());
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());
   }

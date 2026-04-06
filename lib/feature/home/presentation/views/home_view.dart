@@ -1,3 +1,4 @@
+import 'package:depifinalproject/feature/home/presentation/views/widgets/home_view_body.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,6 +7,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const HomeViewBody();
   }
 }

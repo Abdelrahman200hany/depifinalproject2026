@@ -13,6 +13,7 @@ class CustomTextFormFeild extends StatelessWidget {
     this.labelText,
     this.validator,
     this.controller,
+    this.maxLines = 1,
   });
 
   final String? hint;
@@ -21,6 +22,7 @@ class CustomTextFormFeild extends StatelessWidget {
   final TextInputType textInputType;
   final bool isHidden;
   final String? Function(String?)? validator;
+  final int maxLines;
 
   final void Function(String?)? onSaved;
   final TextEditingController? controller;
@@ -30,6 +32,7 @@ class CustomTextFormFeild extends StatelessWidget {
       // height: 54,
       width: double.infinity,
       child: TextFormField(
+        maxLines: maxLines,
         controller: controller,
         validator: validator,
         onSaved: onSaved,
