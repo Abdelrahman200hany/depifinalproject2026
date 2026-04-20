@@ -5,6 +5,6 @@ abstract class AppColor {
   static const kPrimaryColor = Color(0xff2D6CDF);
   static const kPrimaryColordark = Color.fromARGB(255, 34, 93, 202);
   static const ksecondaryColor = Color(0xffCA9744);
-  static const kRatingColor = Color(0xffB60F1A);
-  static const kGreyAppColor = Color(0xFF949D9E);
+  static const kRatingColor = Color(0xffCA9744);
+  static const kGreyAppColor = Colors.grey;
 }
