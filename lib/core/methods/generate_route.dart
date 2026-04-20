@@ -4,6 +4,7 @@ import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.da
 import 'package:depifinalproject/feature/home/presentation/views/add_order.dart';
 import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/offer_view.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_view.dart';
@@ -39,8 +40,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const AboutUsViewBody());
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());
-          case AddOrderView.routeName:
+    case AddOrderView.routeName:
       return MaterialPageRoute(builder: (context) => const AddOrderView());
+
+    case OfferView.routeName:
+      return MaterialPageRoute(builder: (context) => const OfferView());
+
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());
   }

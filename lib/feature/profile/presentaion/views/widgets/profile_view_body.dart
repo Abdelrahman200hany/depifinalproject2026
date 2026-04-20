@@ -37,10 +37,7 @@ class ProfileViewBody extends StatelessWidget {
               SizedBox(height: 16),
               CustomProfileSecDetails(
                 onTap: () {
-                  // Navigator.pushNamed(
-                  //   context,
-                  //   PersonalDetailsViewSec.routeName,
-                  // );
+                  // Navigator.pushNamed(context, Offerview.routeName);
                 },
                 title: 'الملف الشخصي',
                 icon: Icons.person_3_outlined,
