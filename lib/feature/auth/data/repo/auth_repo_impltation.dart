@@ -48,7 +48,7 @@ class AuthRepoImpl implements AuthRepo {
         userID: user.uid,
         email: email,
       );
-      await firebaseAuthServies.sendEmailVerification(user);
+       firebaseAuthServies.sendEmailVerification(user);
 
       await addUserDataToDataBase(user: userEntity);
       return right(userEntity);
@@ -77,7 +77,7 @@ class AuthRepoImpl implements AuthRepo {
       bool verified = await firebaseAuthServies.checkEmailVerified();
 
       if (!verified) {
-        await firebaseAuthServies.sendEmailVerification(user);
+         firebaseAuthServies.sendEmailVerification(user);
 
         return left(
           ServerFailure(

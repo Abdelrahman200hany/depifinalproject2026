@@ -43,8 +43,8 @@ class FirebaseAuthServiecs {
   //  await firebaseAuthInstance.currentUser!.sendEmailVerification();
 
   // }
-  Future<void> sendEmailVerification(User user) async {
-    await user.sendEmailVerification();
+  void sendEmailVerification(User user) {
+    user.sendEmailVerification();
   }
 
   // 🚪 تسجيل الخروج

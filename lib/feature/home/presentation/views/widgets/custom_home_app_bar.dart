@@ -1,3 +1,4 @@
+import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/notication_icon_bottom.dart';
@@ -41,7 +42,7 @@ class CustomHomeSliverAppBar extends StatelessWidget {
           Text('صباح الخير !..', style: AppStyle.styleSRegular16(context)),
           const SizedBox(height: 2),
           Text(
-            'عبدالرحمن هاني ',
+            getUserData().name,
             style: AppStyle.styleBold16(context).copyWith(color: Colors.black),
           ),
         ],

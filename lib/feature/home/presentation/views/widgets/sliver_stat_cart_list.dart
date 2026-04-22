@@ -13,7 +13,7 @@ class SliverstatCardList extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
-        childAspectRatio: 1.1,
+        childAspectRatio: 0.95,
       ),
     
       delegate: SliverChildListDelegate([

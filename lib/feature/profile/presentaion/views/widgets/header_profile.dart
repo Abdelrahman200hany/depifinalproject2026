@@ -1,3 +1,4 @@
+import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:flutter/material.dart';
@@ -57,14 +58,14 @@ class Headerprofile extends StatelessWidget {
 
           children: [
             Text(
-              'أحمد ياسر',
+              getUserData().name,
               style: AppStyle.styleBold13(
                 context,
               ).copyWith(color: Colors.black),
             ),
 
             SizedBox(height: 6),
-            Text('mail@mail.com', style: AppStyle.styleSRegular13(context)),
+            Text(getUserData().email, style: AppStyle.styleSRegular13(context)),
           ],
         ),
       ],

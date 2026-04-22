@@ -1,7 +1,10 @@
 import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/show_dilog.dart';
+import 'package:depifinalproject/core/serviecs/auth_services/fire_base_auth_services.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
+import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/widgets/header_profile.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/widgets/sec_profile_body.dart';
@@ -83,6 +86,27 @@ class ProfileViewBody extends StatelessWidget {
               ),
 
               CustomProfileSecDetails(
+                onTap: () {
+                  showPop(
+                    content: 'هل انت متاكد من انك تريد تسجيل الخروج',
+                    title: 'تسجيل الخروج',
+                    context: context,
+                    onConfirm: () async {
+                      await FirebaseAuthServiecs().signOut();
+                         Navigator.pop(context);
+                       Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        SignInView.routeName,
+                        (route) => false,
+                      );
+                    
+                    },
+                 
+                  );
+
+               
+
+                },
                 iconcolor: Colors.redAccent,
                 icon: Icons.exit_to_app_outlined,
                 title: 'تسجيل الخروج ',
