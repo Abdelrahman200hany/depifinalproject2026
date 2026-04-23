@@ -19,7 +19,7 @@ void main() async {
   await Prefs.init();
   setupServiceLocator();
 
-  runApp(DevicePreview(enabled: false, builder: (context) => const Flash()));
+  runApp(DevicePreview(enabled: true, builder: (context) => const Flash()));
 }
 
 class Flash extends StatelessWidget {

@@ -4,8 +4,8 @@ import 'package:depifinalproject/feature/orders/presentation/views/widgets/custo
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_list.dart';
 import 'package:flutter/material.dart';
 
-class OrderViewBody extends StatelessWidget {
-  const OrderViewBody({super.key});
+class OrderClinetViewBody extends StatelessWidget {
+  const OrderClinetViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -19,7 +19,7 @@ class OrderItemBody extends StatelessWidget {
 
             style: AppStyle.styleSemiBold16(
               context,
-            ).copyWith(color: AppColor.kPrimaryColor.withValues(alpha: 0.8)),
+            ).copyWith(color: AppColor.kPrimaryColor.withValues(alpha: 1)),
           ),
         ),
         SizedBox(height: 14),
@@ -67,7 +67,7 @@ class OrderItemBody extends StatelessWidget {
           children: [
             Icon(
               Icons.edit_location_alt,
-              color: AppColor.kPrimaryColor.withValues(alpha: 0.8),
+              color: AppColor.kPrimaryColor.withValues(alpha: 0.9),
             ),
             SizedBox(width: 8),
             Text(

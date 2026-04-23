@@ -8,8 +8,8 @@ import 'package:depifinalproject/feature/orders/presentation/views/widgets/custo
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_sender_data_details.dart';
 import 'package:flutter/material.dart';
 
-class OrderDetailsViewBody extends StatelessWidget {
-  const OrderDetailsViewBody({super.key});
+class OrderDetailsViewBodyforClinet extends StatelessWidget {
+  const OrderDetailsViewBodyforClinet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,6 @@ class OrderDetailsViewBody extends StatelessWidget {
 
             const CustomOrderDataPaymentDetails(),
             const SizedBox(height: 16),
-
             CustomTextBottomWithBackground(text: 'تعديل الطلب', ontap: () {}),
             const SizedBox(height: 16),
             CustomTextBottomWithBackground(
@@ -40,7 +39,7 @@ class OrderDetailsViewBody extends StatelessWidget {
               ontap: () {},
               backgroundColor: Colors.redAccent,
             ),
-               const SizedBox(height: 24),
+            const SizedBox(height: 24),
           ],
         ),
       ),
