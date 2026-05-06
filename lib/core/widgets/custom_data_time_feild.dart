@@ -10,6 +10,7 @@ class CustomDateTimeField extends StatelessWidget {
     this.hint,
     this.labelText,
     this.suffixIcon,
+    this.validator,
   });
 
   final TextEditingController controller;
@@ -18,12 +19,14 @@ class CustomDateTimeField extends StatelessWidget {
   final String? hint;
   final String? labelText;
   final Widget? suffixIcon;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: TextFormField(
+        validator: validator,
         controller: controller,
         readOnly: true,
         onTap: onTap,
@@ -47,10 +50,7 @@ class CustomDateTimeField extends StatelessWidget {
           enabledBorder: buildBorder(),
 
           focusedBorder: buildBorder().copyWith(
-            borderSide: BorderSide(
-              width: 1,
-              color: AppColor.kPrimaryColor,
-            ),
+            borderSide: BorderSide(width: 1, color: AppColor.kPrimaryColor),
           ),
         ),
       ),
@@ -61,9 +61,6 @@ class CustomDateTimeField extends StatelessWidget {
 OutlineInputBorder buildBorder() {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(12),
-    borderSide: const BorderSide(
-      width: 1,
-      color: Color(0xFFE6E9E9),
-    ),
+    borderSide: const BorderSide(width: 1, color: Color(0xFFE6E9E9)),
   );
 }

@@ -1,7 +1,10 @@
+import 'dart:io';
+
 class OrderEntity {
   // الأساسي
   final String uIdOrder;
   final String createdBy;
+  final String orderStatus;
 
   // بيانات المرسل
   final String senderName;
@@ -19,7 +22,7 @@ class OrderEntity {
   final String parcelType;
   final String parcelDescription;
   final String additionalNotes;
-  final String? parcelImage;
+  String? parcelImage;
 
   // الأسعار
   final double parcelPrice;
@@ -36,7 +39,11 @@ class OrderEntity {
   final String deliveryDate;
   final String deliveryTime;
 
-  const OrderEntity({
+  File? imageFile;
+
+  OrderEntity({
+    this.orderStatus = 'في الانتظار',
+    this.imageFile,
     required this.uIdOrder,
     required this.createdBy,
     required this.senderName,

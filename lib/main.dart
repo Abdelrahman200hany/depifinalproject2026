@@ -1,7 +1,9 @@
+import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/methods/generate_route.dart';
 import 'package:depifinalproject/core/serviecs/bloc_observer/bloc_observer.dart';
 import 'package:depifinalproject/core/serviecs/shared_prefs_services/shared_prefs.dart';
 import 'package:depifinalproject/core/serviecs/single_ton_services/create_single_ton.dart';
+import 'package:depifinalproject/core/serviecs/storage_services.dart/supabase_storage_serviecs.dart';
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
 import 'package:depifinalproject/generated/l10n.dart';
@@ -18,8 +20,14 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Prefs.init();
   setupServiceLocator();
+  await SupaBaseStorageServices.initSupabase();
+    await SupaBaseStorageServices.createBuckets(kImagesBuket);
 
-  runApp(DevicePreview(enabled: true, builder: (context) => const Flash()));
+  
+
+
+
+  runApp(DevicePreview(enabled: false, builder: (context) => const Flash()));
 }
 
 class Flash extends StatelessWidget {

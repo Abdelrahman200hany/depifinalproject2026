@@ -6,6 +6,7 @@ class OrderModel {
 
   final String senderName;
   final String senderPhone;
+  final String orderStatus;
 
   final String pickupGovernorate;
   final String pickupAddress;
@@ -35,6 +36,7 @@ class OrderModel {
   final String deliveryTime;
 
   OrderModel({
+    required this.orderStatus,
     required this.uIdOrder,
     required this.createdBy,
     required this.senderName,
@@ -67,6 +69,7 @@ class OrderModel {
   /// FROM JSON
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      orderStatus: json['orderStatus'],
       uIdOrder: json['uIdOrder'],
       createdBy: json['createdBy'],
       senderName: json['senderName'],
@@ -100,6 +103,7 @@ class OrderModel {
   /// TO JSON
   Map<String, dynamic> toMap() {
     return {
+      'orderStatus': orderStatus,
       'uIdOrder': uIdOrder,
       'createdBy': createdBy,
       'senderName': senderName,
@@ -133,6 +137,7 @@ class OrderModel {
   /// FROM ENTITY
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
+      orderStatus: entity.orderStatus,
       uIdOrder: entity.uIdOrder,
       createdBy: entity.createdBy,
       senderName: entity.senderName,
@@ -166,6 +171,7 @@ class OrderModel {
   /// TO ENTITY
   OrderEntity toEntity() {
     return OrderEntity(
+      orderStatus: orderStatus,
       uIdOrder: uIdOrder,
       createdBy: createdBy,
       senderName: senderName,
