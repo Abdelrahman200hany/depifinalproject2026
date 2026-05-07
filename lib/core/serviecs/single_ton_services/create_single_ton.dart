@@ -14,6 +14,7 @@ import 'package:depifinalproject/feature/home/domin/use_case/upload_order_image_
 import 'package:depifinalproject/feature/main_view/data/user_repo_impl/user_repo_impl.dart';
 import 'package:depifinalproject/feature/main_view/domain/repo/user_repo.dart';
 import 'package:depifinalproject/feature/main_view/domain/use_case/navigation_role_use_case.dart';
+import 'package:depifinalproject/core/use_case/get_clinet_order_use_case.dart';
 import 'package:get_it/get_it.dart';
 
 // This is our global ServiceLocator
@@ -28,8 +29,7 @@ void setupServiceLocator() {
     GetMainScreensUseCase(getIt.get<UserRepo>()),
   );
   getIt.registerSingleton<StorageServiecs>(SupaBaseStorageServices());
-    getIt.registerSingleton<DataBaseServies>(FireStoreServices());
-
+  getIt.registerSingleton<DataBaseServies>(FireStoreServices());
 
   getIt.registerSingleton<OrderRepo>(
     OrderRepoImpltation(getIt.get<DataBaseServies>()),
@@ -44,6 +44,9 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<UploadOrderImageUseCase>(
     UploadOrderImageUseCase(getIt.get<ImageUploadedRepo>()),
+  );
+  getIt.registerSingleton<GetClinetOrderUseCase>(
+    GetClinetOrderUseCase(getIt.get<OrderRepo>()),
   );
 
   getIt.registerSingleton<AuthRepo>(

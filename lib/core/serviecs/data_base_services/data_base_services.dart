@@ -7,8 +7,8 @@ abstract class DataBaseServies {
   });
 
   //read data from data base
-  Future<Map<String, dynamic>> readData({
-    required String documentID,
+  Future<dynamic> readData({
+   String  ?documentID,
     required String path,
   });
   // check if user data was found or not
@@ -21,5 +21,10 @@ abstract class DataBaseServies {
     required String path,
     required String field,
     required dynamic value,
+  });
+
+  Future<dynamic> readSpecificData({
+    required String path,
+    Map<String, dynamic>? query,
   });
 }

@@ -4,7 +4,7 @@ import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.da
 import 'package:depifinalproject/feature/home/presentation/views/add_order.dart';
 import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
-import 'package:depifinalproject/feature/offers/presentation/views/offer_view.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_client.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_delivery_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
@@ -53,8 +53,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case AddOrderView.routeName:
       return MaterialPageRoute(builder: (context) => const AddOrderView());
 
-    case OfferView.routeName:
-      return MaterialPageRoute(builder: (context) => const OfferView());
+    case OfferViewforClinet.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const OfferViewforClinet(),
+      );
 
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());

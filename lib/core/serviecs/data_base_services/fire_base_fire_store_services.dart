@@ -19,12 +19,14 @@ class FireStoreServices implements DataBaseServies {
 
   @override
   // Read data from database with secail Doc ID
-  Future<Map<String, dynamic>> readData({
-    required String documentID,
-    required String path,
-  }) async {
-    var data = await firestore.collection(path).doc(documentID).get();
-    return data.data() as Map<String, dynamic>;
+  Future<dynamic> readData({String? documentID, required String path}) async {
+    if (documentID != null) {
+      var data = await firestore.collection(path).doc(documentID).get();
+      return data.data() as Map<String, dynamic>;
+    } else {
+      var data = await firestore.collection(path).get();
+      return data.docs.map((e) => e.data()).toList();
+    }
   }
 
   @override
@@ -39,7 +41,7 @@ class FireStoreServices implements DataBaseServies {
   }
 
   @override
-  // Fillering data 
+  // Fillering data
   Future<List<Map<String, dynamic>>> readWhereData({
     required String path,
     required String field,
@@ -51,5 +53,21 @@ class FireStoreServices implements DataBaseServies {
         .get();
 
     return querySnapshot.docs.map((doc) => doc.data()).toList();
+  }
+
+  @override
+  Future<dynamic> readSpecificData({
+    required String path,
+    Map<String, dynamic>? query,
+  }) async {
+    Query<Map<String, dynamic>> data = firestore.collection(path);
+
+    if (query != null) {
+      query.forEach((key, value) {
+        data = data.where(key, isEqualTo: value);
+      });
+    }
+    var result = await data.get();
+    return result.docs.map((e) => e.data()).toList();
   }
 }

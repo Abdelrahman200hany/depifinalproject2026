@@ -21,13 +21,9 @@ void main() async {
   await Prefs.init();
   setupServiceLocator();
   await SupaBaseStorageServices.initSupabase();
-    await SupaBaseStorageServices.createBuckets(kImagesBuket);
+  await SupaBaseStorageServices.createBuckets(kImagesBuket);
 
-  
-
-
-
-  runApp(DevicePreview(enabled: false, builder: (context) => const Flash()));
+  runApp(DevicePreview(enabled: true, builder: (context) => const Flash()));
 }
 
 class Flash extends StatelessWidget {
