@@ -1,4 +1,4 @@
-
+import 'package:depifinalproject/core/methods/get_order_state_color.dart';
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
@@ -8,8 +8,10 @@ import 'package:flutter_svg/svg.dart';
 class OrderItemHeader extends StatelessWidget {
   const OrderItemHeader({
     super.key,
+    required this.orderState,
+    required this.orderId,
   });
-
+  final String orderState, orderId;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -24,23 +26,24 @@ class OrderItemHeader extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8),
-        Text('#FS-9991', style: AppStyle.styleSRegular16(context)),
+        Text(
+          '#Fl-$orderId'.substring(0, 9),
+          style: AppStyle.styleSRegular16(context),
+        ),
         Spacer(),
         Container(
           decoration: BoxDecoration(
-            color: AppColor.kPrimaryColordLight.withValues(alpha: 0.1),
+            color: getOrderStateColor(orderState, 0.4),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Colors.black.withValues(alpha: 0.2),
-            ),
+            border: Border.all(color: Colors.black.withValues(alpha: 0.2)),
           ),
           padding: EdgeInsets.all(4),
           child: Center(
             child: Text(
-              'قيد التوصيل',
+              orderState,
               style: AppStyle.styleSRegular13(
                 context,
-              ).copyWith(color: AppColor.kPrimaryColor),
+              ).copyWith(color: getOrderStateColor(orderState, 1)),
             ),
           ),
         ),

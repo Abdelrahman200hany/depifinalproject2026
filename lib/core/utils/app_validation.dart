@@ -142,7 +142,7 @@ abstract class AppValidation {
     final emptyCheck = _checkEmpty(value, message: "العنوان مطلوب");
     if (emptyCheck != null) return emptyCheck;
 
-    if (value!.trim().length < 5) {
+    if (value!.trim().length < 10) {
       return "العنوان قصير جدًا";
     }
     return null;

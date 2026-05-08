@@ -1,12 +1,16 @@
-
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_decoration.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
 class OrderItemPrice extends StatelessWidget {
-  const OrderItemPrice({super.key});
-
+  const OrderItemPrice({
+    super.key,
+    required this.descrtionPrice,
+    required this.pirce,
+  });
+  final String descrtionPrice;
+  final double pirce;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,13 +23,13 @@ class OrderItemPrice extends StatelessWidget {
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              'قيمه الشحنه (جنية)',
+              ' $descrtionPrice (جنية)',
               style: AppStyle.styleSRegular16(context),
             ),
           ),
           SizedBox(height: 4),
           Text(
-            '450',
+            '$pirce',
             style: AppStyle.styleBold19(
               context,
             ).copyWith(color: AppColor.kPrimaryColor.withValues(alpha: 0.8)),

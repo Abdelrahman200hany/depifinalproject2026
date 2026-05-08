@@ -1,12 +1,15 @@
+import 'package:depifinalproject/core/methods/cut_srting.dart';
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
+import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OrderItemBody extends StatelessWidget {
-  const OrderItemBody({super.key});
+  const OrderItemBody({super.key, required this.orderIteml});
 
+  final OrderEntity orderIteml;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,7 +18,7 @@ class OrderItemBody extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: Text(
-            'ملابس - حذاء رياضي',
+            '${orderIteml.parcelType} - ${orderIteml.parcelName}',
 
             style: AppStyle.styleSemiBold16(
               context,
@@ -31,7 +34,7 @@ class OrderItemBody extends StatelessWidget {
             ),
             SizedBox(width: 8),
             Text(
-              'القاهرة _ مدينه نصر',
+              '${orderIteml.pickupGovernorate} _ ${cutString(orderIteml.pickupAddress)}',
               style: AppStyle.styleSRegular16(context),
             ),
             Spacer(),
@@ -71,7 +74,7 @@ class OrderItemBody extends StatelessWidget {
             ),
             SizedBox(width: 8),
             Text(
-              'الجيزة - حسن محمد ',
+              '${orderIteml.recipientGovernorate} _ ${cutString(orderIteml.recipientAddress)}',
               style: AppStyle.styleSRegular16(context),
             ),
             Spacer(),
@@ -79,7 +82,7 @@ class OrderItemBody extends StatelessWidget {
               'الي',
               style: AppStyle.styleSemiBold16(
                 context,
-              ).copyWith(color:  AppColor.kGreyAppColor),
+              ).copyWith(color: AppColor.kGreyAppColor),
             ),
           ],
         ),

@@ -1,5 +1,5 @@
 import 'package:depifinalproject/core/consts/consts.dart';
-import 'package:depifinalproject/core/cubits/clinet_order_cubit/clinet_offer_cubit.dart';
+import 'package:depifinalproject/core/cubits/clinet_order_cubit/clinet_order_cubit.dart';
 
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
@@ -19,7 +19,7 @@ class OfferViewBodyforClinet extends StatelessWidget {
         // make sure this line may be don't shoud have await and async
         
         onRefresh: () async {
-          await  context.read<ClinetOrderCubit>().getAlloffers();
+          await  context.read<ClinetOrderCubit>().getAllorders();
         },
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: kHoriztailPadding),

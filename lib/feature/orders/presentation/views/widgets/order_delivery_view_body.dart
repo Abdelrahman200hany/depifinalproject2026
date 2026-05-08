@@ -17,7 +17,7 @@ class OrderDeliveryViewBody extends StatelessWidget {
           children: [
             FiltterIcon(),
             SizedBox(height: 16),
-            Expanded(child: OrderList()),
+            Expanded(child: OrderList(orderList: [])),
           ],
         ),
       ),

@@ -1,6 +1,6 @@
-part of 'clinet_offer_cubit.dart';
+import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 
-@immutable
+
 sealed class ClinetOrderState {}
 
 final class ClinetOrderInitial extends ClinetOrderState {}

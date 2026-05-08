@@ -3,6 +3,7 @@ import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/widgets/custom_divider.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
+import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_body.dart';
@@ -11,7 +12,9 @@ import 'package:depifinalproject/feature/orders/presentation/views/widgets/order
 import 'package:flutter/material.dart';
 
 class OrderItem extends StatelessWidget {
-  const OrderItem({super.key});
+  const OrderItem({super.key, required this.orderIteml});
+
+  final OrderEntity orderIteml;
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +36,28 @@ class OrderItem extends StatelessWidget {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            OrderItemHeader(),
+            OrderItemHeader(
+              orderId: orderIteml.uIdOrder,
+              orderState: orderIteml.orderStatus,
+            ),
             CustomDivider(),
-            OrderItemBody(),
+            OrderItemBody(orderIteml: orderIteml),
             CustomDivider(),
             Row(
               children: [
-                Expanded(child: OrderItemPrice()),
+                Expanded(
+                  child: OrderItemPrice(
+                    descrtionPrice: 'قيمه الشحنه',
+                    pirce: orderIteml.parcelPrice,
+                  ),
+                ),
                 SizedBox(width: 14),
-                Expanded(child: OrderItemPrice()),
+                Expanded(
+                  child: OrderItemPrice(
+                    descrtionPrice: 'قيمه التوصيل',
+                    pirce: orderIteml.deliveryPrice,
+                  ),
+                ),
               ],
             ),
             CustomDivider(),
@@ -53,6 +69,7 @@ class OrderItem extends StatelessWidget {
                   getUserData().userType == kClinet
                       ? OrderDetailsViewForClinet.routeName
                       : OrderDetailsViewForDelivery.routeName,
+                  arguments: orderIteml,
                 );
               },
             ),

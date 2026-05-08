@@ -1,10 +1,25 @@
-
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_details_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/product_details_sec_data.dart';
 import 'package:flutter/material.dart';
 
 class CustomOrderSenderDataDetails extends StatelessWidget {
-  const CustomOrderSenderDataDetails({super.key});
+  const CustomOrderSenderDataDetails({
+    super.key,
+    required this.name,
+    required this.phone,
+    required this.goverment,
+    required this.address,
+    required this.addressMark,
+    required this.pickUpData,
+    required this.pickupTime,
+  });
+  final String name,
+      phone,
+      goverment,
+      address,
+      addressMark,
+      pickUpData,
+      pickupTime;
 
   @override
   Widget build(BuildContext context) {
@@ -12,18 +27,17 @@ class CustomOrderSenderDataDetails extends StatelessWidget {
       title: 'بيانات الاستلام',
       icon: 'asstes/images/location_icon.png',
       children: [
-        const OrderItemDeatilsData(title: 'الاسم', dataDetails: 'أحمد محمود'),
-        const OrderItemDeatilsData(
-          title: 'رقم الجوال',
-          dataDetails: '050XXXXX12',
-        ),
-        const OrderItemDeatilsData(
+        OrderItemDeatilsData(title: 'الاسم', dataDetails: name),
+        OrderItemDeatilsData(title: 'رقم الجوال', dataDetails: phone),
+        OrderItemDeatilsData(
           title: 'العنوان',
-          dataDetails: 'الرياض, حي الملقا, شارع الأمير محمد بن سعد',
+          dataDetails: '$goverment _ $address',
         ),
-        const OrderItemDeatilsData(
-          title: 'التاريخ والوقت',
-          dataDetails: '14 أكتوبر, 10:00 صباحاً',
+        OrderItemDeatilsData(title: 'علامه مميزة', dataDetails: addressMark),
+        OrderItemDeatilsData(title: 'تاريخ الاستلام', dataDetails: pickUpData),
+        OrderItemDeatilsData(
+          title: 'وقت الاستلام المتوقع',
+          dataDetails: pickupTime,
         ),
         const SizedBox(height: 10),
         ClipRRect(

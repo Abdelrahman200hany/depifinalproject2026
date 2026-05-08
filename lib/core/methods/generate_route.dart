@@ -1,6 +1,7 @@
 import 'package:depifinalproject/feature/auth/presentation/views/forget_password_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.dart';
+import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/home/presentation/views/add_order.dart';
 import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
@@ -33,11 +34,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case OrderDetailsViewForClinet.routeName:
       return MaterialPageRoute(
-        builder: (context) => const OrderDetailsViewForClinet(),
+        builder: (context) => OrderDetailsViewForClinet(
+          orderEntity: settings.arguments as OrderEntity,
+        ),
       );
     case OrderDetailsViewForDelivery.routeName:
       return MaterialPageRoute(
-        builder: (context) => const OrderDetailsViewForDelivery(),
+        builder: (context) => OrderDetailsViewForDelivery(
+          orderitem: settings.arguments as OrderEntity,
+        ),
       );
     case OrderClinetView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderClinetView());

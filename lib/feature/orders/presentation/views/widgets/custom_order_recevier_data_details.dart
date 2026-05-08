@@ -1,10 +1,26 @@
-
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_details_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/product_details_sec_data.dart';
 import 'package:flutter/material.dart';
 
 class CustomOrderReceiverDataDetails extends StatelessWidget {
-  const CustomOrderReceiverDataDetails({super.key});
+  const CustomOrderReceiverDataDetails({
+    super.key,
+    required this.name,
+    required this.phone,
+    required this.goverment,
+    required this.address,
+    required this.addressMark,
+    required this.deliveryData,
+    required this.deliveryTime,
+  });
+
+  final String name,
+      phone,
+      goverment,
+      address,
+      addressMark,
+      deliveryData,
+      deliveryTime;
 
   @override
   Widget build(BuildContext context) {
@@ -12,21 +28,20 @@ class CustomOrderReceiverDataDetails extends StatelessWidget {
       title: 'بيانات التسليم',
       icon: 'asstes/images/true_icon.png',
       children: [
-        const OrderItemDeatilsData(
-          title: 'المستلم',
-          dataDetails: 'سارة العتيبي',
-        ),
-        const OrderItemDeatilsData(
-          title: 'رقم الجوال',
-          dataDetails: '055XXXXX89',
-        ),
-        const OrderItemDeatilsData(
+        OrderItemDeatilsData(title: 'المستلم', dataDetails: name),
+        OrderItemDeatilsData(title: 'رقم الجوال', dataDetails: phone),
+        OrderItemDeatilsData(
           title: 'العنوان',
-          dataDetails: 'جدة, حي الشاطئ, طريق الكورنيش',
+          dataDetails: '$goverment _ $address',
         ),
-        const OrderItemDeatilsData(
-          title: 'تاريخ التوصيل المتوقع',
-          dataDetails: '16 أكتوبر 2025',
+        OrderItemDeatilsData(title: 'علامة مميزة', dataDetails: addressMark),
+        OrderItemDeatilsData(
+          title: 'تاريخ التوصيل ',
+          dataDetails: deliveryData,
+        ),
+        OrderItemDeatilsData(
+          title: 'وقت التوصيل المتوقع',
+          dataDetails: deliveryTime,
         ),
         const SizedBox(height: 10),
         ClipRRect(

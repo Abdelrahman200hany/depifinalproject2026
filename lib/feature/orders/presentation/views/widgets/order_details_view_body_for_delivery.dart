@@ -21,31 +21,31 @@ class OrderDetailsViewBodyForDelivery extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: kHoriztailPadding),
         child: ListView(
           children: [
-            const SizedBox(height: 20),
-            const CustomOrderHeaderDataDetails(),
-            const SizedBox(height: 8),
-            const CustomOrderOverAllDataDetails(),
-            const SizedBox(height: 16),
-            const CustomOrderSenderDataDetails(),
-            const SizedBox(height: 16),
+            // const SizedBox(height: 20),
+             // const CustomOrderHeaderDataDetails(),
+            // const SizedBox(height: 8),
+            // const CustomOrderOverAllDataDetails(),
+            // const SizedBox(height: 16),
+            // const CustomOrderSenderDataDetails(),
+            // const SizedBox(height: 16),
 
-            const CustomOrderReceiverDataDetails(),
-            const SizedBox(height: 16),
+            // const CustomOrderReceiverDataDetails(),
+            // const SizedBox(height: 16),
 
-            const CustomOrderDataPaymentDetails(),
-            const SizedBox(height: 16),
+            // const CustomOrderDataPaymentDetails(),
+            // const SizedBox(height: 16),
 
-            CustomTextBottomWithBackground(
-              text: 'تقديم عرض',
-              ontap: () {
-                showCustomModelButtomSheet(
-                  context,
-                  child: ShowModelButtomSheetDelvieryOffer(),
-                );
-              },
-            ),
+            // CustomTextBottomWithBackground(
+            //   text: 'تقديم عرض',
+            //   ontap: () {
+            //     showCustomModelButtomSheet(
+            //       context,
+            //       child: ShowModelButtomSheetDelvieryOffer(),
+            //     );
+            //   },
+            // ),
 
-            const SizedBox(height: 24),
+            // const SizedBox(height: 24),
           ],
         ),
       ),
