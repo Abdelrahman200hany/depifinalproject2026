@@ -1,4 +1,5 @@
 import 'package:depifinalproject/core/utils/assets.dart';
+import 'package:depifinalproject/core/widgets/custom_cached_network_image.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_details_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/product_details_sec_data.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,10 @@ class CustomOrderOverAllDataDetails extends StatelessWidget {
     required this.description,
     required this.image,
     required this.note,
+    required this.imageVesrion,
   });
   final String type, name, description, image, note;
+  final int imageVesrion;
   @override
   Widget build(BuildContext context) {
     return OrderItemDetailsSecData(
@@ -26,12 +29,21 @@ class CustomOrderOverAllDataDetails extends StatelessWidget {
         SizedBox(height: 10),
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(
-            image,
+
+          child: CustomCachedNewtorkimage(
+            imageUrl: image,
+            imageVersion: imageVesrion,
             height: 150,
             width: double.infinity,
             fit: BoxFit.cover,
           ),
+
+          // child: Image.network(
+          //   image,
+          //   height: 150,
+          //   width: double.infinity,
+          //   fit: BoxFit.cover,
+          // ),
         ),
       ],
     );

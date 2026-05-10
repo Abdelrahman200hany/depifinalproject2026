@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:depifinalproject/core/errors/servier_failure.dart';
-import 'package:depifinalproject/core/repo/image_upload/image_uploaded_repo.dart';
+import 'package:depifinalproject/core/repo/images_repo/image_repo.dart';
 
 class UploadOrderImageUseCase {
-  final ImageUploadedRepo imageUploadedRepo;
+  final ImageRepo imageRepo;
 
-  UploadOrderImageUseCase(this.imageUploadedRepo);
+  UploadOrderImageUseCase(this.imageRepo);
 
   Future<Either<Failure, String>> excute({required File imagefile}) async {
-    return await imageUploadedRepo.uploadImage(imagefile);
+    return await imageRepo.uploadImage(imagefile);
   }
 }

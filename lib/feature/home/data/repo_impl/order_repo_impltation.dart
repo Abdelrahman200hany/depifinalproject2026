@@ -20,7 +20,8 @@ class OrderRepoImpltation extends OrderRepo {
   }) async {
     try {
       await dataBaseServies.addData(
-        path: AppBackendEndpoints.orderCollention,
+        documentID: order.uIdOrder,
+        path: AppBackendEndpoints.ordercollection,
         data: OrderModel.fromEntity(order).toMap(),
       );
 
@@ -47,7 +48,7 @@ class OrderRepoImpltation extends OrderRepo {
   getAllMyAccetsOrderforDelivery() async {
     try {
       var data = await dataBaseServies.readSpecificData(
-        path: AppBackendEndpoints.orderCollention,
+        path: AppBackendEndpoints.ordercollection,
         query: {},
       );
       // as List<Map<String, dynamic>>;
@@ -66,7 +67,7 @@ class OrderRepoImpltation extends OrderRepo {
     try {
       var data =
           await dataBaseServies.readSpecificData(
-                path: AppBackendEndpoints.orderCollention,
+                path: AppBackendEndpoints.ordercollection,
                 query: {'createdBy': getUserData().userID},
               )
               as List<Map<String, dynamic>>;
@@ -85,7 +86,7 @@ class OrderRepoImpltation extends OrderRepo {
     try {
       var data =
           await dataBaseServies.readData(
-                path: AppBackendEndpoints.orderCollention,
+                path: AppBackendEndpoints.ordercollection,
               )
               as List<Map<String, dynamic>>;
       final ordersList = data
@@ -95,6 +96,57 @@ class OrderRepoImpltation extends OrderRepo {
     } catch (e) {
       log('the expextion happen in getAllMyAccetsOrderforDelivery fun $e');
       return left(ServerFailure(message: 'فشل في جلب البيانات $e'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteOrderByClinet({
+    required String orderId,
+  }) async {
+    try {
+      await dataBaseServies.deletedata(
+        path: AppBackendEndpoints.ordercollection,
+        dataId: orderId,
+      );
+
+      return right(null);
+    } catch (e) {
+      return left(
+        ServerFailure(
+          message: 'حدف مشكله اثناء الحدف الرجاء الحاوله في وقت اخر $e',
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateOrderByClinet({
+    required String orderId,
+    required OrderEntity newUpDatedOrder,
+    required OrderEntity oldOrder,
+  }) async {
+    Map<String, dynamic> newOrderData = OrderModel.fromEntity(
+      newUpDatedOrder,
+    ).toMap();
+    Map<String, dynamic> oldOrderData = OrderModel.fromEntity(oldOrder).toMap();
+
+    try {
+      final Map<String, dynamic> changes = {};
+      newOrderData.forEach((key, value) {
+        if (oldOrderData[key] != value) {
+          changes[key] = value;
+        }
+      });
+      if (changes.isEmpty) return right(null);
+      await dataBaseServies.upDatadata(
+        path: AppBackendEndpoints.ordercollection,
+        dataId: orderId,
+        data: changes,
+      );
+
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(message: 'حدث مشكله اثناء تحديث البيانات'));
     }
   }
 }

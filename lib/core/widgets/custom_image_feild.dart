@@ -6,8 +6,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ImageFiled extends StatefulWidget {
-  const ImageFiled({super.key, required this.onFileChang});
+  const ImageFiled({
+    super.key,
+    required this.onFileChang,
+    this.existingImageUrl,
+  });
   final ValueChanged<File?> onFileChang;
+  final String? existingImageUrl;
 
   @override
   State<ImageFiled> createState() => _ImageFiledState();
@@ -32,13 +37,25 @@ class _ImageFiledState extends State<ImageFiled> {
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: fileImage == null
-                  ? Center(
-                      child: Icon(
-                        Icons.file_upload_outlined,
-                        size: 120,
-                        color: AppColor.kPrimaryColor.withValues(alpha: 0.5),
-                      ),
-                    )
+                  ? widget.existingImageUrl != null
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.network(
+                              widget.existingImageUrl!,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
+                          )
+                        : Center(
+                            child: Icon(
+                              Icons.file_upload_outlined,
+                              size: 120,
+                              color: AppColor.kPrimaryColor.withValues(
+                                alpha: 0.5,
+                              ),
+                            ),
+                          )
                   : ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.file(
@@ -48,6 +65,23 @@ class _ImageFiledState extends State<ImageFiled> {
                         height: double.infinity,
                       ),
                     ),
+              // fileImage == null
+              //     ? Center(
+              //         child: Icon(
+              //           Icons.file_upload_outlined,
+              //           size: 120,
+              //           color: AppColor.kPrimaryColor.withValues(alpha: 0.5),
+              //         ),
+              //       )
+              //     : ClipRRect(
+              //         borderRadius: BorderRadius.circular(12),
+              //         child: Image.file(
+              //           fileImage!,
+              //           fit: BoxFit.cover,
+              //           width: double.infinity,
+              //           height: double.infinity,
+              //         ),
+              //       ),
             ),
           ),
         ),

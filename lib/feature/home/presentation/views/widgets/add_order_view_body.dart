@@ -403,13 +403,29 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
                         } else {
                           autovalidateMode = AutovalidateMode.always;
                           setState(() {});
+                          showfaulireSnackBar(
+                            context,
+                            message:
+                                'تأكد من إدخال كل بيانات الطرد المطلوبة بشكل صحيح',
+                          );
                         }
                       } else {
-                        showfaulireSnackBar(
-                          context,
-                          message:
-                              'تأكد من إدخال كل بيانات الطرد المطلوبة بشكل صحيح',
-                        );
+                        if (pickupGovernorate == null) {
+                          showfaulireSnackBar(
+                            context,
+                            message: 'من فضلك اختر محافظة الاستلام',
+                          );
+                        } else if (deliveryGovernorate == null) {
+                          showfaulireSnackBar(
+                            context,
+                            message: 'من فضلك اختر محافظة التوصيل',
+                          );
+                        } else if (orderType == null) {
+                          showfaulireSnackBar(
+                            context,
+                            message: 'من فضلك اختر نوع الطرد',
+                          );
+                        }
                       }
                     }
                   },

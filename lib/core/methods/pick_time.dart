@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-Future<void> pickTime(
-  BuildContext context,
-  ValueChanged<String> time,
-) async {
+Future<void> pickTime(BuildContext context, ValueChanged<String> time) async {
   TimeOfDay? pickedTime = await showTimePicker(
+    // barrierColor: AppColor.kPrimaryColor,
+
     context: context,
     initialTime: TimeOfDay.now(),
     helpText: "اختر الوقت المناسب",
-    cancelText: "Cancel",
-    confirmText: "Ok",
+    cancelText: "الغاء",
+    confirmText: "تاكيد",
   );
 
   if (pickedTime != null) {
@@ -24,8 +23,7 @@ Future<void> pickTime(
       pickedTime.minute,
     );
 
-    String formattedTime =
-        DateFormat('HH:mm').format(dateTime);
+    String formattedTime = DateFormat('HH:mm').format(dateTime);
 
     time(formattedTime);
   }

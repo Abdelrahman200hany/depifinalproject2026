@@ -14,6 +14,7 @@ class CustomTextFormFeild extends StatelessWidget {
     this.validator,
     this.controller,
     this.maxLines = 1,
+    this.initialValue,
   });
 
   final String? hint;
@@ -25,6 +26,7 @@ class CustomTextFormFeild extends StatelessWidget {
   final int maxLines;
 
   final void Function(String?)? onSaved;
+  final String? initialValue;
   final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomTextFormFeild extends StatelessWidget {
       // height: 54,
       width: double.infinity,
       child: TextFormField(
+        initialValue: controller == null ? initialValue : null,
         maxLines: maxLines,
         controller: controller,
         validator: validator,

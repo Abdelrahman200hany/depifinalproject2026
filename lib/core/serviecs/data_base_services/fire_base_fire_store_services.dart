@@ -70,4 +70,24 @@ class FireStoreServices implements DataBaseServies {
     var result = await data.get();
     return result.docs.map((e) => e.data()).toList();
   }
+
+  @override
+  Future<void> deletedata({
+    required String path,
+    required String dataId,
+  }) async {
+    await firestore.collection(path).doc(dataId).delete();
+  }
+
+  @override
+  Future<void> upDatadata({
+    required String path,
+    required String dataId,
+    Map<String, dynamic>? data,
+  }) async {
+    if (data != null) {
+      await firestore.collection(path).doc(dataId).update(data);
+    }
+    null;
+  }
 }

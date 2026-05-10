@@ -7,10 +7,7 @@ abstract class DataBaseServies {
   });
 
   //read data from data base
-  Future<dynamic> readData({
-   String  ?documentID,
-    required String path,
-  });
+  Future<dynamic> readData({String? documentID, required String path});
   // check if user data was found or not
   Future<bool> chekedDataIfExitsinDatabase({
     required String path,
@@ -26,5 +23,12 @@ abstract class DataBaseServies {
   Future<dynamic> readSpecificData({
     required String path,
     Map<String, dynamic>? query,
+  });
+
+  Future<void> deletedata({required String path, required String dataId});
+  Future<void> upDatadata({
+    required String path,
+    required String dataId,
+    Map<String, dynamic>? data,
   });
 }

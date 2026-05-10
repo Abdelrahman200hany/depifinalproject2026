@@ -11,6 +11,7 @@ import 'package:depifinalproject/feature/orders/presentation/views/order_deliver
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_clinet_view.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/profile_view.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
@@ -44,6 +45,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           orderitem: settings.arguments as OrderEntity,
         ),
       );
+    case UpdataOrderView.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>
+            UpdataOrderView(orderitem: settings.arguments as OrderEntity),
+      );
+
     case OrderClinetView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderClinetView());
     case OrderDeliveryView.routeName:

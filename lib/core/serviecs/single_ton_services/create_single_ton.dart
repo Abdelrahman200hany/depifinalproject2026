@@ -1,5 +1,5 @@
-import 'package:depifinalproject/core/repo/image_upload/image_uploaded_repo.dart';
-import 'package:depifinalproject/core/repo/image_upload/image_uploaded_repo_implemetation.dart';
+import 'package:depifinalproject/core/repo/images_repo/image_repo.dart';
+import 'package:depifinalproject/core/repo/images_repo/image_repo_implemetation.dart';
 import 'package:depifinalproject/core/serviecs/auth_services/fire_base_auth_services.dart';
 import 'package:depifinalproject/core/serviecs/data_base_services/data_base_services.dart';
 import 'package:depifinalproject/core/serviecs/data_base_services/fire_base_fire_store_services.dart';
@@ -15,6 +15,9 @@ import 'package:depifinalproject/feature/main_view/data/user_repo_impl/user_repo
 import 'package:depifinalproject/feature/main_view/domain/repo/user_repo.dart';
 import 'package:depifinalproject/feature/main_view/domain/use_case/navigation_role_use_case.dart';
 import 'package:depifinalproject/core/use_case/get_clinet_order_use_case.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/delete_order_by_clinet_use_case.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_by_clinet.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
 import 'package:get_it/get_it.dart';
 
 // This is our global ServiceLocator
@@ -35,19 +38,27 @@ void setupServiceLocator() {
     OrderRepoImpltation(getIt.get<DataBaseServies>()),
   );
 
-  getIt.registerSingleton<ImageUploadedRepo>(
-    ImageUploadedRepoImplemetation(getIt.get<StorageServiecs>()),
+  getIt.registerSingleton<ImageRepo>(
+    ImageRepoImplemetation(getIt.get<StorageServiecs>()),
   );
 
   getIt.registerSingleton<AddNewOrderUseCase>(
     AddNewOrderUseCase(getIt.get<OrderRepo>()),
   );
   getIt.registerSingleton<UploadOrderImageUseCase>(
-    UploadOrderImageUseCase(getIt.get<ImageUploadedRepo>()),
+    UploadOrderImageUseCase(getIt.get<ImageRepo>()),
   );
   getIt.registerSingleton<GetClinetOrderUseCase>(
     GetClinetOrderUseCase(getIt.get<OrderRepo>()),
   );
+  getIt.registerSingleton<DeleteOrderByClinetUseCase>(
+    DeleteOrderByClinetUseCase(getIt.get<OrderRepo>()),
+  );
+getIt.registerSingleton<UpDataOrderImageByClinetUseCase> (UpDataOrderImageByClinetUseCase(getIt.get<ImageRepo>()), );
+
+  getIt.registerSingleton<UpDataOrderDataByClinet>(UpDataOrderDataByClinet(getIt.get<OrderRepo>()));
+
+  
 
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(

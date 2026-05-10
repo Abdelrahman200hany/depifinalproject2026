@@ -2,6 +2,8 @@ import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_delete_order_buttom_by_clinet.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_payment_deatial.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_header_data_details.dart';
@@ -32,6 +34,7 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             CustomOrderOverAllDataDetails(
+              imageVesrion: orderItem.imageVersion,
               description: orderItem.parcelDescription,
               image: orderItem.parcelImage!,
               name: orderItem.parcelName,
@@ -66,13 +69,18 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               deliveryPrice: orderItem.deliveryPrice,
             ),
             const SizedBox(height: 16),
-            CustomTextBottomWithBackground(text: 'تعديل الطلب', ontap: () {}),
-            const SizedBox(height: 16),
             CustomTextBottomWithBackground(
-              text: 'الغاء الطلب',
-              ontap: () {},
-              backgroundColor: Colors.redAccent,
+              text: 'تعديل الطلب',
+              ontap: () {
+                Navigator.pushNamed(
+                  context,
+                  UpdataOrderView.routeName,
+                  arguments: orderItem,
+                );
+              },
             ),
+            const SizedBox(height: 16),
+            CustomDeleteOrderButtomByClinet(orderItemUId: orderItem.uIdOrder),
             const SizedBox(height: 24),
           ],
         ),

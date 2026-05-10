@@ -3,6 +3,7 @@ import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 class OrderModel {
   final String uIdOrder;
   final String createdBy;
+  final int imageVersion;
 
   final String senderName;
   final String senderPhone;
@@ -36,6 +37,7 @@ class OrderModel {
   final String deliveryTime;
 
   OrderModel({
+    required this.imageVersion,
     required this.orderStatus,
     required this.uIdOrder,
     required this.createdBy,
@@ -69,6 +71,7 @@ class OrderModel {
   /// FROM JSON
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      imageVersion: json['imageVersion'],
       orderStatus: json['orderStatus'],
       uIdOrder: json['uIdOrder'],
       createdBy: json['createdBy'],
@@ -103,6 +106,7 @@ class OrderModel {
   /// TO JSON
   Map<String, dynamic> toMap() {
     return {
+      'imageVersion': imageVersion,
       'orderStatus': orderStatus,
       'uIdOrder': uIdOrder,
       'createdBy': createdBy,
@@ -137,6 +141,7 @@ class OrderModel {
   /// FROM ENTITY
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
+      imageVersion: entity.imageVersion,
       orderStatus: entity.orderStatus,
       uIdOrder: entity.uIdOrder,
       createdBy: entity.createdBy,

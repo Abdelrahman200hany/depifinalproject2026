@@ -4,6 +4,6 @@ abstract class AppBackendEndpoints {
   static const checkIfUserIsExits = 'user';
   static const filterUserData = 'user';
 
-  static const orderCollention = 'order';
+  static const ordercollection = 'order';
   static const orderImagesfile = 'orderImages';
 }

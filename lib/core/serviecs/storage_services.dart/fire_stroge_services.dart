@@ -15,4 +15,16 @@ class FireStorage implements StorageServiecs {
     String fileUrl = await fileRef.getDownloadURL();
     return fileUrl;
   }
+
+  @override
+  Future<void> deleteFile(String fileUrl) {
+    // TODO: implement deleteFile
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> upDateFile(File file, String oldFileUrl) {
+    // TODO: implement upDateFile
+    throw UnimplementedError();
+  }
 }

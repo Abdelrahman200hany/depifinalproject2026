@@ -14,6 +14,7 @@ class ClinetOrderCubit extends Cubit<ClinetOrderState> {
 
   Future<void> getAllorders() async {
     emit(ClinetOrderLoading());
+    
 
     var result = await us.excute();
 
