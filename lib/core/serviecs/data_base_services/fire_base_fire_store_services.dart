@@ -90,4 +90,70 @@ class FireStoreServices implements DataBaseServies {
     }
     null;
   }
+
+  @override
+  Future<void> addSubCollectionData({
+    required String path,
+    required String docId,
+    required String subCollection,
+    required Map<String, dynamic> data,
+    String? subDocId,
+  }) async {
+    if (subDocId != null) {
+      await firestore
+          .collection(path)
+          .doc(docId)
+          .collection(subCollection)
+          .doc(subDocId)
+          .set(data);
+    } else {
+      await firestore
+          .collection(path)
+          .doc(docId)
+          .collection(subCollection)
+          .add(data);
+    }
+  }
+
+  @override
+  Future<dynamic> readSubCollection({
+    required String path,
+    required String docId,
+    required String subCollection,
+    String? subCollectionDocId,
+  }) async {
+    if (subCollectionDocId != null) {
+      var data = await firestore
+          .collection(path)
+          .doc(docId)
+          .collection(subCollection)
+          .doc(subCollectionDocId)
+          .get();
+
+      return data.data() as Map<String, dynamic>;
+    }
+    var data = await firestore
+        .collection(path)
+        .doc(docId)
+        .collection(subCollection)
+        .get();
+
+    return data.docs.map((e) => e.data()).toList();
+  }
+
+  @override
+  Future<void> updateSubCollectionData({
+    required String path,
+    required String docId,
+    required String subCollection,
+    required String subDocId,
+    required Map<String, dynamic> data,
+  }) async {
+    await firestore
+        .collection(path)
+        .doc(docId)
+        .collection(subCollection)
+        .doc(subDocId)
+        .update(data);
+  }
 }

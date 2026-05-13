@@ -1,15 +1,17 @@
 import 'package:depifinalproject/feature/auth/domain/entity/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class UserModel extends UserEntity {
-  UserModel({
-    required super.name,
+class UserModel {
+  final String name, email, userID, phoneNumber, userCity, userType;
 
-    required super.email,
-    required super.userID,
-    required super.phoneNumber,
-    required super.userType,
-    required super.userCity,
+  UserModel({
+    required this.name,
+
+    required this.email,
+    required this.userID,
+    required this.phoneNumber,
+    required this.userType,
+    required this.userCity,
   });
 
   //convert the firebase user to Custom user model used in google and fackbook auht
@@ -21,6 +23,18 @@ class UserModel extends UserEntity {
       name: user.displayName ?? '',
       userID: user.uid,
       email: user.email ?? '',
+    );
+  }
+
+  // convert the model to entity
+  UserEntity toEntity() {
+    return UserEntity(
+      name: name,
+      email: email,
+      userID: userID,
+      phoneNumber: phoneNumber,
+      userType: userType,
+      userCity: userCity,
     );
   }
 
@@ -42,7 +56,7 @@ class UserModel extends UserEntity {
       userCity: userEntity.userCity,
       userType: userEntity.userType,
       name: userEntity.name,
-      userID: userEntity.userID,
+      userID: userEntity.userID!,
       email: userEntity.email,
     );
   }

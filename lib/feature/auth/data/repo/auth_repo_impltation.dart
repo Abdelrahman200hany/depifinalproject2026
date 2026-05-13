@@ -48,7 +48,7 @@ class AuthRepoImpl implements AuthRepo {
         userID: user.uid,
         email: email,
       );
-       firebaseAuthServies.sendEmailVerification(user);
+      firebaseAuthServies.sendEmailVerification(user);
 
       await addUserDataToDataBase(user: userEntity);
       return right(userEntity);
@@ -77,7 +77,7 @@ class AuthRepoImpl implements AuthRepo {
       bool verified = await firebaseAuthServies.checkEmailVerified();
 
       if (!verified) {
-         firebaseAuthServies.sendEmailVerification(user);
+        firebaseAuthServies.sendEmailVerification(user);
 
         return left(
           ServerFailure(
@@ -103,7 +103,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       user = await firebaseAuthServies.signInWithGoogle();
 
-      var userEntity = UserModel.fromFirebaseUser(user);
+      var userEntity = UserModel.fromFirebaseUser(user).toEntity();
       bool userDataExits = await dataBaseServies.chekedDataIfExitsinDatabase(
         deumentID: userEntity.userID!,
         path: AppBackendEndpoints.checkIfUserIsExits,
@@ -142,7 +142,7 @@ class AuthRepoImpl implements AuthRepo {
       path: AppBackendEndpoints.readUserCollention,
     );
     //  to convert the map in dataBase to UserModel
-    return UserModel.fromjeson(userdata);
+    return UserModel.fromjeson(userdata).toEntity();
   }
 
   @override
