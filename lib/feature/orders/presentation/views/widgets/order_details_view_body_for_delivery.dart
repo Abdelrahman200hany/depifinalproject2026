@@ -2,7 +2,7 @@ import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/methods/show_model_buttom_sheet.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
-import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_details.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_over_all_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_payment_deatial.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_header_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_recevier_data_details.dart';

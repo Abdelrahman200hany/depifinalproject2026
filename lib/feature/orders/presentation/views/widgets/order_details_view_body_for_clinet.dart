@@ -4,7 +4,7 @@ import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_delete_order_buttom_by_clinet.dart';
-import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_details.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_over_all_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_payment_deatial.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_header_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_recevier_data_details.dart';

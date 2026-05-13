@@ -225,6 +225,7 @@ class _UpdateOrderViewBodyState extends State<UpdateOrderViewBody> {
                       ),
 
                       ImageFiled(
+                        
                         existingImageUrl: widget.order.parcelImage,
                         onFileChang: (file) => updatedOrder = updatedOrder
                             .copyWith(imageFile: file),
