@@ -17,6 +17,8 @@ import 'package:depifinalproject/feature/main_view/domain/use_case/navigation_ro
 import 'package:depifinalproject/core/use_case/get_clinet_order_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/add_offer_to_order_by_delivey_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/delete_order_by_clinet_use_case.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/get_all_clinet_order_with_offers_use_case.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/get_all_offers_related_to_orders_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/get_all_orders_for_delivery_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_by_clinet.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
@@ -70,11 +72,20 @@ void setupServiceLocator() {
   getIt.registerSingleton<AddDeliveryOfferUseCase>(
     AddDeliveryOfferUseCase(getIt.get<OrderRepo>()),
   );
+  getIt.registerSingleton<GetAllOffersRelatedToOrderUseCase>(
+    GetAllOffersRelatedToOrderUseCase(getIt.get<OrderRepo>()),
+  );
 
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(
       getIt.get<FirebaseAuthServiecs>(),
       getIt.get<DataBaseServies>(),
+    ),
+  );
+  getIt.registerSingleton<GetAllClientOrdersWithOffersUseCase>(
+    GetAllClientOrdersWithOffersUseCase(
+      getIt.get<GetClinetOrderUseCase>(),
+      getIt.get<GetAllOffersRelatedToOrderUseCase>(),
     ),
   );
 }

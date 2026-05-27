@@ -183,4 +183,26 @@ class OrderRepoImpltation extends OrderRepo {
       return left(ServerFailure(message: 'حدث خطأ أثناء إضافة عرض التوصيل'));
     }
   }
+
+  @override
+  Future<Either<Failure, List<DeliveryEntity>>> getAllOffersRelatedToOrder({
+    required String orderid,
+  }) async {
+    try {
+      List<Map<String, dynamic>> data =
+          await dataBaseServies.readSubCollection(
+                path: AppBackendEndpoints.ordercollection,
+                docId: orderid,
+                subCollection: AppBackendEndpoints.deliveryOffers,
+              )
+              as List<Map<String, dynamic>>;
+      List<DeliveryEntity> offerList = data
+          .map((e) => DeliveryModel.fromJson(e).toEntity())
+          .toList();
+      return right(offerList);
+    } catch (e) {
+      log('the ex happen in get all offer releated to order repo implt  is $e');
+      return left(ServerFailure(message: 'فشل في جلب بيانات العروض'));
+    }
+  }
 }

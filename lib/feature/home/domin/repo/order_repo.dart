@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:depifinalproject/core/errors/servier_failure.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 
 abstract class OrderRepo {
   Future<Either<Failure, List<OrderEntity>>> getAllOrdersforDelivery();
@@ -16,5 +17,8 @@ abstract class OrderRepo {
   Future<Either<Failure, void>> addDeliveryOffer({
     required String orderID,
     required double proposedPrice,
+  });
+  Future<Either<Failure, List<DeliveryEntity>>> getAllOffersRelatedToOrder({
+    required String orderid,
   });
 }

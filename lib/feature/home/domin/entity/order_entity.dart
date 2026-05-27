@@ -1,6 +1,6 @@
-
-
 import 'dart:io';
+
+import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 
 class OrderEntity {
   final int imageVersion;
@@ -43,8 +43,9 @@ class OrderEntity {
   final String deliveryTime;
 
   File? imageFile;
-
+  List<DeliveryEntity>? deliveryOffers;
   OrderEntity({
+    this.deliveryOffers,
     this.imageVersion = 1,
     this.orderStatus = 'في الانتظار',
     this.imageFile,

@@ -1,13 +1,13 @@
-
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
+import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 import 'package:flutter/material.dart';
 
 class OfferDetailBody extends StatelessWidget {
-  const OfferDetailBody({super.key});
-
+  const OfferDetailBody({super.key, required this.delivery});
+  final DeliveryEntity delivery;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +19,7 @@ class OfferDetailBody extends StatelessWidget {
           ),
 
           title: Text(
-            'أحمد محمد',
+            delivery.driver.name,
             style: AppStyle.styleBold16(context).copyWith(color: Colors.black),
           ),
 
@@ -32,7 +32,7 @@ class OfferDetailBody extends StatelessWidget {
           ),
 
           trailing: Text(
-            '50 جنيه',
+            '${delivery.proposedPrice} جنيه',
             style: AppStyle.styleBold13(
               context,
             ).copyWith(color: AppColor.kPrimaryColor),
@@ -43,7 +43,21 @@ class OfferDetailBody extends StatelessWidget {
 
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: CustomTextBottomWithBackground(text: 'قبول الطلب'),
+          child: Row(
+            children: [
+              Expanded(
+                child: CustomTextBottomWithBackground(text: 'قبول الطلب'),
+              ),
+
+              SizedBox(width: 16),
+              Expanded(
+                child: CustomTextBottomWithBackground(
+                  text: ' رفض الطلب',
+                  backgroundColor: AppColor.kRatingColor,
+                ),
+              ),
+            ],
+          ),
         ),
 
         const SizedBox(height: 12),
