@@ -15,7 +15,9 @@ import 'package:depifinalproject/feature/main_view/data/user_repo_impl/user_repo
 import 'package:depifinalproject/feature/main_view/domain/repo/user_repo.dart';
 import 'package:depifinalproject/feature/main_view/domain/use_case/navigation_role_use_case.dart';
 import 'package:depifinalproject/core/use_case/get_clinet_order_use_case.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/add_offer_to_order_by_delivey_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/delete_order_by_clinet_use_case.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/get_all_orders_for_delivery_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_by_clinet.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
 import 'package:get_it/get_it.dart';
@@ -54,11 +56,20 @@ void setupServiceLocator() {
   getIt.registerSingleton<DeleteOrderByClinetUseCase>(
     DeleteOrderByClinetUseCase(getIt.get<OrderRepo>()),
   );
-getIt.registerSingleton<UpDataOrderImageByClinetUseCase> (UpDataOrderImageByClinetUseCase(getIt.get<ImageRepo>()), );
+  getIt.registerSingleton<UpDataOrderImageByClinetUseCase>(
+    UpDataOrderImageByClinetUseCase(getIt.get<ImageRepo>()),
+  );
 
-  getIt.registerSingleton<UpDataOrderDataByClinet>(UpDataOrderDataByClinet(getIt.get<OrderRepo>()));
+  getIt.registerSingleton<GetAllOrdersForDeliveryUseCase>(
+    GetAllOrdersForDeliveryUseCase(getIt.get<OrderRepo>()),
+  );
 
-  
+  getIt.registerSingleton<UpDataOrderDataByClinet>(
+    UpDataOrderDataByClinet(getIt.get<OrderRepo>()),
+  );
+  getIt.registerSingleton<AddDeliveryOfferUseCase>(
+    AddDeliveryOfferUseCase(getIt.get<OrderRepo>()),
+  );
 
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(

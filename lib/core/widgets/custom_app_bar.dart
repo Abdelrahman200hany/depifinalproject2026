@@ -2,18 +2,22 @@ import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/widgets/notication_icon_bottom.dart';
 import 'package:flutter/material.dart';
 
-
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
     this.wantedIconBack = false,
     this.wantedNotacationBottomIcon = false,
+    this.wantedIconWithsectifLogic = false,
+    this.spectificonlogic,
+    this.spectifIcon,
   });
   final String title;
   final bool wantedIconBack;
   final bool wantedNotacationBottomIcon;
+  final bool wantedIconWithsectifLogic;
+  final IconData? spectifIcon;
+  final void Function()? spectificonlogic;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +49,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     // Navigator.pushNamed(context, NotificationView.routeName);
                   },
                 )
+              : SizedBox(),
+          wantedIconWithsectifLogic
+              ? IconButton(onPressed: spectificonlogic, icon: Icon(spectifIcon))
               : SizedBox(),
         ],
       ),

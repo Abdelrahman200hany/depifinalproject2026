@@ -6,4 +6,5 @@ abstract class AppBackendEndpoints {
 
   static const ordercollection = 'order';
   static const orderImagesfile = 'orderImages';
+  static const deliveryOffers = 'deliveryOffers';
 }

@@ -13,4 +13,8 @@ abstract class OrderRepo {
     required OrderEntity newUpDatedOrder,
     required OrderEntity oldOrder,
   });
+  Future<Either<Failure, void>> addDeliveryOffer({
+    required String orderID,
+    required double proposedPrice,
+  });
 }

@@ -8,6 +8,8 @@ import 'package:depifinalproject/core/utils/app_backend_endpoints.dart';
 import 'package:depifinalproject/feature/home/data/model/order_model.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/home/domin/repo/order_repo.dart';
+import 'package:depifinalproject/feature/orders/data/models/delivery_model.dart';
+import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 
 class OrderRepoImpltation extends OrderRepo {
   final DataBaseServies dataBaseServies;
@@ -147,6 +149,38 @@ class OrderRepoImpltation extends OrderRepo {
       return right(null);
     } catch (e) {
       return left(ServerFailure(message: 'حدث مشكله اثناء تحديث البيانات'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addDeliveryOffer({
+    required String orderID,
+    required double proposedPrice,
+  }) async {
+    try {
+      final currentUser = getUserData();
+
+      final deliveryOffer = DeliveryEntity(
+        driver: currentUser,
+        proposedPrice: proposedPrice,
+        createdAt: DateTime.now(),
+      );
+
+      final offer = DeliveryModel.fromEntity(deliveryOffer);
+
+      await dataBaseServies.addSubCollectionData(
+        path: AppBackendEndpoints.ordercollection,
+        subDocId: getUserData().userID,
+        docId: orderID,
+        subCollection: AppBackendEndpoints.deliveryOffers,
+        data: offer.toMap(),
+      );
+
+      return right(null);
+    } catch (e) {
+      // log('error in addDeliveryOffer => $e');
+
+      return left(ServerFailure(message: 'حدث خطأ أثناء إضافة عرض التوصيل'));
     }
   }
 }

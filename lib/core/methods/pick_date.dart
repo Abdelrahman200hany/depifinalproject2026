@@ -15,7 +15,7 @@ Future<void> pickDate(BuildContext context, ValueChanged<String> date) async {
     initialEntryMode: DatePickerEntryMode.calendar,
   );
   if (pickedDate != null) {
-    String formatedDate = DateFormat('yy-MM-dd').format(pickedDate);
+    String formatedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
     date(formatedDate);
   }
 }
