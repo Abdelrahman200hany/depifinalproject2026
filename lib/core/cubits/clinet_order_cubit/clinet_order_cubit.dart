@@ -14,7 +14,6 @@ class ClinetOrderCubit extends Cubit<ClinetOrderState> {
 
   Future<void> getAllorders() async {
     emit(ClinetOrderLoading());
-    
 
     var result = await us.excute();
 
@@ -37,22 +36,27 @@ class ClinetOrderCubit extends Cubit<ClinetOrderState> {
     switch (tabIndex) {
       case 0: // الكل
         return orderList;
-      case 1: // في انتظار المندوب
+      case 1: // امتظار موافقه العرض
+        return orderList
+            .where((order) => order.orderStatus == kOfferWaitingAccept)
+            .toList();
+      case 2: // في انتظار المندوب
         return orderList
             .where((order) => order.orderStatus == kstatusWaiting)
             .toList();
-      case 2: // في الطريق الي العميل
+      case 3: // في الطريق الي العميل
         return orderList
             .where((order) => order.orderStatus == kstatusOnWay)
             .toList();
-      case 3: // تم التوصيل
+      case 4: // تم التوصيل
         return orderList
             .where((order) => order.orderStatus == kstatusDelivered)
             .toList();
-      case 4: // مرتجع
+      case 5: // مرتجع
         return orderList
             .where((order) => order.orderStatus == kstatusReturned)
             .toList();
+
       default:
         return orderList;
     }

@@ -30,11 +30,7 @@ class OfferViewBodyforClinet extends StatelessWidget {
             itemBuilder: (context, index) => Padding(
               padding: EdgeInsets.only(bottom: 12, top: 2),
               child: OfferDetails(
-                deliveryCity: orderList[index].recipientAddress,
-                pickupCity: orderList[index].pickupAddress,
-                orderId: orderList[index].uIdOrder,
-                locationFrom: orderList[index].pickupGovernorate,
-                locationTo: orderList[index].recipientGovernorate,
+                order: orderList[index],
                 offers: orderList[index].deliveryOffers ?? [],
               ),
             ),

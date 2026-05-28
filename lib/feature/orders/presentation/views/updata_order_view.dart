@@ -1,6 +1,6 @@
 import 'package:depifinalproject/core/serviecs/single_ton_services/create_single_ton.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
-import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_by_clinet.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
 import 'package:depifinalproject/feature/orders/presentation/manager/clinet_order_up_data_manager/clinet_order_up_date_manager_cubit.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/up_data_order_view_body_bloc_builder.dart';
@@ -17,7 +17,7 @@ class UpdataOrderView extends StatelessWidget {
     return BlocProvider(
       create: (context) => ClinetOrderUpDateManagerCubit(
         getIt.get<UpDataOrderImageByClinetUseCase>(),
-        getIt.get<UpDataOrderDataByClinet>(),
+        getIt.get<UpDataOrderDataUseCase>(),
       ),
       child: UpdateOrderViewBodyBlocBuilder(orderitem: orderitem),
     );

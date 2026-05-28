@@ -39,6 +39,7 @@ class CustomButtonsBarForOrderView extends StatelessWidget {
 
       tabs: [
         Tab(text: 'الكل'),
+        Tab(text:'في انتظار قبول الطلب'),
         Tab(text: 'في اتظار المندوب'),
         Tab(text: 'في الطريق الي العميل '),
         Tab(text: 'تم التوصيل '),

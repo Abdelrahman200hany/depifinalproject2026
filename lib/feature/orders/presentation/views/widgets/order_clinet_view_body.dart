@@ -15,7 +15,7 @@ class OrderClinetViewBody extends StatelessWidget {
     final cubit = context.read<ClinetOrderCubit>();
 
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add, color: Colors.white),
@@ -33,7 +33,7 @@ class OrderClinetViewBody extends StatelessWidget {
               const SizedBox(height: 16),
               Expanded(
                 child: TabBarView(
-                  children: List.generate(5, (tabIndex) {
+                  children: List.generate(6, (tabIndex) {
                     final filtered = cubit.getFilteredOrders(
                       tabIndex,
                       orderList,

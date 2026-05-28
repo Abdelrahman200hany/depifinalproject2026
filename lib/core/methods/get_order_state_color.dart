@@ -3,7 +3,8 @@ import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
 Color getOrderStateColor(String state, double opactiy) {
-  if (state == kstatusWaiting) {
+  if (state == kstatusWaiting || state ==kOfferWaitingAccept) {
+
     return Colors.green.withValues(alpha: opactiy);
   } else if (state == kstatusDelivered) {
     return AppColor.kPrimaryColor.withValues(alpha: opactiy);

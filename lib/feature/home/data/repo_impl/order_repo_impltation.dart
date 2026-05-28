@@ -122,7 +122,7 @@ class OrderRepoImpltation extends OrderRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateOrderByClinet({
+  Future<Either<Failure, void>> updateOrderData({
     required String orderId,
     required OrderEntity newUpDatedOrder,
     required OrderEntity oldOrder,
@@ -203,6 +203,29 @@ class OrderRepoImpltation extends OrderRepo {
     } catch (e) {
       log('the ex happen in get all offer releated to order repo implt  is $e');
       return left(ServerFailure(message: 'فشل في جلب بيانات العروض'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateDeliveryData({
+    required String orderId,
+    required String offerId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await dataBaseServies.updateSubCollectionData(
+        path: AppBackendEndpoints.ordercollection,
+        docId: orderId,
+        subCollection: AppBackendEndpoints.deliveryOffers,
+        subDocId: offerId,
+        data: data,
+      );
+
+      return right(null);
+    } catch (e) {
+      log('the exception happen in updateDeliveryData is $e');
+
+      return left(ServerFailure(message: 'فشل في تحديث بيانات العرض'));
     }
   }
 }

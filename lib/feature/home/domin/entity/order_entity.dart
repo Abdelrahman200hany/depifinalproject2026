@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 
 class OrderEntity {
@@ -41,13 +42,15 @@ class OrderEntity {
   // وقت التسليم
   final String deliveryDate;
   final String deliveryTime;
+  final String deliveryName;
 
   File? imageFile;
   List<DeliveryEntity>? deliveryOffers;
   OrderEntity({
+    this.deliveryName = '',
     this.deliveryOffers,
     this.imageVersion = 1,
-    this.orderStatus = 'في الانتظار',
+    this.orderStatus = kOfferWaitingAccept,
     this.imageFile,
     required this.uIdOrder,
     required this.createdBy,
@@ -74,6 +77,7 @@ class OrderEntity {
     required this.deliveryTime,
   });
   OrderEntity copyWith({
+    String? deliveryName,
     int? imageVersion,
     String? uIdOrder,
     String? createdBy,
@@ -102,6 +106,7 @@ class OrderEntity {
     File? imageFile,
   }) {
     return OrderEntity(
+      deliveryName: deliveryName ?? this.deliveryName,
       imageVersion: imageVersion ?? this.imageVersion,
       uIdOrder: uIdOrder ?? this.uIdOrder,
       createdBy: createdBy ?? this.createdBy,

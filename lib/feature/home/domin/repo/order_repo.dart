@@ -9,7 +9,7 @@ abstract class OrderRepo {
   Future<Either<Failure, List<OrderEntity>>> getAllMyAccetsOrderforDelivery();
   Future<Either<Failure, void>> addNewOrders({required OrderEntity order});
   Future<Either<Failure, void>> deleteOrderByClinet({required String orderId});
-  Future<Either<Failure, void>> updateOrderByClinet({
+  Future<Either<Failure, void>> updateOrderData({
     required String orderId,
     required OrderEntity newUpDatedOrder,
     required OrderEntity oldOrder,
@@ -20,5 +20,10 @@ abstract class OrderRepo {
   });
   Future<Either<Failure, List<DeliveryEntity>>> getAllOffersRelatedToOrder({
     required String orderid,
+  });
+  Future<Either<Failure, void>> updateDeliveryData({
+    required String orderId,
+    required String offerId,
+    required Map<String, dynamic> data,
   });
 }

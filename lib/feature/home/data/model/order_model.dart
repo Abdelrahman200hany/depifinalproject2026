@@ -35,8 +35,10 @@ class OrderModel {
   // ✅ NEW: Delivery Date & Time
   final String deliveryDate;
   final String deliveryTime;
+  final String deliveryName;
 
   OrderModel({
+    required this.deliveryName,
     required this.imageVersion,
     required this.orderStatus,
     required this.uIdOrder,
@@ -71,6 +73,7 @@ class OrderModel {
   /// FROM JSON
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      deliveryName: json['deliveryName'],
       imageVersion: json['imageVersion'],
       orderStatus: json['orderStatus'],
       uIdOrder: json['uIdOrder'],
@@ -106,6 +109,7 @@ class OrderModel {
   /// TO JSON
   Map<String, dynamic> toMap() {
     return {
+      'deliveryName': deliveryName,
       'imageVersion': imageVersion,
       'orderStatus': orderStatus,
       'uIdOrder': uIdOrder,
@@ -141,6 +145,7 @@ class OrderModel {
   /// FROM ENTITY
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
+      deliveryName: entity.deliveryName,
       imageVersion: entity.imageVersion,
       orderStatus: entity.orderStatus,
       uIdOrder: entity.uIdOrder,
@@ -176,6 +181,7 @@ class OrderModel {
   /// TO ENTITY
   OrderEntity toEntity() {
     return OrderEntity(
+      deliveryName: deliveryName,
       orderStatus: orderStatus,
       uIdOrder: uIdOrder,
       createdBy: createdBy,

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
-import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_by_clinet.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
 import 'package:meta/meta.dart';
 
@@ -13,7 +13,7 @@ class ClinetOrderUpDateManagerCubit
     : super(ClinetOrderUpDateManagerInitial());
 
   final UpDataOrderImageByClinetUseCase imageUseCase;
-  final UpDataOrderDataByClinet dataUseCase;
+  final UpDataOrderDataUseCase dataUseCase;
 
   Future<void> updateOrder({
     required String orderId,

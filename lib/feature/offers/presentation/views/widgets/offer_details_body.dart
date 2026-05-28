@@ -2,12 +2,19 @@ import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
+import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/widgets/accept_delivey_offer_buttom.dart';
 import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 import 'package:flutter/material.dart';
 
 class OfferDetailBody extends StatelessWidget {
-  const OfferDetailBody({super.key, required this.delivery});
+  const OfferDetailBody({
+    super.key,
+    required this.delivery,
+    required this.order,
+  });
   final DeliveryEntity delivery;
+  final OrderEntity order;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,9 +52,7 @@ class OfferDetailBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             children: [
-              Expanded(
-                child: CustomTextBottomWithBackground(text: 'قبول الطلب'),
-              ),
+              AccectDeliveryOfferButtom(order: order, delivery: delivery),
 
               SizedBox(width: 16),
               Expanded(

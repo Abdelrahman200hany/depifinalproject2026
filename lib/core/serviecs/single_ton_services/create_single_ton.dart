@@ -15,12 +15,14 @@ import 'package:depifinalproject/feature/main_view/data/user_repo_impl/user_repo
 import 'package:depifinalproject/feature/main_view/domain/repo/user_repo.dart';
 import 'package:depifinalproject/feature/main_view/domain/use_case/navigation_role_use_case.dart';
 import 'package:depifinalproject/core/use_case/get_clinet_order_use_case.dart';
+import 'package:depifinalproject/feature/offers/domain/use_case/accept_delivery_offer_use_case.dart';
+import 'package:depifinalproject/feature/offers/domain/use_case/update_delivery_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/add_offer_to_order_by_delivey_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/delete_order_by_clinet_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/get_all_clinet_order_with_offers_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/get_all_offers_related_to_orders_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/get_all_orders_for_delivery_use_case.dart';
-import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_by_clinet.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
 import 'package:get_it/get_it.dart';
 
@@ -66,8 +68,8 @@ void setupServiceLocator() {
     GetAllOrdersForDeliveryUseCase(getIt.get<OrderRepo>()),
   );
 
-  getIt.registerSingleton<UpDataOrderDataByClinet>(
-    UpDataOrderDataByClinet(getIt.get<OrderRepo>()),
+  getIt.registerSingleton<UpDataOrderDataUseCase>(
+    UpDataOrderDataUseCase(getIt.get<OrderRepo>()),
   );
   getIt.registerSingleton<AddDeliveryOfferUseCase>(
     AddDeliveryOfferUseCase(getIt.get<OrderRepo>()),
@@ -82,10 +84,19 @@ void setupServiceLocator() {
       getIt.get<DataBaseServies>(),
     ),
   );
+  getIt.registerSingleton<UpdateDeliveryDataUseCase>(
+    UpdateDeliveryDataUseCase(getIt.get<OrderRepo>()),
+  );
   getIt.registerSingleton<GetAllClientOrdersWithOffersUseCase>(
     GetAllClientOrdersWithOffersUseCase(
       getIt.get<GetClinetOrderUseCase>(),
       getIt.get<GetAllOffersRelatedToOrderUseCase>(),
+    ),
+  );
+  getIt.registerSingleton<AcceptDeliveryOfferUseCase>(
+    AcceptDeliveryOfferUseCase(
+      getIt.get<UpDataOrderDataUseCase>(),
+      getIt.get<UpdateDeliveryDataUseCase>(),
     ),
   );
 }

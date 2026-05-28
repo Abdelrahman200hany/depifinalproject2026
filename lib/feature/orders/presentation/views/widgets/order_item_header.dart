@@ -41,9 +41,11 @@ class OrderItemHeader extends StatelessWidget {
           child: Center(
             child: Text(
               orderState,
-              style: AppStyle.styleSRegular13(
-                context,
-              ).copyWith(color: getOrderStateColor(orderState, 1)),
+              style: AppStyle.styleSRegular13(context).copyWith(
+                // color: Colors.white,
+
+                color: getOrderStateColor(orderState, 1)
+              ),
             ),
           ),
         ),
