@@ -115,12 +115,38 @@ class FireStoreServices implements DataBaseServies {
     }
   }
 
+  // @override
+  // Future<dynamic> readSubCollection({
+  //   required String path,
+  //   required String docId,
+  //   required String subCollection,
+  //   String? subCollectionDocId,
+  // }) async {
+  //   if (subCollectionDocId != null) {
+  //     var data = await firestore
+  //         .collection(path)
+  //         .doc(docId)
+  //         .collection(subCollection)
+  //         .doc(subCollectionDocId)
+  //         .get();
+
+  //     return data.data() as Map<String, dynamic>;
+  //   }
+  //   var data = await firestore
+  //       .collection(path)
+  //       .doc(docId)
+  //       .collection(subCollection)
+  //       .get();
+
+  //   return data.docs.map((e) => e.data()).toList();
+  // }
   @override
   Future<dynamic> readSubCollection({
     required String path,
     required String docId,
     required String subCollection,
     String? subCollectionDocId,
+    Map<String, dynamic>? query,
   }) async {
     if (subCollectionDocId != null) {
       var data = await firestore
@@ -132,13 +158,21 @@ class FireStoreServices implements DataBaseServies {
 
       return data.data() as Map<String, dynamic>;
     }
-    var data = await firestore
+
+    Query<Map<String, dynamic>> data = firestore
         .collection(path)
         .doc(docId)
-        .collection(subCollection)
-        .get();
+        .collection(subCollection);
 
-    return data.docs.map((e) => e.data()).toList();
+    if (query != null) {
+      query.forEach((key, value) {
+        data = data.where(key, isEqualTo: value);
+      });
+    }
+
+    var result = await data.get();
+
+    return result.docs.map((e) => e.data()).toList();
   }
 
   @override

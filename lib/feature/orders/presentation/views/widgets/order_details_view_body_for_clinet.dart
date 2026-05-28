@@ -69,15 +69,18 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               deliveryPrice: orderItem.deliveryPrice,
             ),
             const SizedBox(height: 16),
-            CustomTextBottomWithBackground(
-              text: 'تعديل الطلب',
-              ontap: () {
-                Navigator.pushNamed(
-                  context,
-                  UpdataOrderView.routeName,
-                  arguments: orderItem,
-                );
-              },
+            Visibility(
+              visible: orderItem.orderStatus == kOfferWaitingAccept,
+              child: CustomTextBottomWithBackground(
+                text: 'تعديل الطلب',
+                ontap: () {
+                  Navigator.pushNamed(
+                    context,
+                    UpdataOrderView.routeName,
+                    arguments: orderItem,
+                  );
+                },
+              ),
             ),
             const SizedBox(height: 16),
             CustomDeleteOrderButtomByClinet(orderItemUId: orderItem.uIdOrder),

@@ -5,7 +5,9 @@ import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.da
 
 abstract class OrderRepo {
   Future<Either<Failure, List<OrderEntity>>> getAllOrdersforDelivery();
-  Future<Either<Failure, List<OrderEntity>>> getAllMyOrdersforClient();
+  Future<Either<Failure, List<OrderEntity>>> getAllMyOrdersforClient({
+    Map<String, dynamic>? query,
+  });
   Future<Either<Failure, List<OrderEntity>>> getAllMyAccetsOrderforDelivery();
   Future<Either<Failure, void>> addNewOrders({required OrderEntity order});
   Future<Either<Failure, void>> deleteOrderByClinet({required String orderId});
@@ -19,6 +21,7 @@ abstract class OrderRepo {
     required double proposedPrice,
   });
   Future<Either<Failure, List<DeliveryEntity>>> getAllOffersRelatedToOrder({
+     Map<String, dynamic>? query,
     required String orderid,
   });
   Future<Either<Failure, void>> updateDeliveryData({

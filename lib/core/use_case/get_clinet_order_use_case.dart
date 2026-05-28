@@ -8,7 +8,9 @@ class GetClinetOrderUseCase {
 
   GetClinetOrderUseCase(this.orderRepo);
 
-  Future<Either<Failure, List<OrderEntity>>> excute() async {
-    return await orderRepo.getAllMyOrdersforClient();
+  Future<Either<Failure, List<OrderEntity>>> excute({
+    Map<String, dynamic>? query,
+  }) async {
+    return await orderRepo.getAllMyOrdersforClient(query: query);
   }
 }

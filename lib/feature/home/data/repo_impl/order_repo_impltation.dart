@@ -65,12 +65,14 @@ class OrderRepoImpltation extends OrderRepo {
   }
 
   @override
-  Future<Either<Failure, List<OrderEntity>>> getAllMyOrdersforClient() async {
+  Future<Either<Failure, List<OrderEntity>>> getAllMyOrdersforClient({
+    Map<String, dynamic>? query,
+  }) async {
     try {
       var data =
           await dataBaseServies.readSpecificData(
                 path: AppBackendEndpoints.ordercollection,
-                query: {'createdBy': getUserData().userID},
+                query: {'createdBy': getUserData().userID, ...?query},
               )
               as List<Map<String, dynamic>>;
       final ordersList = data
@@ -186,6 +188,7 @@ class OrderRepoImpltation extends OrderRepo {
 
   @override
   Future<Either<Failure, List<DeliveryEntity>>> getAllOffersRelatedToOrder({
+    Map<String, dynamic>? query,
     required String orderid,
   }) async {
     try {
@@ -194,6 +197,7 @@ class OrderRepoImpltation extends OrderRepo {
                 path: AppBackendEndpoints.ordercollection,
                 docId: orderid,
                 subCollection: AppBackendEndpoints.deliveryOffers,
+                query: query,
               )
               as List<Map<String, dynamic>>;
       List<DeliveryEntity> offerList = data

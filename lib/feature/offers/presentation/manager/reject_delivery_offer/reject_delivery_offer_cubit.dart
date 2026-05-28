@@ -19,7 +19,7 @@ class RejectDeliveryOfferCubit extends Cubit<RejectDeliveryOfferState> {
     final result = await updateDeliveryDataUseCase.excute(
       orderId: orderId,
       offerId: offerId,
-      data: {'status': kstatusofferRejected},
+      data: {'offerStatus': kstatusofferRejected},
     );
 
     result.fold(

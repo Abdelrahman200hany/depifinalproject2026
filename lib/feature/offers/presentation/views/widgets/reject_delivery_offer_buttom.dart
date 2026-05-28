@@ -7,7 +7,6 @@ import 'package:depifinalproject/feature/main_view/presentation/views/main_view.
 import 'package:depifinalproject/feature/offers/domain/use_case/update_delivery_data_use_case.dart';
 import 'package:depifinalproject/feature/offers/presentation/manager/reject_delivery_offer/reject_delivery_offer_cubit.dart';
 import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
-import 'package:depifinalproject/feature/orders/presentation/manager/get_all_client_orders_with_offers/get_all_client_orders_with_offers_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,10 +35,11 @@ class RejectDeliveryOfferButtom extends StatelessWidget {
             if (state is RejectDeliveryOfferSuccess) {
               showSuccessSnackBar(context, message: 'تم رفض الطلب بنجاح');
 
-              context
-                  .read<GetClientOrdersWithOffersCubit>()
-                  .getOrdersWithOffers();
-       
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                MainView.routeName,
+                (route) => false,
+              );
             }
           },
           builder: (context, state) {

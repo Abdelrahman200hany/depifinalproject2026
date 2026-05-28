@@ -14,7 +14,6 @@ import 'package:depifinalproject/core/widgets/custom_text_form_feild.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/home/presentation/views/widgets/add_order_sec_tempelet.dart';
 import 'package:depifinalproject/feature/home/presentation/views/widgets/add_order_sec_title.dart';
-import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/manager/clinet_order_up_data_manager/clinet_order_up_date_manager_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

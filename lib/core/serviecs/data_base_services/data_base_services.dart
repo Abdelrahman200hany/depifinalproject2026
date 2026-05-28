@@ -48,6 +48,7 @@ abstract class DataBaseServies {
     required String docId,
     required String subCollection,
     String? subCollectionDocId,
+     Map<String, dynamic>? query,
   });
 
   Future<void> updateSubCollectionData({

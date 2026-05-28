@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/errors/servier_failure.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/core/use_case/get_clinet_order_use_case.dart';
@@ -15,7 +16,11 @@ class GetAllClientOrdersWithOffersUseCase {
   );
 
   Future<Either<Failure, List<OrderEntity>>> excute() async {
-    final ordersResult = await getClinetOrderUseCase.excute();
+    final ordersResult = await getClinetOrderUseCase.excute(
+      query: {
+        'orderStatus':kOfferWaitingAccept
+      }
+    );
 
     return await ordersResult.fold(
       (failure) async {

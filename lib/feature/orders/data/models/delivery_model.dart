@@ -39,7 +39,7 @@ class DeliveryModel {
     return DeliveryModel(
       driver: UserModel.fromUserEntity(entity.driver),
       proposedPrice: entity.proposedPrice,
-      offerStatus: entity.status,
+      offerStatus: entity.offerStatus,
       createdAt: entity.createdAt,
     );
   }
@@ -49,7 +49,7 @@ class DeliveryModel {
     return DeliveryEntity(
       driver: driver.toEntity(),
       proposedPrice: proposedPrice,
-      status: offerStatus,
+      offerStatus: offerStatus,
       createdAt: createdAt,
     );
   }
