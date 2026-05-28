@@ -13,4 +13,5 @@ const String kstatusOnWay = 'في الطريق الي العميل';
 const String kstatusDelivered = 'تم التوصيل';
 const String kstatusReturned = 'مرتجع';
 const String kstatusofferAccepted = 'accepted';
-const String kstatusoffernotRejectedF = 'Rejected';
+const String kstatusofferRejected = 'Rejected';
+const String kstatusofferpending = 'pending';

@@ -1,3 +1,4 @@
+import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/feature/auth/domain/entity/user_entity.dart';
 
 class DeliveryEntity {
@@ -9,7 +10,7 @@ class DeliveryEntity {
   DeliveryEntity({
     required this.driver,
     required this.proposedPrice,
-    this.status = 'pending',
+    this.status = kstatusofferpending,
     required this.createdAt,
   });
 
