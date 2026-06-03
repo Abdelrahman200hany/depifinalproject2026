@@ -2,6 +2,7 @@ import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/widgets/custom_divider.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/widgets/change_order_status_buttom.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/widgets/offer_details_header.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_complete_data.dart';
 import 'package:flutter/material.dart';
@@ -52,11 +53,7 @@ class CartDeliveryOfferDetails extends StatelessWidget {
               ),
               const SizedBox(width: 16),
 
-              Expanded(
-                child: CustomTextBottomWithBackground(
-                  text: 'تغير حاله التوصيل ',
-                ),
-              ),
+              Expanded(child: ChangeOrderStatusButtom(order: order)),
             ],
           ),
         ],

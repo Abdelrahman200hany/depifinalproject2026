@@ -84,7 +84,7 @@ class OrderDetailsViewBodyForDeliverywithSecretData extends StatelessWidget {
             const SizedBox(height: 16),
 
             /// Delivery Offer Button
-            Visibility(child: AddOfferToOrderButtom(item: item)),
+            AddOfferToOrderButtom(item: item),
 
             const SizedBox(height: 24),
           ],

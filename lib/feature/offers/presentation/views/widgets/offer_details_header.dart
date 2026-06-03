@@ -22,7 +22,7 @@ class OfferDetailsHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'طلب التوصيل #${cutString(orderId, maxLength: 12)}',
+          'طلب التوصيل #Fl-${cutString(orderId, maxLength: 12)}',
           style: AppStyle.styleBold13(
             context,
           ).copyWith(color: AppColor.kPrimaryColor),
