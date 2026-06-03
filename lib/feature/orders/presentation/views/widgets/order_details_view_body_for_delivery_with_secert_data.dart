@@ -9,8 +9,11 @@ import 'package:depifinalproject/feature/orders/presentation/views/widgets/custo
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_sender_data_details.dart';
 import 'package:flutter/material.dart';
 
-class OrderDetailsViewBodyForDelivery extends StatelessWidget {
-  const OrderDetailsViewBodyForDelivery({super.key, required this.item});
+class OrderDetailsViewBodyForDeliverywithSecretData extends StatelessWidget {
+  const OrderDetailsViewBodyForDeliverywithSecretData({
+    super.key,
+    required this.item,
+  });
   final OrderEntity item;
 
   @override
@@ -61,9 +64,9 @@ class OrderDetailsViewBodyForDelivery extends StatelessWidget {
 
             /// Receiver Details
             CustomOrderReceiverDataDetails(
-              name: item.recipientName,
+              name:'ك*********',
               goverment: item.recipientGovernorate,
-              phone: item.recipientPhone,
+              phone: '012********',
               address: item.recipientAddress,
               addressMark: item.recipientMark,
               deliveryData: item.deliveryDate,
@@ -81,7 +84,7 @@ class OrderDetailsViewBodyForDelivery extends StatelessWidget {
             const SizedBox(height: 16),
 
             /// Delivery Offer Button
-            AddOfferToOrderButtom(item: item),
+            Visibility(child: AddOfferToOrderButtom(item: item)),
 
             const SizedBox(height: 24),
           ],

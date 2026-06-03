@@ -16,6 +16,7 @@ import 'package:depifinalproject/feature/main_view/domain/repo/user_repo.dart';
 import 'package:depifinalproject/feature/main_view/domain/use_case/navigation_role_use_case.dart';
 import 'package:depifinalproject/core/use_case/get_clinet_order_use_case.dart';
 import 'package:depifinalproject/feature/offers/domain/use_case/accept_delivery_offer_use_case.dart';
+import 'package:depifinalproject/feature/offers/domain/use_case/get_accepted_delivery_offers_use_case%20.dart';
 import 'package:depifinalproject/feature/offers/domain/use_case/update_delivery_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/add_offer_to_order_by_delivey_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/delete_order_by_clinet_use_case.dart';
@@ -98,5 +99,8 @@ void setupServiceLocator() {
       getIt.get<UpDataOrderDataUseCase>(),
       getIt.get<UpdateDeliveryDataUseCase>(),
     ),
+  );
+  getIt.registerSingleton<GetAcceptedDeliveryOffersUseCase>(
+    GetAcceptedDeliveryOffersUseCase(getIt.get<OrderRepo>()),
   );
 }

@@ -4,15 +4,21 @@ import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background
 import 'package:flutter/material.dart';
 
 class FaulireCustomwidget extends StatelessWidget {
-  const FaulireCustomwidget({super.key, this.ontap, required this.appBarhint});
+  const FaulireCustomwidget({
+    super.key,
+    this.ontap,
+    this.appBarhint = "",
+    this.wantedAppBar = true,
+  });
 
   final void Function()? ontap;
   final String appBarhint;
+  final bool wantedAppBar;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: appBarhint),
+      appBar: wantedAppBar ? CustomAppBar(title: appBarhint) : null,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Center(

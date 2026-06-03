@@ -1,3 +1,5 @@
+import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
@@ -12,16 +14,18 @@ class EmptyCustomwidget extends StatelessWidget {
     super.key,
     required this.emptyText,
     required this.hint,
-    required this.appBarhint,
+    this.appBarhint = "",
+    this.wantedAppBar = true,
   });
   final String emptyText;
   final String hint;
   final String appBarhint;
+  final bool wantedAppBar;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: appBarhint),
+      appBar: wantedAppBar ? CustomAppBar(title: appBarhint) : null,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Center(
@@ -54,11 +58,14 @@ class EmptyCustomwidget extends StatelessWidget {
               ),
 
               Spacer(),
-              CustomTextBottomWithBackground(
-                text: 'اضافه طلب جديد',
-                ontap: () {
-                  Navigator.pushNamed(context, AddOrderView.routeName);
-                },
+              Visibility(
+                visible: getUserData().userType == kClinet,
+                child: CustomTextBottomWithBackground(
+                  text: 'اضافه طلب جديد',
+                  ontap: () {
+                    Navigator.pushNamed(context, AddOrderView.routeName);
+                  },
+                ),
               ),
               SizedBox(height: 24),
             ],

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/errors/servier_failure.dart';
 import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/serviecs/data_base_services/data_base_services.dart';
@@ -49,18 +50,20 @@ class OrderRepoImpltation extends OrderRepo {
   Future<Either<Failure, List<OrderEntity>>>
   getAllMyAccetsOrderforDelivery() async {
     try {
-      var data = await dataBaseServies.readSpecificData(
-        path: AppBackendEndpoints.ordercollection,
-        query: {},
-      );
-      // as List<Map<String, dynamic>>;
+      var data =
+          await dataBaseServies.readSpecificData(
+                path: AppBackendEndpoints.ordercollection,
+                query: {"deliveryName": getUserData().userID},
+              )
+              as List<Map<String, dynamic>>;
+      
       final ordersList = data
           .map((item) => OrderModel.fromJson(item).toEntity())
           .toList();
       return right(ordersList);
     } catch (e) {
       log('the expextion happen in getAllMyAccetsOrderforDelivery fun $e');
-      return left(ServerFailure(message: 'فشل في جلب البيانات'));
+      return left(ServerFailure(message: 'فشل في جلب البيانات $e'));
     }
   }
 
@@ -89,8 +92,9 @@ class OrderRepoImpltation extends OrderRepo {
   Future<Either<Failure, List<OrderEntity>>> getAllOrdersforDelivery() async {
     try {
       var data =
-          await dataBaseServies.readData(
+          await dataBaseServies.readSpecificData(
                 path: AppBackendEndpoints.ordercollection,
+                query: {"orderStatus": kOfferWaitingAccept},
               )
               as List<Map<String, dynamic>>;
       final ordersList = data

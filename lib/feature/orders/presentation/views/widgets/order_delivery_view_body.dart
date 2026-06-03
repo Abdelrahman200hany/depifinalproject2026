@@ -32,15 +32,17 @@ class OrderDeliveryViewBody extends StatelessWidget {
                 if (state is GetAllOrdersListForDeliverySuccess) {
                   if (state.orderList.isEmpty) {
                     return EmptyCustomwidget(
-                      emptyText: 'لا يوجد طلبات ',
-                      hint: 'الطلبات',
-                      appBarhint: 'الطلبات المتاحة',
+                      emptyText: 'طلبات للتوصيل',
+                      hint: 'انتظر عروض العملاء قربيا ',
+                      wantedAppBar: false,
                     );
                   } else {
                     return OrderList(orderList: state.orderList);
                   }
                 } else if (state is GetAllOrdersListForDeliveryFualire) {
-                  return FaulireCustomwidget(appBarhint: 'حدث خطا ما');
+                  return FaulireCustomwidget(
+                    wantedAppBar: false,
+                  );
                 } else {
                   return Skeletonizer(
                     child: OrderList(orderList: GetDummyOrders.ordersList),

@@ -6,8 +6,12 @@ import 'package:depifinalproject/feature/offers/presentation/views/widgets/offer
 import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 import 'package:flutter/material.dart';
 
-class OfferDetails extends StatelessWidget {
-  const OfferDetails({super.key, required this.offers, required this.order});
+class OfferDetailsforClinet extends StatelessWidget {
+  const OfferDetailsforClinet({
+    super.key,
+    required this.offers,
+    required this.order,
+  });
   final List<DeliveryEntity> offers;
   final OrderEntity order;
 

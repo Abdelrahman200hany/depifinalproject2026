@@ -6,10 +6,12 @@ import 'package:depifinalproject/feature/home/presentation/views/add_order.dart'
 import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_client.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_delivery.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_delivery_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
-import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_complete_data.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_secert_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_clinet_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
 import 'package:depifinalproject/feature/profile/presentaion/views/profile_view.dart';
@@ -39,10 +41,16 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           orderEntity: settings.arguments as OrderEntity,
         ),
       );
-    case OrderDetailsViewForDelivery.routeName:
+    case OrderDetailsViewForDeliverywithSecretData.routeName:
       return MaterialPageRoute(
-        builder: (context) => OrderDetailsViewForDelivery(
+        builder: (context) => OrderDetailsViewForDeliverywithSecretData(
           orderitem: settings.arguments as OrderEntity,
+        ),
+      );
+    case OrderDetailsViewForDeliverycompleteData.routeName:
+      return MaterialPageRoute(
+        builder: (context) => OrderDetailsViewForDeliverycompleteData(
+          item: settings.arguments as OrderEntity,
         ),
       );
     case UpdataOrderView.routeName:
@@ -53,6 +61,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case OrderClinetView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderClinetView());
+    case OfferViewForDelivery.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const OfferViewForDelivery(),
+      );
     case OrderDeliveryView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderDeliveryView());
 

@@ -5,7 +5,7 @@ import 'package:depifinalproject/core/widgets/custom_divider.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
-import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_secert_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_body.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_header.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_price.dart';
@@ -68,7 +68,7 @@ class OrderItem extends StatelessWidget {
                   context,
                   getUserData().userType == kClinet
                       ? OrderDetailsViewForClinet.routeName
-                      : OrderDetailsViewForDelivery.routeName,
+                      : OrderDetailsViewForDeliverywithSecretData.routeName,
                   arguments: orderIteml,
                 );
               },

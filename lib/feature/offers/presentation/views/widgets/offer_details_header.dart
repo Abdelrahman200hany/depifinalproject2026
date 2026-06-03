@@ -18,6 +18,7 @@ class OfferDetailsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -28,7 +29,7 @@ class OfferDetailsHeader extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         DirectionRow(
-          text: 'من:  ${cutString(pickupCity, maxLength:12)} - $locationFrom',
+          text: 'من:  ${cutString(pickupCity, maxLength: 12)} - $locationFrom',
           icon: Icons.location_on_outlined,
         ),
         SizedBox(height: 4),
@@ -41,3 +42,5 @@ class OfferDetailsHeader extends StatelessWidget {
     );
   }
 }
+
+
