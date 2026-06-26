@@ -53,10 +53,10 @@ class OrderRepoImpltation extends OrderRepo {
       var data =
           await dataBaseServies.readSpecificData(
                 path: AppBackendEndpoints.ordercollection,
-                query: {"deliveryName": getUserData().userID},
+                query: {"deliveryId": getUserData().userID},
               )
               as List<Map<String, dynamic>>;
-      
+
       final ordersList = data
           .map((item) => OrderModel.fromJson(item).toEntity())
           .toList();
@@ -233,6 +233,23 @@ class OrderRepoImpltation extends OrderRepo {
     } catch (e) {
       log('the exception happen in updateDeliveryData is $e');
 
+      return left(ServerFailure(message: 'فشل في تحديث بيانات العرض'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateSimpleOrderData({
+    required String orderId,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await dataBaseServies.upDatadata(
+        path: AppBackendEndpoints.ordercollection,
+        dataId: orderId,
+        data: data,
+      );
+      return right(null);
+    } catch (e) {
       return left(ServerFailure(message: 'فشل في تحديث بيانات العرض'));
     }
   }

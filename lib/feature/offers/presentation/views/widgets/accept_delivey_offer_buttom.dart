@@ -45,10 +45,13 @@ class AccectDeliveryOfferButtom extends StatelessWidget {
                 context.read<AcceptDeliveryOfferCubit>().acceptDeliveryOffer(
                   orderId: order.uIdOrder,
                   offerId: delivery.driver.userID!,
-                  deliveryName: delivery.driver.userID!,
+                  deliveryName: delivery.driver.name,
+                  deliveryId: delivery.driver.userID!,
+                  deliveryPhone: delivery.driver.phoneNumber,
                   newUpDatedOrder: order,
                   oldOrder: order,
                   deliveryPrice: delivery.proposedPrice,
+                
                 );
               },
               isLoading: state is AcceptDeliveryOfferLoading ? true : false,

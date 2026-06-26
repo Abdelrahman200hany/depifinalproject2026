@@ -3,6 +3,7 @@ import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 class GetDummyOrders {
   /// 🔹 Order واحد
   static OrderEntity get singleOrder => OrderEntity(
+    deliveryCode: '',
     uIdOrder: 'order_1',
     createdBy: 'user_123',
     senderName: 'Ahmed Ali',
@@ -28,11 +29,6 @@ class GetDummyOrders {
   );
 
   /// 🔹 List Orders
-  static List<OrderEntity> get ordersList => List.generate(
-    3,
-    (index) => singleOrder);
-    
-    
-    
- 
+  static List<OrderEntity> get ordersList =>
+      List.generate(3, (index) => singleOrder);
 }

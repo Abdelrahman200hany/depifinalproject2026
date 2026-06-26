@@ -8,6 +8,7 @@ void showPop({
   required String title,
   required String content,
   required VoidCallback onConfirm,
+  bool isLoading = false,
 }) {
   showDialog(
     context: context,
@@ -48,7 +49,11 @@ void showPop({
               SizedBox(height: 20),
 
               ///  Bottom Button
-              CustomTextBottomWithBackground(text: 'تاكيد', ontap: onConfirm),
+              CustomTextBottomWithBackground(
+                text: 'تاكيد',
+                ontap: onConfirm,
+                isLoading: isLoading,
+              ),
             ],
           ),
         ),

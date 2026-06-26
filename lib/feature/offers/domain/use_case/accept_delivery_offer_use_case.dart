@@ -19,6 +19,8 @@ class AcceptDeliveryOfferUseCase {
     required String orderId,
     required String offerId,
     required String deliveryName,
+    required String deliveryId,
+    required String deliveryPhone,
     required OrderEntity newUpDatedOrder,
     required OrderEntity oldOrder,
     double? deliveryPrice,
@@ -28,6 +30,8 @@ class AcceptDeliveryOfferUseCase {
       orderId: orderId,
       newUpDatedOrder: newUpDatedOrder.copyWith(
         deliveryName: deliveryName,
+        deliveryId: deliveryId,
+        deliveryphone: deliveryPhone,
         orderStatus: kstatusWaiting,
         deliveryPrice: deliveryPrice,
       ),

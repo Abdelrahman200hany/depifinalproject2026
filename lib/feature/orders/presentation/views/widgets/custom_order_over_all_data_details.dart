@@ -1,3 +1,4 @@
+import 'package:depifinalproject/core/methods/show_full_image_dilog.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_cached_network_image.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_details_data.dart';
@@ -30,21 +31,48 @@ class CustomOrderOverAllDataDetails extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
 
-          child: CustomCachedNewtorkimage(
-            imageUrl: image,
-            imageVersion: imageVesrion,
-            height: 150,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
+          child: InkWell(
+            onTap: () {
+              showFullImageDialog(
+                context: context,
 
-          // child: Image.network(
-          //   image,
-          //   height: 150,
-          //   width: double.infinity,
-          //   fit: BoxFit.cover,
-          // ),
+                imageUrl: image,
+
+                imageVersion: imageVesrion,
+              );
+            },
+
+            child: CustomCachedNewtorkimage(
+              imageUrl: image,
+
+              imageVersion: imageVesrion,
+
+              height: 150,
+
+              width: double.infinity,
+
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
+        // ClipRRect(
+        //   borderRadius: BorderRadius.circular(8),
+
+        //   child: CustomCachedNewtorkimage(
+        //     imageUrl: image,
+        //     imageVersion: imageVesrion,
+        //     height: 150,
+        //     width: double.infinity,
+        //     fit: BoxFit.cover,
+        //   ),
+
+        // ),
+        // child: Image.network(
+        //   image,
+        //   height: 150,
+        //   width: double.infinity,
+        //   fit: BoxFit.cover,
+        // ),
       ],
     );
   }

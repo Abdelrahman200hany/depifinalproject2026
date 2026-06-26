@@ -9,6 +9,7 @@ class OrderEntity {
   final String uIdOrder;
   final String createdBy;
   final String orderStatus;
+  final String deliveryCode;
 
   // بيانات المرسل
   final String senderName;
@@ -43,11 +44,18 @@ class OrderEntity {
   final String deliveryDate;
   final String deliveryTime;
   final String deliveryName;
+  final String deliveryId;
+  final String deliveryphone;
+  final String rejectedReason;
 
   File? imageFile;
   List<DeliveryEntity>? deliveryOffers;
   OrderEntity({
+    this.rejectedReason = '',
+    required this.deliveryCode,
     this.deliveryName = '',
+    this.deliveryId = '',
+    this.deliveryphone = '',
     this.deliveryOffers,
     this.imageVersion = 1,
     this.orderStatus = kOfferWaitingAccept,
@@ -77,7 +85,11 @@ class OrderEntity {
     required this.deliveryTime,
   });
   OrderEntity copyWith({
+    String? rejectedReason,
+    String? deliveryCode,
     String? deliveryName,
+    String? deliveryId,
+    String? deliveryphone,
     int? imageVersion,
     String? uIdOrder,
     String? createdBy,
@@ -106,6 +118,10 @@ class OrderEntity {
     File? imageFile,
   }) {
     return OrderEntity(
+      deliveryId: deliveryId ?? this.deliveryId,
+      deliveryphone: deliveryphone ?? this.deliveryphone,
+      rejectedReason: rejectedReason ?? this.rejectedReason,
+      deliveryCode: deliveryCode ?? this.deliveryCode,
       deliveryName: deliveryName ?? this.deliveryName,
       imageVersion: imageVersion ?? this.imageVersion,
       uIdOrder: uIdOrder ?? this.uIdOrder,

@@ -25,6 +25,7 @@ import 'package:depifinalproject/feature/orders/domain/use_case/get_all_offers_r
 import 'package:depifinalproject/feature/orders/domain/use_case/get_all_orders_for_delivery_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
+import 'package:depifinalproject/feature/orders/domain/use_case/update_simple_order_data_use_case.dart';
 import 'package:get_it/get_it.dart';
 
 // This is our global ServiceLocator
@@ -93,6 +94,9 @@ void setupServiceLocator() {
       getIt.get<GetClinetOrderUseCase>(),
       getIt.get<GetAllOffersRelatedToOrderUseCase>(),
     ),
+  );
+  getIt.registerSingleton<UpdateSimpleOrderDataUseCase>(
+    UpdateSimpleOrderDataUseCase(getIt.get<OrderRepo>()),
   );
   getIt.registerSingleton<AcceptDeliveryOfferUseCase>(
     AcceptDeliveryOfferUseCase(

@@ -4,10 +4,11 @@ class OrderModel {
   final String uIdOrder;
   final String createdBy;
   final int imageVersion;
-
+  final String deliveryCode;
   final String senderName;
   final String senderPhone;
   final String orderStatus;
+  final String rejectedReason;
 
   final String pickupGovernorate;
   final String pickupAddress;
@@ -36,8 +37,14 @@ class OrderModel {
   final String deliveryDate;
   final String deliveryTime;
   final String deliveryName;
+  final String deliveryId;
+  final String deliveryphone;
 
   OrderModel({
+    required this.deliveryId,
+    required this.deliveryphone,
+    required this.rejectedReason,
+    required this.deliveryCode,
     required this.deliveryName,
     required this.imageVersion,
     required this.orderStatus,
@@ -73,7 +80,11 @@ class OrderModel {
   /// FROM JSON
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      rejectedReason: json['rejectedReason'],
+      deliveryCode: json['deliveryCode'],
       deliveryName: json['deliveryName'],
+      deliveryphone: json['deliveryphone'],
+      deliveryId: json['deliveryId'],
       imageVersion: json['imageVersion'],
       orderStatus: json['orderStatus'],
       uIdOrder: json['uIdOrder'],
@@ -109,6 +120,10 @@ class OrderModel {
   /// TO JSON
   Map<String, dynamic> toMap() {
     return {
+      'deliveryId': deliveryId,
+      'deliveryphone': deliveryphone,
+      'rejectedReason': rejectedReason,
+      'deliveryCode': 'deliveryCode',
       'deliveryName': deliveryName,
       'imageVersion': imageVersion,
       'orderStatus': orderStatus,
@@ -145,6 +160,10 @@ class OrderModel {
   /// FROM ENTITY
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
+      deliveryphone: entity.deliveryphone,
+      deliveryId: entity.deliveryId,
+      rejectedReason: entity.rejectedReason,
+      deliveryCode: entity.deliveryCode,
       deliveryName: entity.deliveryName,
       imageVersion: entity.imageVersion,
       orderStatus: entity.orderStatus,
@@ -181,6 +200,10 @@ class OrderModel {
   /// TO ENTITY
   OrderEntity toEntity() {
     return OrderEntity(
+      deliveryId: deliveryId,
+      deliveryphone: deliveryphone,
+      rejectedReason: rejectedReason,
+      deliveryCode: deliveryCode,
       deliveryName: deliveryName,
       orderStatus: orderStatus,
       uIdOrder: uIdOrder,

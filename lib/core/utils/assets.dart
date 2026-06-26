@@ -113,5 +113,9 @@ class Assets {
   /// Assets for imagesTrueIcon
   /// asstes/images/true_icon.png
   static const String imagesTrueIcon = "asstes/images/true_icon.png";
+
+  /// Assets for imagesZewaidiIcon
+  /// asstes/images/zewaidi_icon.jpg
+  static const String imagesZewaidiIcon = "asstes/images/zewaidi_icon.jpg";
 }
 

@@ -15,6 +15,8 @@ class AcceptDeliveryOfferCubit extends Cubit<AcceptDeliveryOfferState> {
     required String orderId,
     required String offerId,
     required String deliveryName,
+    required String deliveryId,
+    required String  deliveryPhone,
     required OrderEntity newUpDatedOrder,
     required OrderEntity oldOrder,
     double? deliveryPrice,
@@ -22,6 +24,8 @@ class AcceptDeliveryOfferCubit extends Cubit<AcceptDeliveryOfferState> {
     emit(AcceptDeliveryOfferLoading());
 
     final result = await acceptDeliveryOfferUseCase.excute(
+      deliveryPhone: deliveryPhone,
+      deliveryId: deliveryId,
       orderId: orderId,
       offerId: offerId,
       deliveryName: deliveryName,

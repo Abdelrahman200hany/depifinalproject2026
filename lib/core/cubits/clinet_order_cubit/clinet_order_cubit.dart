@@ -10,7 +10,7 @@ class ClinetOrderCubit extends Cubit<ClinetOrderState> {
   final GetClinetOrderUseCase us;
   // List<OrderEntity> orderList = [];
 
-  // ✅ الـ status values اللي بتيجي من الـ backend
+  //  الـ status values اللي بتيجي من الـ backend
 
   Future<void> getAllorders() async {
     emit(ClinetOrderLoading());
@@ -28,7 +28,7 @@ class ClinetOrderCubit extends Cubit<ClinetOrderState> {
     );
   }
 
-  // ✅ دي بترجع الـ list بناءً على الـ tab index
+  //  دي بترجع الـ list بناءً على الـ tab index
   List<OrderEntity> getFilteredOrders(
     int tabIndex,
     List<OrderEntity> orderList,

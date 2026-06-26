@@ -4,11 +4,13 @@ import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_delete_order_buttom_by_clinet.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_delivery_over_all_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_over_all_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_payment_deatial.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_header_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_recevier_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_sender_data_details.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/widgets/delivery_code_Info_container.dart';
 import 'package:flutter/material.dart';
 
 class OrderDetailsViewBodyforClinet extends StatelessWidget {
@@ -33,6 +35,8 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               status: orderItem.orderStatus,
             ),
             const SizedBox(height: 8),
+            DeliveryCodeInfoContainer(code: orderItem.deliveryCode),
+            const SizedBox(height: 16),
             CustomOrderOverAllDataDetails(
               imageVesrion: orderItem.imageVersion,
               description: orderItem.parcelDescription,
@@ -69,6 +73,15 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               deliveryPrice: orderItem.deliveryPrice,
             ),
             const SizedBox(height: 16),
+
+            Visibility(
+              visible: orderItem.orderStatus != kOfferWaitingAccept,
+              child: CustomDeliveryOverAllDataDetails(
+                name: orderItem.deliveryName,
+                phone: orderItem.deliveryphone,
+              ),
+            ),
+            const SizedBox(height: 16),
             Visibility(
               visible: orderItem.orderStatus == kOfferWaitingAccept,
               child: CustomTextBottomWithBackground(
@@ -83,7 +96,16 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            CustomDeleteOrderButtomByClinet(orderItemUId: orderItem.uIdOrder),
+            Visibility(
+              visible:
+                  orderItem.orderStatus == kstatusDelivered ||
+                      orderItem.orderStatus == kstatusReturned
+                  ? false
+                  : true,
+              child: CustomDeleteOrderButtomByClinet(
+                orderItemUId: orderItem.uIdOrder,
+              ),
+            ),
             const SizedBox(height: 24),
           ],
         ),

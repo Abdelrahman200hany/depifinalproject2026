@@ -16,12 +16,17 @@ abstract class OrderRepo {
     required OrderEntity newUpDatedOrder,
     required OrderEntity oldOrder,
   });
+  Future<Either<Failure, void>> updateSimpleOrderData({
+    required String orderId,
+
+    required Map<String, dynamic> data,
+  });
   Future<Either<Failure, void>> addDeliveryOffer({
     required String orderID,
     required double proposedPrice,
   });
   Future<Either<Failure, List<DeliveryEntity>>> getAllOffersRelatedToOrder({
-     Map<String, dynamic>? query,
+    Map<String, dynamic>? query,
     required String orderid,
   });
   Future<Either<Failure, void>> updateDeliveryData({

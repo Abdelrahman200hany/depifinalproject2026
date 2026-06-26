@@ -1,11 +1,13 @@
 import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/methods/cut_srting.dart';
-import 'package:depifinalproject/core/methods/show_dilog.dart';
 import 'package:depifinalproject/core/utils/app_color.dart' show AppColor;
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/widgets/cancel_order_status.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/widgets/info_item.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/widgets/status_cart_item.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/widgets/up_data_status_on_way_to_clinet.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/widgets/updata_status_order_complete.dart';
 import 'package:flutter/material.dart';
 
 class ShipmentDetailsScreen extends StatelessWidget {
@@ -141,55 +143,16 @@ class ShipmentDetailsScreen extends StatelessWidget {
           children: [
             StatusCarditem(
               isActive: order.orderStatus == kstatusWaiting,
-
               title: "جاري استلام الطرد",
               icon: Icons.inventory_2_outlined,
               color: Colors.blue.shade50,
               iconColor: Colors.blue,
             ),
 
-            StatusCarditem(
-              onTap: () {
-                showPop(
-                  context: context,
-                  content: 'هل انت متاكد من تفير الحاله',
-                  title: 'تغير الحاله',
-                  onConfirm: () {},
-                );
-              },
-              isActive: order.orderStatus == kstatusOnWay,
-              title: "في الطريق للتوصيل",
-              icon: Icons.local_shipping_outlined,
-              color: Colors.grey.shade300,
-            ),
-            StatusCarditem(
-              onTap: () {
-                showPop(
-                  context: context,
-                  content: 'هل انت متاكد من تفير الحاله',
-                  title: 'تغير الحاله',
-                  onConfirm: () {},
-                );
-              },
-              isActive: order.orderStatus == kstatusDelivered,
-              title: "تم التوصيل",
-              icon: Icons.check_circle_outline,
-              color: Colors.grey.shade300,
-            ),
+            UpdataStatusToOnWaytoClinet(order: order),
+            UpdataStatusorderComplete(order: order),
 
-            StatusCarditem(
-              onTap: () {
-                showPop(
-                  context: context,
-                  content: 'هل انت متاكد من تفير الحاله',
-                  title: 'تغير الحاله',
-                  onConfirm: () {},
-                );
-              },
-              title: "إلغاء طلب",
-              icon: Icons.close,
-              color: Colors.red.shade50,
-            ),
+            CancelorderStatus(order: order),
           ],
         ),
       ],

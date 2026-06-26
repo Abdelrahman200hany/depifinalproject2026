@@ -10,12 +10,23 @@ abstract class AppValidation {
     return null;
   }
 
-  // 🟥 Required
-  static String? requiredField(
-    String? value, {
-    String message = "هذا الحقل مطلوب",
-  }) {
-    return _checkEmpty(value, message: message);
+  // 🔢 Delivery Code (5 digits + compare)
+  static String? deliveryCode(String? value, {required String correctCode}) {
+    final emptyCheck = _checkEmpty(value, message: "كود الاستلام مطلوب");
+
+    if (emptyCheck != null) return emptyCheck;
+
+    final codeRegex = RegExp(r'^\d{5}$');
+
+    if (!codeRegex.hasMatch(value!.trim())) {
+      return "كود الاستلام يجب أن يكون 5 أرقام";
+    }
+
+    if (value.trim() != correctCode) {
+      return "كود الاستلام غير صحيح";
+    }
+
+    return null;
   }
 
   // 📧 Email

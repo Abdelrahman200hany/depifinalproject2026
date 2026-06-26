@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/generate_complete_order_state_code.dart';
 import 'package:depifinalproject/core/methods/generate_uid.dart';
 import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/methods/pick_date.dart';
@@ -369,6 +370,7 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
                             order: OrderEntity(
                               imageFile: orderimagefile!,
                               uIdOrder: generateUID(),
+                              deliveryCode: generateDeliveryCode(),
                               createdBy: getUserData().userID!,
 
                               senderName: getUserData().name,
