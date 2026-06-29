@@ -26,6 +26,17 @@ import 'package:depifinalproject/feature/orders/domain/use_case/get_all_orders_f
 import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_simple_order_data_use_case.dart';
+import 'package:depifinalproject/feature/profile/data/repo_implementation/rate_repo_impltation.dart';
+import 'package:depifinalproject/feature/profile/domain/repo/rate_repo.dart';
+import 'package:depifinalproject/feature/profile/domain/use_case/add_rate_use_case.dart';
+import 'package:depifinalproject/feature/profile/domain/use_case/get_rates_use_case.dart';
+import 'package:depifinalproject/feature/profile/domain/use_case/read_user_data_use_case.dart';
+import 'package:depifinalproject/feature/profile/domain/use_case/update_user_data_use_case.dart';
+import 'package:depifinalproject/feature/profile/domain/use_case/upload_profile_image_use_case.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/manager/GetRates/get_rates_cubit.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/manager/add_rate/add_rate_cubit.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/manager/update_user_profile_data/update_user_data_cubit.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/manager/upload_image_profile/upload_image_profile_dart_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 // This is our global ServiceLocator
@@ -106,5 +117,42 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<GetAcceptedDeliveryOffersUseCase>(
     GetAcceptedDeliveryOffersUseCase(getIt.get<OrderRepo>()),
+  );
+  getIt.registerSingleton<ReadUserDataUseCase>(
+    ReadUserDataUseCase(getIt.get<AuthRepo>()),
+  );
+  getIt.registerSingleton<UpdateUserDataUseCase>(
+    UpdateUserDataUseCase(getIt.get<AuthRepo>()),
+  );
+  getIt.registerFactory<UpdateUserCubit>(
+    () => UpdateUserCubit(getIt.get<UpdateUserDataUseCase>()),
+  );
+  getIt.registerSingleton<UploadProfileImageUseCase>(
+    UploadProfileImageUseCase(getIt.get<ImageRepo>()),
+  );
+
+  getIt.registerFactory<UploadProfileImageCubit>(
+    () => UploadProfileImageCubit(getIt.get<UploadProfileImageUseCase>()),
+  );
+  getIt.registerSingleton<RateRepo>(RateRepoImpl(getIt.get<DataBaseServies>()));
+  getIt.registerSingleton<AddRateUseCase>(
+    AddRateUseCase(getIt.get<RateRepo>()),
+  );
+
+  getIt.registerSingleton<GetRatesUseCase>(
+    GetRatesUseCase(getIt.get<RateRepo>()),
+  );
+    getIt.registerFactory<AddRateCubit>(
+    () => AddRateCubit(
+      getIt.get<AddRateUseCase>(),
+    ),
+  );
+
+
+
+  getIt.registerFactory<GetRatesCubit>(
+    () => GetRatesCubit(
+      getIt.get<GetRatesUseCase>(),
+    ),
   );
 }

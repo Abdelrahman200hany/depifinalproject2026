@@ -9,6 +9,7 @@ void showPop({
   required String content,
   required VoidCallback onConfirm,
   bool isLoading = false,
+  String onConfermText = 'تاكيد',
 }) {
   showDialog(
     context: context,
@@ -50,7 +51,7 @@ void showPop({
 
               ///  Bottom Button
               CustomTextBottomWithBackground(
-                text: 'تاكيد',
+                text: onConfermText,
                 ontap: onConfirm,
                 isLoading: isLoading,
               ),

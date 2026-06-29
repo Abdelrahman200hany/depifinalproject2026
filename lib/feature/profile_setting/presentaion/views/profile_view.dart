@@ -1,4 +1,4 @@
-import 'package:depifinalproject/feature/profile/presentaion/views/widgets/profile_view_body.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/profile_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {

@@ -1,3 +1,5 @@
+import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/show_snack_bar.dart';
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/widgets/custom_divider.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
@@ -53,7 +55,24 @@ class CartDeliveryOfferDetails extends StatelessWidget {
               ),
               const SizedBox(width: 16),
 
-              Expanded(child: ChangeOrderStatusButtom(order: order)),
+              Expanded(
+                child:
+                    order.orderStatus == kstatusDelivered ||
+                        order.orderStatus == kstatusReturned
+                    ? CustomTextBottomWithBackground(
+                        ontap: () {
+                          showfaulireSnackBar(
+                            context,
+                            message: 'غير مسموح بحديثات الطلب',
+                          );
+                        },
+                        backgroundColor: AppColor.kGreyAppColor,
+                        text: order.orderStatus == kstatusDelivered
+                            ? 'تم توصيل الطلب'
+                            : 'تم الغاء الطلب',
+                      )
+                    : ChangeOrderStatusButtom(order: order),
+              ),
             ],
           ),
         ],

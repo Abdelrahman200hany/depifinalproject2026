@@ -1,14 +1,15 @@
 import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/methods/show_can_not_change_status_dilog.dart';
 import 'package:depifinalproject/core/methods/show_complete_order_input_dilog.dart';
 import 'package:depifinalproject/core/methods/show_snack_bar.dart';
 import 'package:depifinalproject/core/serviecs/single_ton_services/create_single_ton.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
-import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/widgets/status_cart_item.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_simple_order_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/presentation/manager/update_simple_order/update_simple_order_cubit.dart';
 import 'package:depifinalproject/feature/orders/presentation/manager/update_simple_order/update_simple_order_state.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/add_rate_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,13 +27,26 @@ class UpdataStatusorderComplete extends StatelessWidget {
       child: BlocConsumer<UpdateSimpleOrderCubit, UpdateSimpleOrderState>(
         listener: (context, state) {
           if (state is UpdateSimpleOrderSuccess) {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              MainView.routeName,
-              (route) => false,
-            );
-
             showSuccessSnackBar(context, message: "تم إغلاق الطلب بنجاح");
+            //  Navigator.pushNamedAndRemoveUntil(
+            //   context,
+            //   MainView.routeName,
+            //   (route) => false,
+            // );
+            // showAddRateDialog(
+            //   context: context,
+            //   targetUserId: order.deliveryId,
+            //   user: getUserData(),
+            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddRateViewForClinet(
+                  targetUserId: order.createdBy,
+                  user: getUserData(),
+                ),
+              ),
+            );
           }
 
           if (state is UpdateSimpleOrderFailure) {

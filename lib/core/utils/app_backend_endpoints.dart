@@ -3,8 +3,10 @@ abstract class AppBackendEndpoints {
   static const readUserCollention = 'user';
   static const checkIfUserIsExits = 'user';
   static const filterUserData = 'user';
-
+static const updataUserCollection='user';
   static const ordercollection = 'order';
-  static const orderImagesfile = 'orderImages';
+  static const orderImagesCollection = 'orderImages';
+  static const profileImageCollection = 'profileImage';
   static const deliveryOffers = 'deliveryOffers';
+  static const userRates = 'userRates';
 }

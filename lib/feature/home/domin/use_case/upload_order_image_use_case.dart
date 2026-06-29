@@ -9,7 +9,7 @@ class UploadOrderImageUseCase {
 
   UploadOrderImageUseCase(this.imageRepo);
 
-  Future<Either<Failure, String>> excute({required File imagefile}) async {
-    return await imageRepo.uploadImage(imagefile);
+  Future<Either<Failure, String>> excute({required File imagefile , required String collectionName}) async {
+    return await imageRepo.uploadImage(imagefile,collectionName: collectionName);
   }
 }

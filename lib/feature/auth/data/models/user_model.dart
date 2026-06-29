@@ -4,7 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 class UserModel {
   final String name, email, userID, phoneNumber, userCity, userType;
 
+  final String imageUrl;
+  final bool isValided;
+
   UserModel({
+     required this.isValided,
+    required this.imageUrl,
     required this.name,
 
     required this.email,
@@ -17,6 +22,8 @@ class UserModel {
   //convert the firebase user to Custom user model used in google and fackbook auht
   factory UserModel.fromFirebaseUser(User user) {
     return UserModel(
+      isValided:false,
+      imageUrl: '',
       userType: '',
       phoneNumber: '',
       userCity: '',
@@ -29,6 +36,8 @@ class UserModel {
   // convert the model to entity
   UserEntity toEntity() {
     return UserEntity(
+      isValided: isValided,
+      imageUrl: imageUrl,
       name: name,
       email: email,
       userID: userID,
@@ -39,19 +48,23 @@ class UserModel {
   }
 
   // covert the map from database to user model
-  factory UserModel.fromjeson(jeson) {
+  factory UserModel.fromjson(json) {
     return UserModel(
-      phoneNumber: jeson['phoneNumber'],
-      userCity: jeson['userCity'],
-      userType: jeson['userType'],
-      name: jeson['name'],
-      userID: jeson['id'],
-      email: jeson['email'],
+      isValided: json['isValided'],
+      imageUrl: json['imageUrl'],
+      phoneNumber: json['phoneNumber'],
+      userCity: json['userCity'],
+      userType: json['userType'],
+      name: json['name'],
+      userID: json['id'],
+      email: json['email'],
     );
   }
 
   factory UserModel.fromUserEntity(UserEntity userEntity) {
     return UserModel(
+      isValided: userEntity.isValided,
+      imageUrl: userEntity.imageUrl,
       phoneNumber: userEntity.phoneNumber,
       userCity: userEntity.userCity,
       userType: userEntity.userType,
@@ -65,6 +78,8 @@ class UserModel {
 
   toMap() {
     return {
+      'isValided':isValided,
+      'imageUrl':imageUrl,
       'phoneNumber': phoneNumber,
       'userType': userType,
       'userCity': userCity,

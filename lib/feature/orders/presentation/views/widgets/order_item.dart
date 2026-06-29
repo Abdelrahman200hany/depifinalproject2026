@@ -6,9 +6,11 @@ import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_secert_data.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/widgets/conferm_cancel_order_from_delivery.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_body.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_header.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_price.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/widgets/add_rate_to_delivery_buttom.dart';
 import 'package:flutter/material.dart';
 
 class OrderItem extends StatelessWidget {
@@ -61,17 +63,39 @@ class OrderItem extends StatelessWidget {
               ],
             ),
             CustomDivider(),
-            CustomTextBottomWithBackground(
-              text: 'عرض التفاصيل',
-              ontap: () {
-                Navigator.pushNamed(
-                  context,
-                  getUserData().userType == kClinet
-                      ? OrderDetailsViewForClinet.routeName
-                      : OrderDetailsViewForDeliverywithSecretData.routeName,
-                  arguments: orderIteml,
-                );
-              },
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextBottomWithBackground(
+                    text: 'عرض التفاصيل',
+                    ontap: () {
+                      Navigator.pushNamed(
+                        context,
+                        getUserData().userType == kClinet
+                            ? OrderDetailsViewForClinet.routeName
+                            : OrderDetailsViewForDeliverywithSecretData
+                                  .routeName,
+                        arguments: orderIteml,
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(width: 12),
+                Visibility(
+                  visible: orderIteml.orderStatus == kstatusDelivered,
+                  child: Expanded(
+                    child: AddRatetoDeliveryButtom(orderIteml: orderIteml),
+                  ),
+                ),
+                Visibility(
+                  visible: orderIteml.orderStatus == kstatusReturned,
+                  child: Expanded(
+                    child: ConfermCancelButtomfromDeliveryRequest(
+                      orderIteml: orderIteml,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

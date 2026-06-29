@@ -39,8 +39,12 @@ class OrderModel {
   final String deliveryName;
   final String deliveryId;
   final String deliveryphone;
+  final bool deliverReviwed;
+  final bool cancelOrderConferm;
 
   OrderModel({
+    required this.cancelOrderConferm,
+    required this.deliverReviwed,
     required this.deliveryId,
     required this.deliveryphone,
     required this.rejectedReason,
@@ -80,6 +84,8 @@ class OrderModel {
   /// FROM JSON
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      cancelOrderConferm: json['cancelOrderConferm'],
+      deliverReviwed:json['deliverReviwed'],
       rejectedReason: json['rejectedReason'],
       deliveryCode: json['deliveryCode'],
       deliveryName: json['deliveryName'],
@@ -120,6 +126,8 @@ class OrderModel {
   /// TO JSON
   Map<String, dynamic> toMap() {
     return {
+      'cancelOrderConferm':cancelOrderConferm,
+      'deliverReviwed':deliverReviwed,
       'deliveryId': deliveryId,
       'deliveryphone': deliveryphone,
       'rejectedReason': rejectedReason,
@@ -160,6 +168,8 @@ class OrderModel {
   /// FROM ENTITY
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
+      cancelOrderConferm:entity.cancelOrderConferm,
+      deliverReviwed:entity.deliverReviwed,
       deliveryphone: entity.deliveryphone,
       deliveryId: entity.deliveryId,
       rejectedReason: entity.rejectedReason,
@@ -200,6 +210,8 @@ class OrderModel {
   /// TO ENTITY
   OrderEntity toEntity() {
     return OrderEntity(
+      cancelOrderConferm:cancelOrderConferm,
+      deliverReviwed:deliverReviwed,
       deliveryId: deliveryId,
       deliveryphone: deliveryphone,
       rejectedReason: rejectedReason,

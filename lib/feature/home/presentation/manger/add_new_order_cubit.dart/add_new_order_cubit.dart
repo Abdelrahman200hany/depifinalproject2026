@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:depifinalproject/core/utils/app_backend_endpoints.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/home/domin/use_case/add_order_use_case.dart';
 import 'package:depifinalproject/feature/home/domin/use_case/upload_order_image_use_case.dart';
@@ -17,6 +18,7 @@ class AddNewOrderCubit extends Cubit<AddNewOrderState> {
     emit(AddNewOrderLoading());
     var result = await uploadOrderImageUseCase.excute(
       imagefile: order.imageFile!,
+      collectionName: AppBackendEndpoints.orderImagesCollection,
     );
     result.fold(
       (failure) => emit(AddNewOrderFailure(errorMessage: failure.message)),

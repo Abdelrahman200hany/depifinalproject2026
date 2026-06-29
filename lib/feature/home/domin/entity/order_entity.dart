@@ -46,11 +46,15 @@ class OrderEntity {
   final String deliveryName;
   final String deliveryId;
   final String deliveryphone;
+  final bool deliverReviwed;
   final String rejectedReason;
+  final bool cancelOrderConferm;
 
   File? imageFile;
   List<DeliveryEntity>? deliveryOffers;
   OrderEntity({
+    this.cancelOrderConferm=false,
+    this.deliverReviwed=false,
     this.rejectedReason = '',
     required this.deliveryCode,
     this.deliveryName = '',

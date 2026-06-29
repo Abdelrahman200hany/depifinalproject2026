@@ -136,13 +136,34 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, void>> updateUserData({
+    required UserEntity user,
+  }) async {
+    try {
+      await dataBaseServies.upDatadata(
+        path: AppBackendEndpoints.addUserCollention,
+
+        dataId: user.userID!,
+
+        data: UserModel.fromUserEntity(user).toMap(),
+      );
+
+      await saveUserDataInlocalStorage(user: user);
+
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(message: "فشل تحديث بيانات المستخدم"));
+    }
+  }
+
+  @override
   Future<UserEntity> readUserDataFromDataBase({required String userID}) async {
     var userdata = await dataBaseServies.readData(
       documentID: userID,
       path: AppBackendEndpoints.readUserCollention,
     );
     //  to convert the map in dataBase to UserModel
-    return UserModel.fromjeson(userdata).toEntity();
+    return UserModel.fromjson(userdata).toEntity();
   }
 
   @override

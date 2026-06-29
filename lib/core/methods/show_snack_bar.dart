@@ -6,10 +6,14 @@ void showSuccessSnackBar(context, {required String message}) {
     ..hideCurrentSnackBar()
     ..showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 1),
+
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         margin: EdgeInsets.all(12),
-        content: Text(message, style: TextStyle(color: Colors.white)),
+        content: Center(
+          child: Text(message, style: TextStyle(color: Colors.white)),
+        ),
         backgroundColor: AppColor.kPrimaryColor,
       ),
     );
@@ -20,11 +24,14 @@ void showfaulireSnackBar(context, {required String message}) {
     ..hideCurrentSnackBar()
     ..showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 1),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         margin: EdgeInsets.all(12),
         backgroundColor: AppColor.kRatingColor,
-        content: Text(message, style: TextStyle(color: Colors.white)),
+        content: Center(
+          child: Text(message, style: TextStyle(color: Colors.white)),
+        ),
       ),
     );
 }

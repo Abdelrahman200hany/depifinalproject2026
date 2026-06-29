@@ -22,7 +22,7 @@ class OfferDetailBody extends StatelessWidget {
         ListTile(
           leading: CircleAvatar(
             radius: 32,
-            backgroundImage: AssetImage(Assets.imagesMyphoto),
+            backgroundImage: NetworkImage(delivery.driver.imageUrl),
           ),
 
           title: Text(

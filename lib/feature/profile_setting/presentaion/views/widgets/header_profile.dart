@@ -1,8 +1,7 @@
 import 'package:depifinalproject/core/methods/get_user_local_data.dart';
+import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
-import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class Headerprofile extends StatelessWidget {
   const Headerprofile({super.key, this.onTap});
@@ -27,7 +26,7 @@ class Headerprofile extends StatelessWidget {
                   color: const Color(0xFFF9FAFA),
                   // borderRadius: BorderRadius.circular(24),
                   image: DecorationImage(
-                    image: AssetImage(Assets.imagesMyphoto),
+                    image: NetworkImage(getUserData().imageUrl),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -45,7 +44,14 @@ class Headerprofile extends StatelessWidget {
                     color: Colors.grey.shade200,
                     shape: BoxShape.circle,
                   ),
-                  child: Center(child: SvgPicture.asset(Assets.imagesCamera)),
+                  child: Center(
+                    child: Icon(
+                      Icons.verified_outlined,
+                      color: getUserData().isValided == true
+                          ? Colors.green
+                          : AppColor.kGreyAppColor,
+                    ),
+                  ),
                 ),
               ),
             ],

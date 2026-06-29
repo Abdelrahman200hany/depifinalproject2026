@@ -13,6 +13,7 @@ class ChangeOrderStatusButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextBottomWithBackground(
+      backgroundColor: Colors.green,
       text: 'تغير حاله التوصيل ',
 
       ontap: () {

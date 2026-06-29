@@ -5,10 +5,11 @@ import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/widgets/about_us_view_body.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/widgets/header_profile.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/widgets/sec_profile_body.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/widgets/sec_profile_body_with_switch_bottom.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/my_profile_view.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/header_profile.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/sec_profile_body.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/sec_profile_body_with_switch_bottom.dart';
 import 'package:flutter/material.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -40,7 +41,7 @@ class ProfileViewBody extends StatelessWidget {
               SizedBox(height: 16),
               CustomProfileSecDetails(
                 onTap: () {
-                  // Navigator.pushNamed(context, Offerview.routeName);
+                  Navigator.pushNamed(context, MyProfileView.routeName);
                 },
                 title: 'الملف الشخصي',
                 icon: Icons.person_3_outlined,

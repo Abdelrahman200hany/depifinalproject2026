@@ -28,7 +28,7 @@ class CustomHomeSliverAppBar extends StatelessWidget {
         padding: const EdgeInsets.only(left: 10),
         child: CircleAvatar(
           radius: 10,
-          backgroundImage: AssetImage(Assets.imagesMyphoto),
+          backgroundImage: NetworkImage(getUserData().imageUrl),
         ),
       ),
 

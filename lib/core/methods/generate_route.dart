@@ -14,8 +14,10 @@ import 'package:depifinalproject/feature/orders/presentation/views/order_details
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_secert_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_clinet_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/profile_view.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/widgets/about_us_view_body.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/my_profile_view.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/update_profile_view.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/profile_view.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
 import 'package:flutter/material.dart';
 
@@ -61,6 +63,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case OrderClinetView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderClinetView());
+    case UpdataProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const UpdataProfileView());
+
+    case MyProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const MyProfileView());
     case OfferViewForDelivery.routeName:
       return MaterialPageRoute(
         builder: (context) => const OfferViewForDelivery(),

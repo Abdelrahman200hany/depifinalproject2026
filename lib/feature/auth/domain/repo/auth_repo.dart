@@ -23,4 +23,6 @@ abstract class AuthRepo {
   Future saveUserDataInlocalStorage({required UserEntity user});
   Future<UserEntity> readUserDataFromDataBase({required String userID});
   Future<bool> checkUserPhoneExits({required String phone});
-}
+Future<Either<Failure, void>> updateUserData({
+  required UserEntity user,
+});}

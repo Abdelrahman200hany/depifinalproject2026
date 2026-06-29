@@ -17,7 +17,7 @@ class DeliveryModel {
   /// FROM JSON
   factory DeliveryModel.fromJson(Map<String, dynamic> json) {
     return DeliveryModel(
-      driver: UserModel.fromjeson(json['driver']),
+      driver: UserModel.fromjson(json['driver']),
       proposedPrice: (json['proposedPrice'] as num).toDouble(),
       offerStatus: json['offerStatus'],
       createdAt: DateTime.parse(json['createdAt']),
