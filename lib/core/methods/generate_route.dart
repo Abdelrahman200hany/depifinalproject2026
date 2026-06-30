@@ -23,6 +23,7 @@ import 'package:depifinalproject/feature/profile/pepesentation/views/widgets/rat
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/profile_view.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/validation_screen.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -46,6 +47,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(
         builder: (context) => const ForgetPasswordView(),
+      );
+    case AccountValidationView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const AccountValidationView(),
       );
     case OrderDetailsViewForClinet.routeName:
       return MaterialPageRoute(
