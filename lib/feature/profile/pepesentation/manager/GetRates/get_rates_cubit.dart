@@ -31,6 +31,7 @@ class GetRatesCubit extends Cubit<GetRatesState> {
         ratesCount = rates.length;
 
         averageRate = calculateAverageRate(rates);
+        satisfactionRate = calculateSatisfactionRate(averageRate);
 
         emit(GetRatesSuccess(rates));
       },

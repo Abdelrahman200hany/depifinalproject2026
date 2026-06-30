@@ -1,10 +1,10 @@
 import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
-import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/widgets/accept_delivey_offer_buttom.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/widgets/reject_delivery_offer_buttom.dart';
 import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/other_profile_user_view.dart';
 import 'package:flutter/material.dart';
 
 class OfferDetailBody extends StatelessWidget {
@@ -30,17 +30,30 @@ class OfferDetailBody extends StatelessWidget {
             style: AppStyle.styleBold16(context).copyWith(color: Colors.black),
           ),
 
-          subtitle: Row(
-            children: [
-              Icon(Icons.star, size: 16, color: Colors.amber),
-              SizedBox(width: 4),
-              Text('4.8', style: AppStyle.styleSRegular12(context)),
-            ],
+          // trailing: CustomTextBottom(
+          //   textColor: AppColor.kPrimaryColor,
+          //   onPressed: (){},
+          //   text: 'التقيمات',
+          // ),
+          trailing: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                OtherProfileUserView.routeName,
+                arguments: delivery,
+              );
+            },
+            icon: const Icon(
+              Icons.star_rate_rounded,
+              color: AppColor.ksecondaryColor,
+              size: 32,
+            ),
+            tooltip: ' عرض التقييمات',
           ),
 
-          trailing: Text(
+          subtitle: Text(
             '${delivery.proposedPrice} جنيه',
-            style: AppStyle.styleBold13(
+            style: AppStyle.styleBold16(
               context,
             ).copyWith(color: AppColor.kPrimaryColor),
           ),

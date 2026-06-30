@@ -7,11 +7,11 @@ class ProfileInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:  [
+      children: [
         SizedBox(height: 45),
 
         Text(
-          getUserData().name ,
+          getUserData().name,
 
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
@@ -19,8 +19,7 @@ class ProfileInfo extends StatelessWidget {
         SizedBox(height: 5),
 
         Text(
-                  getUserData().userType ,
-  
+          getUserData().userType,
 
           style: TextStyle(color: Color(0xff1E6DEB), fontSize: 15),
         ),

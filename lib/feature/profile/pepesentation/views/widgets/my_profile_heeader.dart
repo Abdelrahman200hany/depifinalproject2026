@@ -1,4 +1,5 @@
 import 'package:depifinalproject/core/methods/get_user_local_data.dart';
+import 'package:depifinalproject/core/utils/app_color.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/views/update_profile_view.dart';
 import 'package:flutter/material.dart';
@@ -70,30 +71,36 @@ class ProfileHeader extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 55,
 
-                  backgroundColor: Color(0xff041C24),
-
-                  child: Image.network(getUserData().imageUrl),
+                  // backgroundColor: Color(0xff041C24),
+                  backgroundImage: NetworkImage(getUserData().imageUrl),
                 ),
               ),
+              // Container(
+              //   height: 120,
+              //   width: 120,
+              //   decoration: BoxDecoration(
+              //     shape: BoxShape.circle,
+              //     color: const Color(0xFFF9FAFA),
+              //     // borderRadius: BorderRadius.circular(24),
+              //     image: DecorationImage(
+              //       image: NetworkImage(getUserData().imageUrl),
+              //       fit: BoxFit.cover,
+              //     ),
+              //   ),
+              // ),
+              Positioned(
+                right: 5,
 
-              Visibility(
-                visible: getUserData().isValided == true ? true : false,
-                child: Positioned(
-                  right: 5,
+                bottom: 5,
 
-                  bottom: 5,
+                child: CircleAvatar(
+                  radius: 12,
 
-                  child: CircleAvatar(
-                    radius: 12,
+                  backgroundColor: getUserData().isValided == true
+                      ? Colors.blue
+                      : AppColor.kGreyAppColor,
 
-                    backgroundColor: Colors.blue,
-
-                    child: const Icon(
-                      Icons.check,
-                      color: Colors.white,
-                      size: 15,
-                    ),
-                  ),
+                  child: const Icon(Icons.check, color: Colors.white, size: 15),
                 ),
               ),
             ],

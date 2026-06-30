@@ -131,7 +131,7 @@ class OrderModel {
       'deliveryId': deliveryId,
       'deliveryphone': deliveryphone,
       'rejectedReason': rejectedReason,
-      'deliveryCode': 'deliveryCode',
+      'deliveryCode': deliveryCode,
       'deliveryName': deliveryName,
       'imageVersion': imageVersion,
       'orderStatus': orderStatus,

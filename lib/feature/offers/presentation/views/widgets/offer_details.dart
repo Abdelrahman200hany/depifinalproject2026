@@ -40,7 +40,12 @@ class OfferDetailsforClinet extends StatelessWidget {
 
       children: [
         CustomDivider(),
-        OfferDetailsListBody(offerList: offers, order: order),
+        offers.isEmpty
+            ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Center(child: Text('لا يوجد عرورض مناديب')),
+            )
+            : OfferDetailsListBody(offerList: offers, order: order),
       ],
     );
   }

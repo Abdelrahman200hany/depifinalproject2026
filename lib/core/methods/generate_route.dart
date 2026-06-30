@@ -8,14 +8,18 @@ import 'package:depifinalproject/feature/main_view/presentation/views/main_view.
 import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_client.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_delivery.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_delivery_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_complete_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_secert_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/order_clinet_view.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
+import 'package:depifinalproject/feature/profile/domain/entity/rate_entity.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/views/my_profile_view.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/other_profile_user_view.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/views/update_profile_view.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/widgets/rate_list_with_all_review.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/profile_view.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
@@ -33,6 +37,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SignUpView());
     case MainView.routeName:
       return MaterialPageRoute(builder: (context) => const MainView());
+    case OtherProfileUserView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => OtherProfileUserView(
+          delivery: settings.arguments as DeliveryEntity,
+        ),
+      );
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(
         builder: (context) => const ForgetPasswordView(),
@@ -63,6 +73,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case OrderClinetView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderClinetView());
+    case RateListWithAllReview.routeName:
+      return MaterialPageRoute(
+        builder: (context) => RateListWithAllReview(
+          rateList: settings.arguments as List<RateEntity>,
+        ),
+      );
     case UpdataProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const UpdataProfileView());
 
