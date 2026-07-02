@@ -7,8 +7,8 @@ import 'package:depifinalproject/feature/orders/presentation/views/widgets/order
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomDeliveryOverAllDataDetails extends StatelessWidget {
-  const CustomDeliveryOverAllDataDetails({
+class CustomClientOverAllDataDetails extends StatelessWidget {
+  const CustomClientOverAllDataDetails({
     super.key,
     required this.orderItem,
     required this.name,
@@ -22,19 +22,15 @@ class CustomDeliveryOverAllDataDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OrderItemDetailsSecDataWithWidget(
-      title: 'بيانات المندوب',
+      title: 'بيانات التاجر',
 
       icon: BlocProvider(
         create: (_) => getIt<GetOrCreateChatCubit>(),
-        child: CreateChatButtom(
-          orderItem: orderItem,
-          isClient: true,
-          createdBy: orderItem.createdBy,
-        ),
+        child: CreateChatButtom(orderItem: orderItem, isClient: false , createdBy: orderItem.deliveryId,),
       ),
 
       children: [
-        OrderItemDeatilsData(title: 'اسم المندوب', dataDetails: name),
+        OrderItemDeatilsData(title: 'اسم التاجر', dataDetails: name),
         OrderItemDeatilsData(title: 'رقم الهاتف', dataDetails: phone),
       ],
     );

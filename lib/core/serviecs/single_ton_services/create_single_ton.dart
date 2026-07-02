@@ -11,6 +11,18 @@ import 'package:depifinalproject/feature/auth/domain/use_casse/refrech_user_data
 import 'package:depifinalproject/feature/auth/domain/use_casse/send_password_reset_email_use_case.dart';
 import 'package:depifinalproject/feature/auth/presentation/manager/referch_user_data/refresh_user_data_cubit.dart';
 import 'package:depifinalproject/feature/auth/presentation/manager/sent_password_reset_email/sent_password_reset_email_cubit.dart';
+import 'package:depifinalproject/feature/chat/data/repo_impt/chat_repo_impltation.dart';
+import 'package:depifinalproject/feature/chat/domain/repo/chat_repo.dart';
+import 'package:depifinalproject/feature/chat/domain/use_case/get_messages_use_case.dart';
+import 'package:depifinalproject/feature/chat/domain/use_case/get_or_create_chat_use_case.dart';
+import 'package:depifinalproject/feature/chat/domain/use_case/get_user_chats_use_case.dart';
+import 'package:depifinalproject/feature/chat/domain/use_case/mark_messages_as_read_use_case.dart';
+import 'package:depifinalproject/feature/chat/domain/use_case/send_message_use_case.dart';
+import 'package:depifinalproject/feature/chat/presentation/manager/get_messages/get_messages_cubit.dart';
+import 'package:depifinalproject/feature/chat/presentation/manager/get_or_create_chat/get_or_create_chat_cubit.dart';
+import 'package:depifinalproject/feature/chat/presentation/manager/get_user_chats/get_user_chats_cubit.dart';
+import 'package:depifinalproject/feature/chat/presentation/manager/mark_messages_as_read/mark_messages_as_read_cubit.dart';
+import 'package:depifinalproject/feature/chat/presentation/manager/send_message/send_message_cubit.dart';
 import 'package:depifinalproject/feature/home/data/repo_impl/order_repo_impltation.dart';
 import 'package:depifinalproject/feature/home/domin/repo/order_repo.dart';
 import 'package:depifinalproject/feature/home/domin/use_case/add_order_use_case.dart';
@@ -252,4 +264,56 @@ void setupServiceLocator() {
   getIt.registerFactory<GetRatesStatisticsCubit>(
     () => GetRatesStatisticsCubit(getIt.get<GetRatesUseCase>()),
   );
+  getIt.registerSingleton<ChatRepo>(
+  ChatRepoImpl(getIt.get<DataBaseServies>()),
+  
+);
+getIt.registerSingleton<GetOrCreateChatUseCase>(
+  GetOrCreateChatUseCase(getIt.get<ChatRepo>()),
+);
+
+getIt.registerSingleton<GetUserChatsUseCase>(
+  GetUserChatsUseCase(getIt.get<ChatRepo>()),
+);
+
+getIt.registerSingleton<GetMessagesUseCase>(
+  GetMessagesUseCase(getIt.get<ChatRepo>()),
+);
+
+getIt.registerSingleton<SendMessageUseCase>(
+  SendMessageUseCase(getIt.get<ChatRepo>()),
+);
+
+getIt.registerSingleton<MarkMessagesAsReadUseCase>(
+  MarkMessagesAsReadUseCase(getIt.get<ChatRepo>()),
+);
+getIt.registerFactory<GetOrCreateChatCubit>(
+  () => GetOrCreateChatCubit(
+    getIt.get<GetOrCreateChatUseCase>(),
+  ),
+);
+
+getIt.registerFactory<GetUserChatsCubit>(
+  () => GetUserChatsCubit(
+    getIt.get<GetUserChatsUseCase>(),
+  ),
+);
+
+getIt.registerFactory<GetMessagesCubit>(
+  () => GetMessagesCubit(
+    getIt.get<GetMessagesUseCase>(),
+  ),
+);
+
+getIt.registerFactory<SendMessageCubit>(
+  () => SendMessageCubit(
+    getIt.get<SendMessageUseCase>(),
+  ),
+);
+
+getIt.registerFactory<MarkMessagesAsReadCubit>(
+  () => MarkMessagesAsReadCubit(
+    getIt.get<MarkMessagesAsReadUseCase>(),
+  ),
+);
 }

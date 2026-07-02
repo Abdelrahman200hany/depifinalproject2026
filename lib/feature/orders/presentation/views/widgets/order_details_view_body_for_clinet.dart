@@ -78,6 +78,8 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
             Visibility(
               visible: orderItem.orderStatus != kOfferWaitingAccept,
               child: CustomDeliveryOverAllDataDetails(
+                orderItem: orderItem,
+
                 name: orderItem.deliveryName,
                 phone: orderItem.deliveryphone,
               ),
@@ -101,8 +103,9 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
                       },
                     ),
                   ),
+                  SizedBox(width: 8),
 
-                  SizedBox(width: 12),
+                  SizedBox(width: 8),
                   Expanded(
                     child: CustomTextBottomWithBackground(
                       backgroundColor: Colors.green,

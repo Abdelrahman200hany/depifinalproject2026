@@ -190,4 +190,152 @@ class FireStoreServices implements DataBaseServies {
         .doc(subDocId)
         .update(data);
   }
+
+  // ==============================
+  // Stream Collection
+  // ==============================
+
+  @override
+  Stream<List<Map<String, dynamic>>> streamCollection({required String path}) {
+    return firestore
+        .collection(path)
+        .snapshots()
+        .map((event) => event.docs.map((e) => e.data()).toList());
+  }
+
+  // ==============================
+  // Stream Collection Where
+  // ==============================
+
+  @override
+  Stream<List<Map<String, dynamic>>> streamCollectionWhere({
+    required String path,
+    required String field,
+    required dynamic value,
+  }) {
+    return firestore
+        .collection(path)
+        .where(field, isEqualTo: value)
+        .snapshots()
+        .map((event) => event.docs.map((e) => e.data()).toList());
+  }
+
+  // ==============================
+  // Stream SubCollection
+  // ==============================
+
+  @override
+  Stream<List<Map<String, dynamic>>> streamSubCollection({
+    required String path,
+    required String docId,
+    required String subCollection,
+  }) {
+    return firestore
+        .collection(path)
+        .doc(docId)
+        .collection(subCollection)
+        .orderBy("createdAt", descending: false)
+        .snapshots()
+        .map((event) => event.docs.map((e) => e.data()).toList());
+  }
+
+  // ==============================
+  // Stream SubCollection Where
+  // ==============================
+
+  @override
+  Stream<List<Map<String, dynamic>>> streamSubCollectionWhere({
+    required String path,
+    required String docId,
+    required String subCollection,
+    required String field,
+    required dynamic value,
+  }) {
+    return firestore
+        .collection(path)
+        .doc(docId)
+        .collection(subCollection)
+        .where(field, isEqualTo: value)
+        .snapshots()
+        .map((event) => event.docs.map((e) => e.data()).toList());
+  }
+
+  // ==============================
+  // Array Contains
+  // ==============================
+
+  @override
+  Future<List<Map<String, dynamic>>> readWhereArrayContains({
+    required String path,
+    required String field,
+    required dynamic value,
+  }) async {
+    final result = await firestore
+        .collection(path)
+        .where(field, arrayContains: value)
+        .get();
+
+    return result.docs.map((e) => e.data()).toList();
+  }
+
+  // ==============================
+  // Array Contains + OrderBy
+  // ==============================
+
+  @override
+  Future<List<Map<String, dynamic>>> readWhereArrayContainsOrderBy({
+    required String path,
+    required String field,
+    required dynamic value,
+    required String orderBy,
+    bool descending = true,
+  }) async {
+    final result = await firestore
+        .collection(path)
+        .where(field, arrayContains: value)
+        .orderBy(orderBy, descending: descending)
+        .get();
+
+    return result.docs.map((e) => e.data()).toList();
+  }
+
+  // ==============================
+  // Ordered Collection
+  // ==============================
+
+  @override
+  Future<List<Map<String, dynamic>>> readOrderedCollection({
+    required String path,
+    required String orderBy,
+    bool descending = true,
+  }) async {
+    final result = await firestore
+        .collection(path)
+        .orderBy(orderBy, descending: descending)
+        .get();
+
+    return result.docs.map((e) => e.data()).toList();
+  }
+
+  // ==============================
+  // Ordered SubCollection
+  // ==============================
+
+  @override
+  Future<List<Map<String, dynamic>>> readOrderedSubCollection({
+    required String path,
+    required String docId,
+    required String subCollection,
+    required String orderBy,
+    bool descending = true,
+  }) async {
+    final result = await firestore
+        .collection(path)
+        .doc(docId)
+        .collection(subCollection)
+        .orderBy(orderBy, descending: descending)
+        .get();
+
+    return result.docs.map((e) => e.data()).toList();
+  }
 }

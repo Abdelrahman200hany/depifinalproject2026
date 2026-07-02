@@ -3,6 +3,7 @@ import 'package:depifinalproject/core/methods/url_lancher.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_clinet_over_all_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_payment_deatial.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_header_data_details.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_over_all_data_details.dart';
@@ -81,6 +82,14 @@ class OrderDetailsViewBodyForDeliverycompleteData extends StatelessWidget {
             CustomOrderDataPaymentDetails(
               orderPrice: item.parcelPrice,
               deliveryPrice: item.deliveryPrice,
+            ),
+
+            const SizedBox(height: 16),
+
+            CustomClientOverAllDataDetails(
+              name: item.senderName,
+              phone: item.senderPhone,
+              orderItem: item,
             ),
 
             const SizedBox(height: 16),

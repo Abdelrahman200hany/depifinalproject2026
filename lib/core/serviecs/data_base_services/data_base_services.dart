@@ -48,7 +48,7 @@ abstract class DataBaseServies {
     required String docId,
     required String subCollection,
     String? subCollectionDocId,
-     Map<String, dynamic>? query,
+    Map<String, dynamic>? query,
   });
 
   Future<void> updateSubCollectionData({
@@ -88,4 +88,78 @@ abstract class DataBaseServies {
   //   required String docId,
   //   required String subCollection,
   // });
+
+  // ==============================
+  // Collection Streams
+  // ==============================
+
+  Stream<List<Map<String, dynamic>>> streamCollection({required String path});
+
+  Stream<List<Map<String, dynamic>>> streamCollectionWhere({
+    required String path,
+    required String field,
+    required dynamic value,
+  });
+
+  // ==============================
+  // SubCollection Streams
+  // ==============================
+
+  Stream<List<Map<String, dynamic>>> streamSubCollection({
+    required String path,
+    required String docId,
+    required String subCollection,
+  });
+
+  Stream<List<Map<String, dynamic>>> streamSubCollectionWhere({
+    required String path,
+    required String docId,
+    required String subCollection,
+    required String field,
+    required dynamic value,
+  });
+
+  // ==============================
+  // Array Contains
+  // ==============================
+
+  Future<List<Map<String, dynamic>>> readWhereArrayContains({
+    required String path,
+    required String field,
+    required dynamic value,
+  });
+
+  // ==============================
+  // Array Contains + OrderBy
+  // ==============================
+
+  Future<List<Map<String, dynamic>>> readWhereArrayContainsOrderBy({
+    required String path,
+    required String field,
+    required dynamic value,
+    required String orderBy,
+    bool descending = true,
+  });
+
+  // ==============================
+  // Read Ordered Collection
+  // ==============================
+
+  Future<List<Map<String, dynamic>>> readOrderedCollection({
+    required String path,
+    required String orderBy,
+    bool descending = true,
+  });
+
+  // ==============================
+  // Read Ordered SubCollection
+  // ==============================
+
+  Future<List<Map<String, dynamic>>> readOrderedSubCollection({
+    required String path,
+    required String docId,
+    required String subCollection,
+    required String orderBy,
+    bool descending = true,
+  });
 }
