@@ -5,6 +5,7 @@ import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
+import 'package:depifinalproject/feature/localtaion/presentation/views/language_view.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/views/my_profile_view.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/header_profile.dart';
@@ -65,6 +66,9 @@ class ProfileViewBody extends StatelessWidget {
                 title: 'الإشعارات',
               ),
               CustomProfileSecDetails(
+                onTap: (){
+                  Navigator.pushNamed(context, LanguageView.routeName);
+                },
                 title: 'اللغة',
                 icon: Icons.language_outlined,
               ),

@@ -4,6 +4,7 @@ import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.da
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/home/presentation/views/add_order.dart';
 import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
+import 'package:depifinalproject/feature/localtaion/presentation/views/language_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_client.dart';
 import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_delivery.dart';
@@ -25,8 +26,7 @@ import 'package:depifinalproject/feature/profile_setting/presentaion/views/widge
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
 import 'package:depifinalproject/feature/validation/presentation/views/pending_validation_screen.dart';
 import 'package:depifinalproject/feature/validation/presentation/views/valiation_condition_view.dart';
-import 'package:depifinalproject/feature/validation/presentation/views/validation_screen.dart'
-   ;
+import 'package:depifinalproject/feature/validation/presentation/views/validation_screen.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -89,6 +89,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case OrderClinetView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderClinetView());
+    case LanguageView.routeName:
+      return MaterialPageRoute(builder: (context) => const LanguageView());
     case RateListWithAllReview.routeName:
       return MaterialPageRoute(
         builder: (context) => RateListWithAllReview(
