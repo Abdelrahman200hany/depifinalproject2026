@@ -157,6 +157,21 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, UserEntity>> refreshUserData({
+    required String userId,
+  }) async {
+    try {
+      final user = await readUserDataFromDataBase(userID: userId);
+
+      await saveUserDataInlocalStorage(user: user);
+
+      return right(user);
+    } catch (e) {
+      return left(ServerFailure(message: "فشل تحديث بيانات المستخدم"));
+    }
+  }
+
+  @override
   Future<Either<Failure, void>> updateSpecificUserData({
     required String userId,
 

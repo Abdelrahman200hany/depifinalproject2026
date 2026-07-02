@@ -7,6 +7,8 @@ import 'package:depifinalproject/core/serviecs/storage_services.dart/storage_ser
 import 'package:depifinalproject/core/serviecs/storage_services.dart/supabase_storage_serviecs.dart';
 import 'package:depifinalproject/feature/auth/data/repo/auth_repo_impltation.dart';
 import 'package:depifinalproject/feature/auth/domain/repo/auth_repo.dart';
+import 'package:depifinalproject/feature/auth/domain/use_casse/refrech_user_data_use_case.dart';
+import 'package:depifinalproject/feature/auth/presentation/manager/referch_user_data/refresh_user_data_cubit.dart';
 import 'package:depifinalproject/feature/home/data/repo_impl/order_repo_impltation.dart';
 import 'package:depifinalproject/feature/home/domin/repo/order_repo.dart';
 import 'package:depifinalproject/feature/home/domin/use_case/add_order_use_case.dart';
@@ -224,5 +226,12 @@ void setupServiceLocator() {
     () => ApproveValidationRequestCubit(
       getIt.get<ApproveValidationRequestUseCase>(),
     ),
+  );
+  getIt.registerSingleton<RefreshUserDataUseCase>(
+    RefreshUserDataUseCase(getIt.get<AuthRepo>()),
+  );
+
+  getIt.registerFactory<RefreshUserDataCubit>(
+    () => RefreshUserDataCubit(getIt.get<RefreshUserDataUseCase>()),
   );
 }
