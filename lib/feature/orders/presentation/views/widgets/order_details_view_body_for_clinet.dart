@@ -1,4 +1,5 @@
 import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/url_lancher.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
@@ -79,6 +80,41 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               child: CustomDeliveryOverAllDataDetails(
                 name: orderItem.deliveryName,
                 phone: orderItem.deliveryphone,
+              ),
+            ),
+            const SizedBox(height: 16),
+            const SizedBox(height: 16),
+
+            Visibility(
+              visible: orderItem.orderStatus != kOfferWaitingAccept,
+
+              child: Row(
+                children: [
+                  Expanded(
+                    child: CustomTextBottomWithBackground(
+                      // backgroundColor: Colors.green,
+                      text: 'اتصل بالمندوب ',
+                      ontap: () {
+                        UrlLauncherHelper.makePhoneCall(
+                          orderItem.deliveryphone,
+                        );
+                      },
+                    ),
+                  ),
+
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: CustomTextBottomWithBackground(
+                      backgroundColor: Colors.green,
+                      text: 'اتصل بالعميل ',
+                      ontap: () {
+                        UrlLauncherHelper.makePhoneCall(
+                          orderItem.recipientPhone,
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 16),

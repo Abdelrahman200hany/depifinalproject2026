@@ -30,6 +30,7 @@ import 'package:depifinalproject/feature/orders/domain/use_case/get_all_orders_f
 import 'package:depifinalproject/feature/orders/domain/use_case/up_data_order_data_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_order_image_by_clinet_use_case.dart';
 import 'package:depifinalproject/feature/orders/domain/use_case/update_simple_order_data_use_case.dart';
+import 'package:depifinalproject/feature/orders/presentation/manager/cubit/orders_report_cubit.dart';
 import 'package:depifinalproject/feature/profile/data/repo_implementation/rate_repo_impltation.dart';
 import 'package:depifinalproject/feature/profile/domain/repo/rate_repo.dart';
 import 'package:depifinalproject/feature/profile/domain/use_case/add_rate_use_case.dart';
@@ -244,4 +245,9 @@ void setupServiceLocator() {
     () =>
         SendPasswordResetEmailCubit(getIt.get<SendPasswordResetEmailUseCase>()),
   );
+  getIt.registerFactory<OrdersReportCubit>(
+  () => OrdersReportCubit(
+    getIt.get<GetClinetOrderUseCase>(),
+  ),
+);
 }

@@ -1,5 +1,7 @@
 import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/url_lancher.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
+import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_data_payment_deatial.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/custom_order_header_data_details.dart';
@@ -80,6 +82,34 @@ class OrderDetailsViewBodyForDeliverycompleteData extends StatelessWidget {
               orderPrice: item.parcelPrice,
               deliveryPrice: item.deliveryPrice,
             ),
+
+            const SizedBox(height: 16),
+
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextBottomWithBackground(
+                    // backgroundColor: Colors.green,
+                    text: 'اتصل بالتاجر ',
+                    ontap: () {
+                      UrlLauncherHelper.makePhoneCall(item.senderPhone);
+                    },
+                  ),
+                ),
+
+                SizedBox(width: 12),
+                Expanded(
+                  child: CustomTextBottomWithBackground(
+                    backgroundColor: Colors.green,
+                    text: 'اتصل بالعميل ',
+                    ontap: () {
+                      UrlLauncherHelper.makePhoneCall(item.recipientPhone);
+                    },
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       ),
