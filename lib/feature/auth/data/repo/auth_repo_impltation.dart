@@ -98,6 +98,21 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, void>> sendPasswordResetEmail({
+    required String email,
+  }) async {
+    try {
+      await firebaseAuthServies.sendPasswordResetEmail(email: email);
+
+      return right(null);
+    } on CustomExpetion catch (e) {
+      return left(ServerFailure(message: e.message));
+    } catch (e) {
+      return left(ServerFailure(message: 'حدث خطأ ما حاول مرة أخرى'));
+    }
+  }
+
+  @override
   Future<Either<Failure, UserEntity>> signinWithGoogle() async {
     User? user;
     try {

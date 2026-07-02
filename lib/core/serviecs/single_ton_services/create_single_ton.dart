@@ -8,7 +8,9 @@ import 'package:depifinalproject/core/serviecs/storage_services.dart/supabase_st
 import 'package:depifinalproject/feature/auth/data/repo/auth_repo_impltation.dart';
 import 'package:depifinalproject/feature/auth/domain/repo/auth_repo.dart';
 import 'package:depifinalproject/feature/auth/domain/use_casse/refrech_user_data_use_case.dart';
+import 'package:depifinalproject/feature/auth/domain/use_casse/send_password_reset_email_use_case.dart';
 import 'package:depifinalproject/feature/auth/presentation/manager/referch_user_data/refresh_user_data_cubit.dart';
+import 'package:depifinalproject/feature/auth/presentation/manager/sent_password_reset_email/sent_password_reset_email_cubit.dart';
 import 'package:depifinalproject/feature/home/data/repo_impl/order_repo_impltation.dart';
 import 'package:depifinalproject/feature/home/domin/repo/order_repo.dart';
 import 'package:depifinalproject/feature/home/domin/use_case/add_order_use_case.dart';
@@ -233,5 +235,13 @@ void setupServiceLocator() {
 
   getIt.registerFactory<RefreshUserDataCubit>(
     () => RefreshUserDataCubit(getIt.get<RefreshUserDataUseCase>()),
+  );
+  getIt.registerSingleton<SendPasswordResetEmailUseCase>(
+    SendPasswordResetEmailUseCase(getIt.get<AuthRepo>()),
+  );
+
+  getIt.registerFactory<SendPasswordResetEmailCubit>(
+    () =>
+        SendPasswordResetEmailCubit(getIt.get<SendPasswordResetEmailUseCase>()),
   );
 }

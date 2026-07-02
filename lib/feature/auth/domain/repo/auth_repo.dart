@@ -24,6 +24,8 @@ abstract class AuthRepo {
 
     required Map<String, dynamic> data,
   });
+
+  Future<Either<Failure, void>> sendPasswordResetEmail({required String email});
   Future<Either<Failure, UserEntity>> refreshUserData({required String userId});
   Future addUserDataToDataBase({required UserEntity user});
   Future saveUserDataInlocalStorage({required UserEntity user});
