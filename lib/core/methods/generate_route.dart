@@ -23,7 +23,10 @@ import 'package:depifinalproject/feature/profile/pepesentation/views/widgets/rat
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/profile_view.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
-import 'package:depifinalproject/feature/validation/presentation/views/validation_screen.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/pending_validation_screen.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/valiation_condition_view.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/validation_screen.dart'
+   ;
 import 'package:flutter/material.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -51,6 +54,14 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case AccountValidationView.routeName:
       return MaterialPageRoute(
         builder: (context) => const AccountValidationView(),
+      );
+    case PendingValidationView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const PendingValidationView(),
+      );
+    case ValidationConditionView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ValidationConditionView(),
       );
     case OrderDetailsViewForClinet.routeName:
       return MaterialPageRoute(

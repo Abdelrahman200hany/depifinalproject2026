@@ -31,12 +31,27 @@ import 'package:depifinalproject/feature/profile/domain/repo/rate_repo.dart';
 import 'package:depifinalproject/feature/profile/domain/use_case/add_rate_use_case.dart';
 import 'package:depifinalproject/feature/profile/domain/use_case/get_rates_use_case.dart';
 import 'package:depifinalproject/feature/profile/domain/use_case/read_user_data_use_case.dart';
+import 'package:depifinalproject/feature/profile/domain/use_case/update_specific_user_data_use_case.dart';
 import 'package:depifinalproject/feature/profile/domain/use_case/update_user_data_use_case.dart';
 import 'package:depifinalproject/feature/profile/domain/use_case/upload_profile_image_use_case.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/GetRates/get_rates_cubit.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/add_rate/add_rate_cubit.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/manager/update_specific_user_data/update_specific_user_data_cubit.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/update_user_profile_data/update_user_data_cubit.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/upload_image_profile/upload_image_profile_dart_cubit.dart';
+import 'package:depifinalproject/feature/validation/data/repo_impl/validation_request_repo_impl.dart';
+import 'package:depifinalproject/feature/validation/domin/repo/validation_request_repo.dart';
+import 'package:depifinalproject/feature/validation/domin/use_case/add_validation_request_use_case.dart';
+import 'package:depifinalproject/feature/validation/domin/use_case/approve_validation_request_use_case.dart';
+import 'package:depifinalproject/feature/validation/domin/use_case/get_validation_request_use_case.dart';
+import 'package:depifinalproject/feature/validation/domin/use_case/get_waiting_validation_requests_use_case.dart';
+import 'package:depifinalproject/feature/validation/domin/use_case/update_validation_request_use_case.dart';
+import 'package:depifinalproject/feature/validation/presentation/manager/add_validation_request/add_validation_request_cubit.dart';
+import 'package:depifinalproject/feature/validation/presentation/manager/approve_validation_request/approve_validation_request_cubit.dart';
+import 'package:depifinalproject/feature/validation/presentation/manager/get_validation_request/get_validation_request_cubit.dart';
+import 'package:depifinalproject/feature/validation/presentation/manager/get_waiting_validation_requests/get_waiting_validation_requests_cubit.dart';
+import 'package:depifinalproject/feature/validation/presentation/manager/update_validation_request/update_validation_request_cubit.dart';
+
 import 'package:get_it/get_it.dart';
 
 // This is our global ServiceLocator
@@ -142,17 +157,72 @@ void setupServiceLocator() {
   getIt.registerSingleton<GetRatesUseCase>(
     GetRatesUseCase(getIt.get<RateRepo>()),
   );
-    getIt.registerFactory<AddRateCubit>(
-    () => AddRateCubit(
-      getIt.get<AddRateUseCase>(),
+  getIt.registerFactory<AddRateCubit>(
+    () => AddRateCubit(getIt.get<AddRateUseCase>()),
+  );
+
+  getIt.registerFactory<GetRatesCubit>(
+    () => GetRatesCubit(getIt.get<GetRatesUseCase>()),
+  );
+  getIt.registerSingleton<ValidationRequestRepo>(
+    ValidationRequestRepoImpl(getIt.get<DataBaseServies>()),
+  );
+
+  getIt.registerSingleton<AddValidationRequestUseCase>(
+    AddValidationRequestUseCase(getIt.get<ValidationRequestRepo>()),
+  );
+
+  getIt.registerSingleton<GetValidationRequestUseCase>(
+    GetValidationRequestUseCase(getIt.get<ValidationRequestRepo>()),
+  );
+
+  getIt.registerSingleton<GetWaitingValidationRequestsUseCase>(
+    GetWaitingValidationRequestsUseCase(getIt.get<ValidationRequestRepo>()),
+  );
+
+  getIt.registerSingleton<UpdateValidationRequestUseCase>(
+    UpdateValidationRequestUseCase(getIt.get<ValidationRequestRepo>()),
+  );
+
+  getIt.registerFactory<AddValidationRequestCubit>(
+    () => AddValidationRequestCubit(getIt.get<AddValidationRequestUseCase>()),
+  );
+
+  getIt.registerFactory<GetValidationRequestCubit>(
+    () => GetValidationRequestCubit(getIt.get<GetValidationRequestUseCase>()),
+  );
+
+  getIt.registerFactory<GetWaitingValidationRequestsCubit>(
+    () => GetWaitingValidationRequestsCubit(
+      getIt.get<GetWaitingValidationRequestsUseCase>(),
     ),
   );
 
+  getIt.registerFactory<UpdateValidationRequestCubit>(
+    () => UpdateValidationRequestCubit(
+      getIt.get<UpdateValidationRequestUseCase>(),
+    ),
+  );
 
+  getIt.registerSingleton<UpdateSpecificUserDataUseCase>(
+    UpdateSpecificUserDataUseCase(getIt.get<AuthRepo>()),
+  );
 
-  getIt.registerFactory<GetRatesCubit>(
-    () => GetRatesCubit(
-      getIt.get<GetRatesUseCase>(),
+  getIt.registerFactory<UpdateSpecificUserDataCubit>(
+    () =>
+        UpdateSpecificUserDataCubit(getIt.get<UpdateSpecificUserDataUseCase>()),
+  );
+  getIt.registerSingleton<ApproveValidationRequestUseCase>(
+    ApproveValidationRequestUseCase(
+      getIt.get<UpdateValidationRequestUseCase>(),
+
+      getIt.get<UpdateSpecificUserDataUseCase>(),
+    ),
+  );
+
+  getIt.registerFactory<ApproveValidationRequestCubit>(
+    () => ApproveValidationRequestCubit(
+      getIt.get<ApproveValidationRequestUseCase>(),
     ),
   );
 }

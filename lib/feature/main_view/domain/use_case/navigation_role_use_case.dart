@@ -23,7 +23,12 @@ class GetMainScreensUseCase {
         ProfileView(),
       ];
     } else {
-      return [HomeView(), OrderDeliveryView(), OfferViewForDelivery(), ProfileView()];
+      return [
+        HomeView(),
+        OrderDeliveryView(),
+        OfferViewForDelivery(),
+        ProfileView(),
+      ];
     }
   }
 }

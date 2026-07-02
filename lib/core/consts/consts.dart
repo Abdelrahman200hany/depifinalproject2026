@@ -15,3 +15,8 @@ const String kstatusReturned = 'مرتجع';
 const String kstatusofferAccepted = 'accepted';
 const String kstatusofferRejected = 'Rejected';
 const String kstatusofferpending = 'pending';
+const String kValidationWaiting = 'validation_waiting';
+
+const String kValidationApproved = 'validation_approved';
+
+const String kValidationRejected = 'validation_rejected';

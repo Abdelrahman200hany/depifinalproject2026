@@ -126,6 +126,18 @@ class Assets {
   /// asstes/images/true_icon.png
   static const String imagesTrueIcon = "asstes/images/true_icon.png";
 
+  /// Assets for imagesValiadrtionApproved
+  /// asstes/images/valiadrtionApproved.png
+  static const String imagesValiadrtionApproved = "asstes/images/valiadrtionApproved.png";
+
+  /// Assets for imagesValiationWating
+  /// asstes/images/valiationWating.png
+  static const String imagesValiationWating = "asstes/images/valiationWating.png";
+
+  /// Assets for imagesValidationRejected
+  /// asstes/images/validationRejected.png
+  static const String imagesValidationRejected = "asstes/images/validationRejected.png";
+
   /// Assets for imagesValidationStepone
   /// asstes/images/validationStepone.png
   static const String imagesValidationStepone = "asstes/images/validationStepone.png";

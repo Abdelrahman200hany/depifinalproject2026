@@ -10,7 +10,7 @@ import 'package:depifinalproject/feature/profile_setting/presentaion/views/widge
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/header_profile.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/sec_profile_body.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/sec_profile_body_with_switch_bottom.dart';
-import 'package:depifinalproject/feature/validation/presentation/views/validation_screen.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/valiation_condition_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -50,7 +50,7 @@ class ProfileViewBody extends StatelessWidget {
 
               CustomProfileSecDetails(
                 onTap: (){
-                  Navigator.pushNamed(context, AccountValidationView.routeName);
+                  Navigator.pushNamed(context, ValidationConditionView.routeName);
                 },
                 title: 'توثيق الحساب',
                 icon: Icons.verified_outlined,

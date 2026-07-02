@@ -1,6 +1,17 @@
-import 'package:depifinalproject/feature/validation/presentation/views/widgets/custom_upload_validation_image_widget_bloc_provider.dart';
-import 'package:flutter/material.dart';
+import 'package:depifinalproject/core/methods/get_user_local_data.dart';
+import 'package:depifinalproject/core/methods/show_snack_bar.dart';
+import 'package:depifinalproject/core/serviecs/single_ton_services/create_single_ton.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
+import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
+
+import 'package:depifinalproject/feature/validation/data/model/validation_request_model.dart';
+import 'package:depifinalproject/feature/validation/presentation/manager/add_validation_request/add_validation_request_cubit.dart';
+import 'package:depifinalproject/feature/validation/presentation/manager/add_validation_request/add_validation_request_state.dart';
+
+import 'package:depifinalproject/feature/validation/presentation/views/widgets/validaion_step.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AccountValidationView extends StatefulWidget {
   const AccountValidationView({super.key});
@@ -21,6 +32,8 @@ class _AccountValidationViewState extends State<AccountValidationView> {
   String? backIdUrl;
 
   String? selfieUrl;
+
+  String token = getUserData().userID!;
 
   void nextPage() {
     controller.nextPage(
@@ -48,13 +61,12 @@ class _AccountValidationViewState extends State<AccountValidationView> {
 
         children: [
           ValidationStep(
-            image: Assets.imagesBannerProfile,
+            image: Assets.imagesValidationStepone,
 
             title: "صورة البطاقة الشخصية الأمامية",
 
             description:
-                "ارفع صورة واضحة للوجه الأمامي من البطاقة "
-                "وتأكد أن جميع البيانات ظاهرة.",
+                "ارفع صورة واضحة للوجه الأمامي من البطاقة وتأكد أن جميع البيانات ظاهرة.",
 
             uploadedImage: frontIdUrl,
 
@@ -62,17 +74,20 @@ class _AccountValidationViewState extends State<AccountValidationView> {
               setState(() {
                 frontIdUrl = url;
               });
+
+              Future.delayed(const Duration(milliseconds: 300), () {
+                nextPage();
+              });
             },
           ),
 
           ValidationStep(
-            image: Assets.imagesBannerProfile,
+            image: Assets.imagesValidtionSteptwo,
 
             title: "صورة البطاقة الشخصية الخلفية",
 
             description:
-                "ارفع صورة واضحة للوجه الخلفي من البطاقة "
-                "مع ظهور البيانات كاملة.",
+                "ارفع صورة واضحة للوجه الخلفي من البطاقة مع ظهور البيانات كاملة.",
 
             uploadedImage: backIdUrl,
 
@@ -80,17 +95,20 @@ class _AccountValidationViewState extends State<AccountValidationView> {
               setState(() {
                 backIdUrl = url;
               });
+
+              Future.delayed(const Duration(milliseconds: 300), () {
+                nextPage();
+              });
             },
           ),
 
           ValidationStep(
-            image: Assets.imagesBannerProfile,
+            image: Assets.imagesValidationStrpThree,
 
             title: "صورة شخصية مع البطاقة",
 
             description:
-                "التقط صورة واضحة وأنت تحمل البطاقة "
-                "بحيث يظهر الوجه والبطاقة.",
+                "التقط صورة واضحة وأنت تحمل البطاقة بحيث يظهر الوجه والبطاقة.",
 
             uploadedImage: selfieUrl,
 
@@ -103,94 +121,63 @@ class _AccountValidationViewState extends State<AccountValidationView> {
         ],
       ),
 
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(20),
+      bottomNavigationBar: currentIndex == 2 && selfieUrl != null
+          ? BlocProvider(
+              create: (_) => getIt<AddValidationRequestCubit>(),
 
-        child: ElevatedButton(
-          onPressed: () {
-            if (currentIndex == 2) {
-              print(frontIdUrl);
+              child: Padding(
+                padding: const EdgeInsets.all(20),
 
-              print(backIdUrl);
+                child:
+                    BlocConsumer<
+                      AddValidationRequestCubit,
+                      AddValidationRequestState
+                    >(
+                      listener: (context, state) {
+                        if (state is AddValidationRequestSuccess) {
+                          showSuccessSnackBar(
+                            context,
 
-              print(selfieUrl);
+                            message: "تم إرسال طلب التحقق بنجاح",
+                          );
 
-              // هنا تبعت الطلب
-            } else {
-              nextPage();
-            }
-          },
+                          Navigator.pop(context);
+                        }
 
-          child: Text(currentIndex == 2 ? "إرسال الطلب" : "التالي"),
-        ),
-      ),
-    );
-  }
-}
+                        if (state is AddValidationRequestFailure) {
+                          showSuccessSnackBar(context, message: state.message);
+                        }
+                      },
 
-class ValidationStep extends StatelessWidget {
-  const ValidationStep({
-    super.key,
+                      builder: (context, state) {
+                        return CustomTextBottomWithBackground(
+                          text: state is AddValidationRequestLoading
+                              ? "جاري الإرسال..."
+                              : "إرسال الطلب",
 
-    required this.image,
+                          ontap: state is AddValidationRequestLoading
+                              ? null
+                              : () {
+                                  final request = ValidationRequestModel(
+                                    frontIdImage: frontIdUrl!,
 
-    required this.title,
+                                    backIdImage: backIdUrl!,
 
-    required this.description,
+                                    selfieImage: selfieUrl!,
 
-    required this.uploadedImage,
+                                    token: token,
+                                  );
 
-    required this.onUploaded,
-  });
-
-  final String image;
-
-  final String title;
-
-  final String description;
-
-  final String? uploadedImage;
-
-  final ValueChanged<String?> onUploaded;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-
-        children: [
-          CustomUploadValidationImageWidget(
-            placeholderImage: image,
-
-            imageUrl: uploadedImage,
-
-            onImageUploaded: onUploaded,
-          ),
-
-          const SizedBox(height: 30),
-
-          Text(
-            title,
-
-            textAlign: TextAlign.center,
-
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
-
-          const SizedBox(height: 15),
-
-          Text(
-            description,
-
-            textAlign: TextAlign.center,
-
-            style: const TextStyle(color: Colors.grey, fontSize: 16),
-          ),
-        ],
-      ),
+                                  context
+                                      .read<AddValidationRequestCubit>()
+                                      .addValidationRequest(request);
+                                },
+                        );
+                      },
+                    ),
+              ),
+            )
+          : null,
     );
   }
 }

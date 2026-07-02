@@ -157,6 +157,27 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, void>> updateSpecificUserData({
+    required String userId,
+
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await dataBaseServies.upDatadata(
+        path: AppBackendEndpoints.readUserCollention,
+
+        dataId: userId,
+
+        data: data,
+      );
+
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(message: "فشل تحديث بيانات المستخدم $e"));
+    }
+  }
+
+  @override
   Future<UserEntity> readUserDataFromDataBase({required String userID}) async {
     var userdata = await dataBaseServies.readData(
       documentID: userID,
