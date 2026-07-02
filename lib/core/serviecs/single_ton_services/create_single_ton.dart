@@ -41,6 +41,7 @@ import 'package:depifinalproject/feature/profile/domain/use_case/update_user_dat
 import 'package:depifinalproject/feature/profile/domain/use_case/upload_profile_image_use_case.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/GetRates/get_rates_cubit.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/add_rate/add_rate_cubit.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/manager/get_ratess_tatistics/get_rates_statistics_state.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/update_specific_user_data/update_specific_user_data_cubit.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/update_user_profile_data/update_user_data_cubit.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/manager/upload_image_profile/upload_image_profile_dart_cubit.dart';
@@ -246,8 +247,9 @@ void setupServiceLocator() {
         SendPasswordResetEmailCubit(getIt.get<SendPasswordResetEmailUseCase>()),
   );
   getIt.registerFactory<OrdersReportCubit>(
-  () => OrdersReportCubit(
-    getIt.get<GetClinetOrderUseCase>(),
-  ),
-);
+    () => OrdersReportCubit(getIt.get<GetClinetOrderUseCase>()),
+  );
+  getIt.registerFactory<GetRatesStatisticsCubit>(
+    () => GetRatesStatisticsCubit(getIt.get<GetRatesUseCase>()),
+  );
 }
