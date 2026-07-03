@@ -7,6 +7,6 @@ import 'package:depifinalproject/feature/auth/domain/entity/user_entity.dart';
 
 UserEntity getUserData() {
   var jesonData = Prefs.getString(kUserDataSave);
-  var userData = UserModel.fromjeson(jsonDecode(jesonData));
-  return userData;
+  var userData = UserModel.fromjson(jsonDecode(jesonData));
+  return userData.toEntity();
 }

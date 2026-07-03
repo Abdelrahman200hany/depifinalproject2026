@@ -43,8 +43,8 @@ class FirebaseAuthServiecs {
   //  await firebaseAuthInstance.currentUser!.sendEmailVerification();
 
   // }
-  Future<void> sendEmailVerification(User user) async {
-    await user.sendEmailVerification();
+  void sendEmailVerification(User user) {
+    user.sendEmailVerification();
   }
 
   // 🚪 تسجيل الخروج
@@ -94,6 +94,32 @@ class FirebaseAuthServiecs {
         'the error in FirebaseAuthServiecs.createUserWithEmailAndPassword is $e',
       );
       throw CustomExpetion(message: 'حدث خطأ ما حاول مره اخري');
+    }
+  }
+
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    try {
+      await firebaseAuthInstance.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      log(
+        'the error code in FirebaseAuthServiecs.sendPasswordResetEmail $e ofType ${e.code}',
+      );
+
+      if (e.code == 'invalid-email') {
+        throw CustomExpetion(message: 'البريد الإلكتروني غير صالح');
+      } else if (e.code == 'user-not-found') {
+        throw CustomExpetion(message: 'لا يوجد حساب بهذا البريد الإلكتروني');
+      } else if (e.code == 'too-many-requests') {
+        throw CustomExpetion(
+          message: 'تم إرسال عدد كبير من الطلبات، حاول لاحقًا',
+        );
+      } else if (e.code == 'network-request-failed') {
+        throw CustomExpetion(message: 'لا يوجد اتصال بالإنترنت');
+      } else {
+        throw CustomExpetion(message: 'حدث خطأ، حاول مرة أخرى');
+      }
+    } catch (e) {
+      throw CustomExpetion(message: 'حدث خطأ، حاول مرة أخرى');
     }
   }
 

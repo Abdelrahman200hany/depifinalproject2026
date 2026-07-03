@@ -22,6 +22,10 @@ class Assets {
   /// asstes/images/arrow-right.svg
   static const String imagesArrowRight = "asstes/images/arrow-right.svg";
 
+  /// Assets for imagesBannerProfile
+  /// asstes/images/bannerProfile.png
+  static const String imagesBannerProfile = "asstes/images/bannerProfile.png";
+
   /// Assets for imagesBox
   /// asstes/images/box.svg
   static const String imagesBox = "asstes/images/box.svg";
@@ -61,10 +65,6 @@ class Assets {
   /// Assets for imagesMap2
   /// asstes/images/map_2.png
   static const String imagesMap2 = "asstes/images/map_2.png";
-
-  /// Assets for imagesMyphoto
-  /// asstes/images/myphoto.jpg
-  static const String imagesMyphoto = "asstes/images/myphoto.jpg";
 
   /// Assets for imagesNotActiveBalance
   /// asstes/images/not_active_balance.svg
@@ -110,8 +110,52 @@ class Assets {
   /// asstes/images/remove.png
   static const String imagesRemove = "asstes/images/remove.png";
 
+  /// Assets for imagesSliderIamgeOen
+  /// asstes/images/sliderIamgeOen.png
+  static const String imagesSliderIamgeOen = "asstes/images/sliderIamgeOen.png";
+
+  /// Assets for imagesSliderImageThree
+  /// asstes/images/sliderImageThree.png
+  static const String imagesSliderImageThree = "asstes/images/sliderImageThree.png";
+
+  /// Assets for imagesSliderImageTwo
+  /// asstes/images/sliderImageTwo.png
+  static const String imagesSliderImageTwo = "asstes/images/sliderImageTwo.png";
+
   /// Assets for imagesTrueIcon
   /// asstes/images/true_icon.png
   static const String imagesTrueIcon = "asstes/images/true_icon.png";
+
+  /// Assets for imagesValiadrtionApproved
+  /// asstes/images/valiadrtionApproved.png
+  static const String imagesValiadrtionApproved = "asstes/images/valiadrtionApproved.png";
+
+  /// Assets for imagesValiationWating
+  /// asstes/images/valiationWating.png
+  static const String imagesValiationWating = "asstes/images/valiationWating.png";
+
+  /// Assets for imagesValidationRejected
+  /// asstes/images/validationRejected.png
+  static const String imagesValidationRejected = "asstes/images/validationRejected.png";
+
+  /// Assets for imagesValidationStepone
+  /// asstes/images/validationStepone.png
+  static const String imagesValidationStepone = "asstes/images/validationStepone.png";
+
+  /// Assets for imagesValidationStrpThree
+  /// asstes/images/validationStrpThree.png
+  static const String imagesValidationStrpThree = "asstes/images/validationStrpThree.png";
+
+  /// Assets for imagesValidtionSteptwo
+  /// asstes/images/validtionSteptwo.png
+  static const String imagesValidtionSteptwo = "asstes/images/validtionSteptwo.png";
+
+  /// Assets for imagesVrevided
+  /// asstes/images/vrevided.svg
+  static const String imagesVrevided = "asstes/images/vrevided.svg";
+
+  /// Assets for imagesZewaidiIcon
+  /// asstes/images/zewaidi_icon.jpg
+  static const String imagesZewaidiIcon = "asstes/images/zewaidi_icon.jpg";
 }
 

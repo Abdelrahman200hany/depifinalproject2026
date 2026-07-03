@@ -48,7 +48,7 @@ class AuthRepoImpl implements AuthRepo {
         userID: user.uid,
         email: email,
       );
-      await firebaseAuthServies.sendEmailVerification(user);
+      firebaseAuthServies.sendEmailVerification(user);
 
       await addUserDataToDataBase(user: userEntity);
       return right(userEntity);
@@ -77,7 +77,7 @@ class AuthRepoImpl implements AuthRepo {
       bool verified = await firebaseAuthServies.checkEmailVerified();
 
       if (!verified) {
-        await firebaseAuthServies.sendEmailVerification(user);
+        firebaseAuthServies.sendEmailVerification(user);
 
         return left(
           ServerFailure(
@@ -98,12 +98,27 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, void>> sendPasswordResetEmail({
+    required String email,
+  }) async {
+    try {
+      await firebaseAuthServies.sendPasswordResetEmail(email: email);
+
+      return right(null);
+    } on CustomExpetion catch (e) {
+      return left(ServerFailure(message: e.message));
+    } catch (e) {
+      return left(ServerFailure(message: 'حدث خطأ ما حاول مرة أخرى'));
+    }
+  }
+
+  @override
   Future<Either<Failure, UserEntity>> signinWithGoogle() async {
     User? user;
     try {
       user = await firebaseAuthServies.signInWithGoogle();
 
-      var userEntity = UserModel.fromFirebaseUser(user);
+      var userEntity = UserModel.fromFirebaseUser(user).toEntity();
       bool userDataExits = await dataBaseServies.chekedDataIfExitsinDatabase(
         deumentID: userEntity.userID!,
         path: AppBackendEndpoints.checkIfUserIsExits,
@@ -136,13 +151,70 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, void>> updateUserData({
+    required UserEntity user,
+  }) async {
+    try {
+      await dataBaseServies.upDatadata(
+        path: AppBackendEndpoints.addUserCollention,
+
+        dataId: user.userID!,
+
+        data: UserModel.fromUserEntity(user).toMap(),
+      );
+
+      await saveUserDataInlocalStorage(user: user);
+
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(message: "فشل تحديث بيانات المستخدم"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> refreshUserData({
+    required String userId,
+  }) async {
+    try {
+      final user = await readUserDataFromDataBase(userID: userId);
+
+      await saveUserDataInlocalStorage(user: user);
+
+      return right(user);
+    } catch (e) {
+      return left(ServerFailure(message: "فشل تحديث بيانات المستخدم"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateSpecificUserData({
+    required String userId,
+
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      await dataBaseServies.upDatadata(
+        path: AppBackendEndpoints.readUserCollention,
+
+        dataId: userId,
+
+        data: data,
+      );
+
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(message: "فشل تحديث بيانات المستخدم $e"));
+    }
+  }
+
+  @override
   Future<UserEntity> readUserDataFromDataBase({required String userID}) async {
     var userdata = await dataBaseServies.readData(
       documentID: userID,
       path: AppBackendEndpoints.readUserCollention,
     );
     //  to convert the map in dataBase to UserModel
-    return UserModel.fromjeson(userdata);
+    return UserModel.fromjson(userdata).toEntity();
   }
 
   @override

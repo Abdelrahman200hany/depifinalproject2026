@@ -1,0 +1,262 @@
+import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+
+class OrderModel {
+  final String uIdOrder;
+  final String createdBy;
+  final int imageVersion;
+  final String deliveryCode;
+  final String senderName;
+  final String senderPhone;
+  final String orderStatus;
+  final String rejectedReason;
+
+  final String pickupGovernorate;
+  final String pickupAddress;
+  final String pickupMark;
+
+  final String parcelName;
+  final String parcelType;
+  final String parcelDescription;
+  final String additionalNotes;
+  final String? parcelImage;
+
+  final double parcelPrice;
+  final double deliveryPrice;
+  final String locationlinkFrom;
+  final String locationlinkTo;
+
+  final String recipientGovernorate;
+  final String recipientName;
+  final String recipientAddress;
+  final String recipientMark;
+  final String recipientPhone;
+
+  // ✅ NEW: Pickup Date & Time
+  final String pickupDate;
+  final String pickupTime;
+
+  // ✅ NEW: Delivery Date & Time
+  final String deliveryDate;
+  final String deliveryTime;
+  final String deliveryName;
+  final String deliveryId;
+  final String deliveryphone;
+  final bool deliverReviwed;
+  final bool cancelOrderConferm;
+
+  OrderModel({
+    required this.locationlinkFrom,
+    required this.locationlinkTo,
+    required this.cancelOrderConferm,
+    required this.deliverReviwed,
+    required this.deliveryId,
+    required this.deliveryphone,
+    required this.rejectedReason,
+    required this.deliveryCode,
+    required this.deliveryName,
+    required this.imageVersion,
+    required this.orderStatus,
+    required this.uIdOrder,
+    required this.createdBy,
+    required this.senderName,
+    required this.senderPhone,
+    required this.pickupGovernorate,
+    required this.pickupAddress,
+    required this.pickupMark,
+    required this.parcelName,
+    required this.parcelType,
+    required this.parcelDescription,
+    required this.additionalNotes,
+    this.parcelImage,
+    required this.parcelPrice,
+    required this.deliveryPrice,
+    required this.recipientGovernorate,
+    required this.recipientName,
+    required this.recipientAddress,
+    required this.recipientMark,
+    required this.recipientPhone,
+
+    // pickup
+    required this.pickupDate,
+    required this.pickupTime,
+
+    // delivery
+    required this.deliveryDate,
+    required this.deliveryTime,
+  });
+
+  /// FROM JSON
+  factory OrderModel.fromJson(Map<String, dynamic> json) {
+    return OrderModel(
+      locationlinkFrom: json['locationlinkFrom'],
+      locationlinkTo: json['locationlinkTo'],
+      cancelOrderConferm: json['cancelOrderConferm'],
+      deliverReviwed: json['deliverReviwed'],
+      rejectedReason: json['rejectedReason'],
+      deliveryCode: json['deliveryCode'],
+      deliveryName: json['deliveryName'],
+      deliveryphone: json['deliveryphone'],
+      deliveryId: json['deliveryId'],
+      imageVersion: json['imageVersion'],
+      orderStatus: json['orderStatus'],
+      uIdOrder: json['uIdOrder'],
+      createdBy: json['createdBy'],
+      senderName: json['senderName'],
+      senderPhone: json['senderPhone'],
+      pickupGovernorate: json['pickupGovernorate'],
+      pickupAddress: json['pickupAddress'],
+      pickupMark: json['pickupMark'],
+      parcelName: json['parcelName'],
+      parcelType: json['parcelType'],
+      parcelDescription: json['parcelDescription'],
+      additionalNotes: json['additionalNotes'],
+      parcelImage: json['parcelImage'],
+      parcelPrice: (json['parcelPrice'] as num).toDouble(),
+      deliveryPrice: (json['deliveryPrice'] as num).toDouble(),
+      recipientGovernorate: json['recipientGovernorate'],
+      recipientName: json['recipientName'],
+      recipientAddress: json['recipientAddress'],
+      recipientMark: json['recipientMark'],
+      recipientPhone: json['recipientPhone'],
+
+      // pickup
+      pickupDate: json['pickupDate'],
+      pickupTime: json['pickupTime'],
+
+      // delivery
+      deliveryDate: json['deliveryDate'],
+      deliveryTime: json['deliveryTime'],
+    );
+  }
+
+  /// TO JSON
+  Map<String, dynamic> toMap() {
+    return {
+      'locationlinkFrom': locationlinkFrom,
+      'locationlinkTo': locationlinkTo,
+      'cancelOrderConferm': cancelOrderConferm,
+      'deliverReviwed': deliverReviwed,
+      'deliveryId': deliveryId,
+      'deliveryphone': deliveryphone,
+      'rejectedReason': rejectedReason,
+      'deliveryCode': deliveryCode,
+      'deliveryName': deliveryName,
+      'imageVersion': imageVersion,
+      'orderStatus': orderStatus,
+      'uIdOrder': uIdOrder,
+      'createdBy': createdBy,
+      'senderName': senderName,
+      'senderPhone': senderPhone,
+      'pickupGovernorate': pickupGovernorate,
+      'pickupAddress': pickupAddress,
+      'pickupMark': pickupMark,
+      'parcelName': parcelName,
+      'parcelType': parcelType,
+      'parcelDescription': parcelDescription,
+      'additionalNotes': additionalNotes,
+      'parcelImage': parcelImage,
+      'parcelPrice': parcelPrice,
+      'deliveryPrice': deliveryPrice,
+      'recipientGovernorate': recipientGovernorate,
+      'recipientName': recipientName,
+      'recipientAddress': recipientAddress,
+      'recipientMark': recipientMark,
+      'recipientPhone': recipientPhone,
+
+      // pickup
+      'pickupDate': pickupDate,
+      'pickupTime': pickupTime,
+
+      // delivery
+      'deliveryDate': deliveryDate,
+      'deliveryTime': deliveryTime,
+    };
+  }
+
+  /// FROM ENTITY
+  factory OrderModel.fromEntity(OrderEntity entity) {
+    return OrderModel(
+      locationlinkFrom: entity.locationlinkFrom,
+      locationlinkTo: entity.locationlinkTo,
+      cancelOrderConferm: entity.cancelOrderConferm,
+      deliverReviwed: entity.deliverReviwed,
+      deliveryphone: entity.deliveryphone,
+      deliveryId: entity.deliveryId,
+      rejectedReason: entity.rejectedReason,
+      deliveryCode: entity.deliveryCode,
+      deliveryName: entity.deliveryName,
+      imageVersion: entity.imageVersion,
+      orderStatus: entity.orderStatus,
+      uIdOrder: entity.uIdOrder,
+      createdBy: entity.createdBy,
+      senderName: entity.senderName,
+      senderPhone: entity.senderPhone,
+      pickupGovernorate: entity.pickupGovernorate,
+      pickupAddress: entity.pickupAddress,
+      pickupMark: entity.pickupMark,
+      parcelName: entity.parcelName,
+      parcelType: entity.parcelType,
+      parcelDescription: entity.parcelDescription,
+      additionalNotes: entity.additionalNotes,
+      parcelImage: entity.parcelImage,
+      parcelPrice: entity.parcelPrice,
+      deliveryPrice: entity.deliveryPrice,
+      recipientGovernorate: entity.recipientGovernorate,
+      recipientName: entity.recipientName,
+      recipientAddress: entity.recipientAddress,
+      recipientMark: entity.recipientMark,
+      recipientPhone: entity.recipientPhone,
+
+      // pickup
+      pickupDate: entity.pickupDate,
+      pickupTime: entity.pickupTime,
+
+      // delivery
+      deliveryDate: entity.deliveryDate,
+      deliveryTime: entity.deliveryTime,
+    );
+  }
+
+  /// TO ENTITY
+  OrderEntity toEntity() {
+    return OrderEntity(
+      locationlinkFrom: locationlinkFrom,
+      locationlinkTo: locationlinkTo,
+      cancelOrderConferm: cancelOrderConferm,
+      deliverReviwed: deliverReviwed,
+      deliveryId: deliveryId,
+      deliveryphone: deliveryphone,
+      rejectedReason: rejectedReason,
+      deliveryCode: deliveryCode,
+      deliveryName: deliveryName,
+      orderStatus: orderStatus,
+      uIdOrder: uIdOrder,
+      createdBy: createdBy,
+      senderName: senderName,
+      senderPhone: senderPhone,
+      pickupGovernorate: pickupGovernorate,
+      pickupAddress: pickupAddress,
+      pickupMark: pickupMark,
+      parcelName: parcelName,
+      parcelType: parcelType,
+      parcelDescription: parcelDescription,
+      additionalNotes: additionalNotes,
+      parcelImage: parcelImage,
+      parcelPrice: parcelPrice,
+      deliveryPrice: deliveryPrice,
+      recipientGovernorate: recipientGovernorate,
+      recipientName: recipientName,
+      recipientAddress: recipientAddress,
+      recipientMark: recipientMark,
+      recipientPhone: recipientPhone,
+
+      // pickup
+      pickupDate: pickupDate,
+      pickupTime: pickupTime,
+
+      // delivery
+      deliveryDate: deliveryDate,
+      deliveryTime: deliveryTime,
+    );
+  }
+}

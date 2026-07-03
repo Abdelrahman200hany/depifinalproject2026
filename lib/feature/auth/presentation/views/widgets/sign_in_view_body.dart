@@ -13,6 +13,7 @@ import 'package:depifinalproject/feature/auth/presentation/views/forget_password
 import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/widgets/custom_asked_text_buttom.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/widgets/custom_or_divider.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/pending_validation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -43,14 +44,22 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               child: Column(
                 children: [
                   SizedBox(height: 30.0),
-                  SizedBox(
-                    height: 80,
-                    width: 80,
-                    child: SvgPicture.asset(
-                      Assets.imagesLogo,
-                      colorFilter: ColorFilter.mode(
-                        Colors.blue,
-                        BlendMode.srcIn,
+                  GestureDetector(
+                    onDoubleTap: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        PendingValidationView.routeName,
+                      );
+                    },
+                    child: SizedBox(
+                      height: 80,
+                      width: 80,
+                      child: SvgPicture.asset(
+                        Assets.imagesLogo,
+                        colorFilter: ColorFilter.mode(
+                          Colors.blue,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                   ),

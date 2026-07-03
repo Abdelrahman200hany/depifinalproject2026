@@ -1,8 +1,18 @@
-
+import 'package:depifinalproject/core/methods/cut_srting.dart';
+import 'package:depifinalproject/core/methods/get_order_state_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomOrderHeaderDataDetails extends StatelessWidget {
-  const CustomOrderHeaderDataDetails({super.key});
+  const CustomOrderHeaderDataDetails({
+    super.key,
+    required this.status,
+    required this.orderId,
+    required this.data,
+    required this.from,
+    required this.to,
+  });
+
+  final String status, orderId, data, from, to;
 
   @override
   Widget build(BuildContext context) {
@@ -13,28 +23,25 @@ class CustomOrderHeaderDataDetails extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
-              color: Colors.orange[50],
+              color: getOrderStateColor(status, 0.4),
               // لون قريب من "في انتظار العروض"
               borderRadius: BorderRadius.circular(20),
             ),
-            child: const Text(
-              'في انتظار العروض',
-              style: TextStyle(color: Colors.orange),
+            child: Text(
+              status,
+              style: TextStyle(color: getOrderStateColor(status, 1)),
             ),
           ),
           const SizedBox(height: 10),
-          const Text(
-            'SH-2025-0012',
+          Text(
+            '#Fl-${cutString(orderId, maxLength: 12)}',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
-          const Text(
-            '12 أكتوبر 2025',
-            style: TextStyle(color: Colors.grey, fontSize: 12),
-          ),
+          Text(data, style: TextStyle(color: Colors.grey, fontSize: 12)),
           const SizedBox(height: 10),
-          const Text('الرياض', style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(from, style: TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(height: 5),
-          const Text('جدة'),
+          Text(to),
         ],
       ),
     );

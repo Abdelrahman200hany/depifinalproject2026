@@ -9,8 +9,11 @@ class NotActiveBottomNavigationBarItem extends StatelessWidget {
   final IconData notActiveIcon;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Icon(notActiveIcon, color: AppColor.kGreyAppColor, size: 22),
+    return Container(
+      color: Colors.transparent,
+      child: Center(
+        child: Icon(notActiveIcon, color: AppColor.kGreyAppColor, size: 22),
+      ),
     );
   }
 }

@@ -1,13 +1,32 @@
 import 'package:depifinalproject/feature/auth/presentation/views/forget_password_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_up_view.dart';
+import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
+import 'package:depifinalproject/feature/home/presentation/views/add_order.dart';
+import 'package:depifinalproject/feature/home/presentation/views/home_view.dart';
+import 'package:depifinalproject/feature/localtaion/presentation/views/language_view.dart';
 import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_client.dart';
+import 'package:depifinalproject/feature/offers/presentation/views/offer_view_for_delivery.dart';
 import 'package:depifinalproject/feature/on_boarding/presentation/views/on_boarding_view.dart';
-import 'package:depifinalproject/feature/orders/presentation/views/order_details_view.dart';
-import 'package:depifinalproject/feature/orders/presentation/views/order_view.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/profile_view.dart';
-import 'package:depifinalproject/feature/profile/presentaion/views/widgets/about_us_view_body.dart';
+import 'package:depifinalproject/feature/orders/domain/entity/delivery_entity.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_delivery_view.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_clinet.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_complete_data.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_details_view_for_delivery_secert_data.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/order_clinet_view.dart';
+import 'package:depifinalproject/feature/orders/presentation/views/updata_order_view.dart';
+import 'package:depifinalproject/feature/profile/domain/entity/rate_entity.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/my_profile_view.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/other_profile_user_view.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/update_profile_view.dart';
+import 'package:depifinalproject/feature/profile/pepesentation/views/widgets/rate_list_with_all_review.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/profile_view.dart';
+import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
 import 'package:depifinalproject/feature/splash/presentation/views/spalsh_view.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/pending_validation_screen.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/valiation_condition_view.dart';
+import 'package:depifinalproject/feature/validation/presentation/views/validation_screen.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -22,27 +41,88 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SignUpView());
     case MainView.routeName:
       return MaterialPageRoute(builder: (context) => const MainView());
+    case OtherProfileUserView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => OtherProfileUserView(
+          delivery: settings.arguments as DeliveryEntity,
+        ),
+      );
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(
         builder: (context) => const ForgetPasswordView(),
       );
-      case OrderDetailsView.routeName:
+    case AccountValidationView.routeName:
       return MaterialPageRoute(
-        builder: (context) => const OrderDetailsView(),
+        builder: (context) => const AccountValidationView(),
       );
-       case OrderView.routeName:
+    case PendingValidationView.routeName:
       return MaterialPageRoute(
-        builder: (context) => const OrderView(),
+        builder: (context) => const PendingValidationView(),
+      );
+    case ValidationConditionView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ValidationConditionView(),
+      );
+    case OrderDetailsViewForClinet.routeName:
+      return MaterialPageRoute(
+        builder: (context) => OrderDetailsViewForClinet(
+          orderEntity: settings.arguments as OrderEntity,
+        ),
+      );
+    case OrderDetailsViewForDeliverywithSecretData.routeName:
+      return MaterialPageRoute(
+        builder: (context) => OrderDetailsViewForDeliverywithSecretData(
+          orderitem: settings.arguments as OrderEntity,
+        ),
+      );
+    case OrderDetailsViewForDeliverycompleteData.routeName:
+      return MaterialPageRoute(
+        builder: (context) => OrderDetailsViewForDeliverycompleteData(
+          item: settings.arguments as OrderEntity,
+        ),
+      );
+    case UpdataOrderView.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>
+            UpdataOrderView(orderitem: settings.arguments as OrderEntity),
       );
 
-case ProfileView.routeName:
+    case OrderClinetView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrderClinetView());
+    case LanguageView.routeName:
+      return MaterialPageRoute(builder: (context) => const LanguageView());
+    case RateListWithAllReview.routeName:
       return MaterialPageRoute(
-        builder: (context) => const ProfileView(),
+        builder: (context) => RateListWithAllReview(
+          rateList: settings.arguments as List<RateEntity>,
+        ),
       );
-      case AboutUsViewBody.routeName:
+    case UpdataProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const UpdataProfileView());
+
+    case MyProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const MyProfileView());
+    case OfferViewForDelivery.routeName:
       return MaterialPageRoute(
-        builder: (context) => const AboutUsViewBody(),
+        builder: (context) => const OfferViewForDelivery(),
       );
+    case OrderDeliveryView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrderDeliveryView());
+
+    case ProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const ProfileView());
+    case AboutUsViewBody.routeName:
+      return MaterialPageRoute(builder: (context) => const AboutUsViewBody());
+    case HomeView.routeName:
+      return MaterialPageRoute(builder: (context) => const HomeView());
+    case AddOrderView.routeName:
+      return MaterialPageRoute(builder: (context) => const AddOrderView());
+
+    case OfferViewforClinet.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const OfferViewforClinet(),
+      );
+
     default:
       return MaterialPageRoute(builder: (context) => const SplashView());
   }

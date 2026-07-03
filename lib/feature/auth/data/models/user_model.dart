@@ -1,20 +1,29 @@
 import 'package:depifinalproject/feature/auth/domain/entity/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class UserModel extends UserEntity {
-  UserModel({
-    required super.name,
+class UserModel {
+  final String name, email, userID, phoneNumber, userCity, userType;
 
-    required super.email,
-    required super.userID,
-    required super.phoneNumber,
-    required super.userType,
-    required super.userCity,
+  final String imageUrl;
+  final bool isValided;
+
+  UserModel({
+     required this.isValided,
+    required this.imageUrl,
+    required this.name,
+
+    required this.email,
+    required this.userID,
+    required this.phoneNumber,
+    required this.userType,
+    required this.userCity,
   });
 
   //convert the firebase user to Custom user model used in google and fackbook auht
   factory UserModel.fromFirebaseUser(User user) {
     return UserModel(
+      isValided:false,
+      imageUrl: '',
       userType: '',
       phoneNumber: '',
       userCity: '',
@@ -24,25 +33,43 @@ class UserModel extends UserEntity {
     );
   }
 
+  // convert the model to entity
+  UserEntity toEntity() {
+    return UserEntity(
+      isValided: isValided,
+      imageUrl: imageUrl,
+      name: name,
+      email: email,
+      userID: userID,
+      phoneNumber: phoneNumber,
+      userType: userType,
+      userCity: userCity,
+    );
+  }
+
   // covert the map from database to user model
-  factory UserModel.fromjeson(jeson) {
+  factory UserModel.fromjson(json) {
     return UserModel(
-      phoneNumber: jeson['phoneNumber'],
-      userCity: jeson['userCity'],
-      userType: jeson['userType'],
-      name: jeson['name'],
-      userID: jeson['id'],
-      email: jeson['email'],
+      isValided: json['isValided'],
+      imageUrl: json['imageUrl'],
+      phoneNumber: json['phoneNumber'],
+      userCity: json['userCity'],
+      userType: json['userType'],
+      name: json['name'],
+      userID: json['id'],
+      email: json['email'],
     );
   }
 
   factory UserModel.fromUserEntity(UserEntity userEntity) {
     return UserModel(
+      isValided: userEntity.isValided,
+      imageUrl: userEntity.imageUrl,
       phoneNumber: userEntity.phoneNumber,
       userCity: userEntity.userCity,
       userType: userEntity.userType,
       name: userEntity.name,
-      userID: userEntity.userID,
+      userID: userEntity.userID!,
       email: userEntity.email,
     );
   }
@@ -51,6 +78,8 @@ class UserModel extends UserEntity {
 
   toMap() {
     return {
+      'isValided':isValided,
+      'imageUrl':imageUrl,
       'phoneNumber': phoneNumber,
       'userType': userType,
       'userCity': userCity,

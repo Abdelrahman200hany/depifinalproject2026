@@ -19,8 +19,17 @@ abstract class AuthRepo {
   Future<Either<Failure, UserEntity>> signinWithGoogle();
   // Future<Either<Failure, UserEntity>> signInWithFacebook();
 
+  Future<Either<Failure, void>> updateSpecificUserData({
+    required String userId,
+
+    required Map<String, dynamic> data,
+  });
+
+  Future<Either<Failure, void>> sendPasswordResetEmail({required String email});
+  Future<Either<Failure, UserEntity>> refreshUserData({required String userId});
   Future addUserDataToDataBase({required UserEntity user});
   Future saveUserDataInlocalStorage({required UserEntity user});
   Future<UserEntity> readUserDataFromDataBase({required String userID});
   Future<bool> checkUserPhoneExits({required String phone});
+  Future<Either<Failure, void>> updateUserData({required UserEntity user});
 }

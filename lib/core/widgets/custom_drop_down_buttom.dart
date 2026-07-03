@@ -11,10 +11,12 @@ class CustomDropDownButtom extends StatefulWidget {
     required this.hint,
     required this.itemsList,
     required this.onSaved,
+    
   });
   final String hint;
   final List<String> itemsList;
   final ValueChanged<String> onSaved;
+ 
 
   @override
   State<CustomDropDownButtom> createState() => _CustomDropDownButtomState();
@@ -28,7 +30,7 @@ class _CustomDropDownButtomState extends State<CustomDropDownButtom> {
     return DropdownButtonFormField2<String>(
       // valueListenable: selectedCity,
       value: selectedCity,
-      hint: Text(widget.hint),
+      hint: Text(widget.hint, style: AppStyle.styleSRegular16(context)),
       items: widget.itemsList.map((city) {
         return DropdownMenuItem<String>(
           value: city,
