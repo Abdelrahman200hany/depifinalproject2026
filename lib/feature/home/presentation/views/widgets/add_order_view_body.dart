@@ -5,6 +5,7 @@ import 'package:depifinalproject/core/methods/generate_complete_order_state_code
 import 'package:depifinalproject/core/methods/generate_uid.dart';
 import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/methods/pick_date.dart';
+import 'package:depifinalproject/core/methods/pick_location.dart';
 import 'package:depifinalproject/core/methods/pick_time.dart';
 import 'package:depifinalproject/core/methods/show_snack_bar.dart';
 import 'package:depifinalproject/core/utils/app_color.dart';
@@ -14,6 +15,7 @@ import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/core/widgets/custom_data_time_feild.dart';
 import 'package:depifinalproject/core/widgets/custom_drop_down_buttom.dart';
 import 'package:depifinalproject/core/widgets/custom_image_feild.dart';
+import 'package:depifinalproject/core/widgets/custom_location_text_feild.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
 import 'package:depifinalproject/core/widgets/custom_text_form_feild.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
@@ -36,6 +38,8 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
   TextEditingController timePickupController = TextEditingController();
   TextEditingController dataDeliveryController = TextEditingController();
   TextEditingController timeDeliveryController = TextEditingController();
+  TextEditingController locationControllerurl = TextEditingController();
+  TextEditingController deliveryLocationUrl = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
@@ -45,6 +49,8 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
     timePickupController.dispose();
     dataDeliveryController.dispose();
     timeDeliveryController.dispose();
+    locationControllerurl.dispose();
+    deliveryLocationUrl.dispose();
     super.dispose();
   }
 
@@ -54,6 +60,7 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
   late String pickupMark;
   late String pickupDate;
   late String pickupTime;
+  late String pickupLocationurlfrom;
 
   // order details
   late String orderName;
@@ -72,6 +79,7 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
   late String deliveryPhone;
   late String deliveryDate;
   late String deliveryTime;
+  late String deliveryLocationUrlto;
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +126,19 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
                         validator: (p) => AppValidation.mark(p),
                         textInputType: TextInputType.text,
                         labelText: 'علامه مميزة',
+                      ),
+                      CustomLocationTextField(
+                        validator: (p) => AppValidation.location(p),
+                        controller: locationControllerurl,
+                        labelText: "الموقع",
+                        hint: "اختر موقع الاستلام",
+
+                        onTap: () {
+                          pickLocation(context, (link) {
+                            locationControllerurl.text = link;
+                            pickupLocationurlfrom = link;
+                          });
+                        },
                       ),
                       Row(
                         children: [
@@ -292,6 +313,19 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
                         textInputType: TextInputType.text,
                         labelText: 'علامه مميزة',
                       ),
+                      CustomLocationTextField(
+                        validator: (p) => AppValidation.location(p),
+                        controller: locationControllerurl,
+                        labelText: "الموقع",
+                        hint: "اختر موقع الاستلام",
+
+                        onTap: () {
+                          pickLocation(context, (link) {
+                            deliveryLocationUrl.text = link;
+                            deliveryLocationUrlto = link;
+                          });
+                        },
+                      ),
                       CustomTextFormFeild(
                         onSaved: (value) {
                           deliveryPhone = value!;
@@ -309,7 +343,7 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
 
                               controller: dataDeliveryController,
                               labelText: "التاريخ",
-                              hint: "اخترمعاد التسليم",
+                              hint: "اختر معاد التسليم",
                               suffixIcon: const Icon(
                                 Icons.calendar_month,
                                 color: AppColor.kPrimaryColor,
@@ -368,6 +402,8 @@ class _AddOrderViewBodyState extends State<AddOrderViewBody> {
                           formKey.currentState!.save();
                           context.read<AddNewOrderCubit>().addNewCompleteOrder(
                             order: OrderEntity(
+                              locationlinkFrom: pickupLocationurlfrom,
+                              locationlinkTo: deliveryLocationUrlto,
                               imageFile: orderimagefile!,
                               uIdOrder: generateUID(),
                               deliveryCode: generateDeliveryCode(),

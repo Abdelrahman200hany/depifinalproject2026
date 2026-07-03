@@ -22,6 +22,8 @@ class OrderModel {
 
   final double parcelPrice;
   final double deliveryPrice;
+  final String locationlinkFrom;
+  final String locationlinkTo;
 
   final String recipientGovernorate;
   final String recipientName;
@@ -43,6 +45,8 @@ class OrderModel {
   final bool cancelOrderConferm;
 
   OrderModel({
+    required this.locationlinkFrom,
+    required this.locationlinkTo,
     required this.cancelOrderConferm,
     required this.deliverReviwed,
     required this.deliveryId,
@@ -84,8 +88,10 @@ class OrderModel {
   /// FROM JSON
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      locationlinkFrom: json['locationlinkFrom'],
+      locationlinkTo: json['locationlinkTo'],
       cancelOrderConferm: json['cancelOrderConferm'],
-      deliverReviwed:json['deliverReviwed'],
+      deliverReviwed: json['deliverReviwed'],
       rejectedReason: json['rejectedReason'],
       deliveryCode: json['deliveryCode'],
       deliveryName: json['deliveryName'],
@@ -126,8 +132,10 @@ class OrderModel {
   /// TO JSON
   Map<String, dynamic> toMap() {
     return {
-      'cancelOrderConferm':cancelOrderConferm,
-      'deliverReviwed':deliverReviwed,
+      'locationlinkFrom': locationlinkFrom,
+      'locationlinkTo': locationlinkTo,
+      'cancelOrderConferm': cancelOrderConferm,
+      'deliverReviwed': deliverReviwed,
       'deliveryId': deliveryId,
       'deliveryphone': deliveryphone,
       'rejectedReason': rejectedReason,
@@ -168,8 +176,10 @@ class OrderModel {
   /// FROM ENTITY
   factory OrderModel.fromEntity(OrderEntity entity) {
     return OrderModel(
-      cancelOrderConferm:entity.cancelOrderConferm,
-      deliverReviwed:entity.deliverReviwed,
+      locationlinkFrom: entity.locationlinkFrom,
+      locationlinkTo: entity.locationlinkTo,
+      cancelOrderConferm: entity.cancelOrderConferm,
+      deliverReviwed: entity.deliverReviwed,
       deliveryphone: entity.deliveryphone,
       deliveryId: entity.deliveryId,
       rejectedReason: entity.rejectedReason,
@@ -210,8 +220,10 @@ class OrderModel {
   /// TO ENTITY
   OrderEntity toEntity() {
     return OrderEntity(
-      cancelOrderConferm:cancelOrderConferm,
-      deliverReviwed:deliverReviwed,
+      locationlinkFrom: locationlinkFrom,
+      locationlinkTo: locationlinkTo,
+      cancelOrderConferm: cancelOrderConferm,
+      deliverReviwed: deliverReviwed,
       deliveryId: deliveryId,
       deliveryphone: deliveryphone,
       rejectedReason: rejectedReason,

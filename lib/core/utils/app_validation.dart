@@ -29,6 +29,13 @@ abstract class AppValidation {
     return null;
   }
 
+  static String? location(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "يرجى اختيار الموقع";
+    }
+    return null;
+  }
+
   // 📧 Email
   static String? email(String? value) {
     final emptyCheck = _checkEmpty(value, message: "البريد الإلكتروني مطلوب");

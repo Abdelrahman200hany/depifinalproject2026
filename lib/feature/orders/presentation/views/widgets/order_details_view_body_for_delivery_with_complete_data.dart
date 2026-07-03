@@ -61,6 +61,8 @@ class OrderDetailsViewBodyForDeliverycompleteData extends StatelessWidget {
               addressMark: item.pickupMark,
               pickUpData: item.pickupDate,
               pickupTime: item.pickupTime,
+                            locationLinkFrom: item.locationlinkFrom,
+
             ),
 
             const SizedBox(height: 16),
@@ -74,6 +76,7 @@ class OrderDetailsViewBodyForDeliverycompleteData extends StatelessWidget {
               addressMark: item.recipientMark,
               deliveryData: item.deliveryDate,
               deliveryTime: item.deliveryTime,
+              locationUrlTo: item.locationlinkTo,
             ),
 
             const SizedBox(height: 16),

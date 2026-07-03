@@ -39,6 +39,8 @@ class OrderEntity {
   final String recipientAddress;
   final String recipientMark;
   final String recipientPhone;
+  final String locationlinkFrom;
+  final String locationlinkTo;
 
   // وقت التسليم
   final String deliveryDate;
@@ -53,8 +55,10 @@ class OrderEntity {
   File? imageFile;
   List<DeliveryEntity>? deliveryOffers;
   OrderEntity({
-    this.cancelOrderConferm=false,
-    this.deliverReviwed=false,
+    required this.locationlinkFrom,
+    required this.locationlinkTo,
+    this.cancelOrderConferm = false,
+    this.deliverReviwed = false,
     this.rejectedReason = '',
     required this.deliveryCode,
     this.deliveryName = '',
@@ -89,6 +93,8 @@ class OrderEntity {
     required this.deliveryTime,
   });
   OrderEntity copyWith({
+    String? locationlinkFrom,
+    String? locationlinkTo,
     String? rejectedReason,
     String? deliveryCode,
     String? deliveryName,
@@ -122,6 +128,8 @@ class OrderEntity {
     File? imageFile,
   }) {
     return OrderEntity(
+      locationlinkFrom: locationlinkFrom ?? this.locationlinkFrom,
+      locationlinkTo: locationlinkTo ?? this.locationlinkTo,
       deliveryId: deliveryId ?? this.deliveryId,
       deliveryphone: deliveryphone ?? this.deliveryphone,
       rejectedReason: rejectedReason ?? this.rejectedReason,

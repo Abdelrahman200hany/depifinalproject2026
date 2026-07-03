@@ -1,3 +1,4 @@
+import 'package:depifinalproject/core/methods/url_lancher.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/order_item_details_data.dart';
 import 'package:depifinalproject/feature/orders/presentation/views/widgets/product_details_sec_data.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ class CustomOrderSenderDataDetails extends StatelessWidget {
     required this.addressMark,
     required this.pickUpData,
     required this.pickupTime,
+    required this.locationLinkFrom,
+
   });
   final String name,
       phone,
@@ -19,7 +22,9 @@ class CustomOrderSenderDataDetails extends StatelessWidget {
       address,
       addressMark,
       pickUpData,
-      pickupTime;
+      pickupTime,
+      locationLinkFrom
+      ;
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +47,16 @@ class CustomOrderSenderDataDetails extends StatelessWidget {
         const SizedBox(height: 10),
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.asset(
-            'asstes/images/map_1.png',
-            height: 120,
-            width: double.infinity,
-            fit: BoxFit.cover,
+          child: GestureDetector(
+            onTap: (){
+              UrlLauncherHelper.openUrl(locationLinkFrom);  
+            },
+            child: Image.asset(
+              'asstes/images/map_1.png',
+              height: 120,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ],

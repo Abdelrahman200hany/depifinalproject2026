@@ -55,6 +55,7 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               addressMark: orderItem.pickupMark,
               pickUpData: orderItem.pickupDate,
               pickupTime: orderItem.pickupTime,
+              locationLinkFrom: orderItem.locationlinkFrom,
             ),
             const SizedBox(height: 16),
 
@@ -66,6 +67,9 @@ class OrderDetailsViewBodyforClinet extends StatelessWidget {
               addressMark: orderItem.recipientMark,
               deliveryData: orderItem.deliveryDate,
               deliveryTime: orderItem.deliveryTime,
+                            locationUrlTo: orderItem.locationlinkTo,
+
+              
             ),
             const SizedBox(height: 16),
 

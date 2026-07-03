@@ -58,19 +58,21 @@ class OrderDetailsViewBodyForDeliverywithSecretData extends StatelessWidget {
               addressMark: item.pickupMark,
               pickUpData: item.pickupDate,
               pickupTime: item.pickupTime,
+              locationLinkFrom: item.locationlinkFrom,
             ),
 
             const SizedBox(height: 16),
 
             /// Receiver Details
             CustomOrderReceiverDataDetails(
-              name:'ك*********',
+              name: 'ك*********',
               goverment: item.recipientGovernorate,
               phone: '012********',
               address: item.recipientAddress,
               addressMark: item.recipientMark,
               deliveryData: item.deliveryDate,
               deliveryTime: item.deliveryTime,
+              locationUrlTo: item.locationlinkTo,
             ),
 
             const SizedBox(height: 16),

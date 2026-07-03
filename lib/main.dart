@@ -23,7 +23,7 @@ void main() async {
   await SupaBaseStorageServices.initSupabase();
   await SupaBaseStorageServices.createBuckets(kImagesBuket);
 
-  runApp(DevicePreview(enabled: true, builder: (context) => const Flash()));
+  runApp(DevicePreview(enabled: false, builder: (context) => const Flash()));
 }
 
 class Flash extends StatelessWidget {

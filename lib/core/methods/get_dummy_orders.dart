@@ -3,6 +3,8 @@ import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
 class GetDummyOrders {
   /// 🔹 Order واحد
   static OrderEntity get singleOrder => OrderEntity(
+    locationlinkFrom: '',
+    locationlinkTo: '',
     deliveryCode: '',
     uIdOrder: 'order_1',
     createdBy: 'user_123',
