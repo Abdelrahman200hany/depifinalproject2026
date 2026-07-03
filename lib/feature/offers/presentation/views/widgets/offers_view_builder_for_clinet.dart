@@ -20,18 +20,18 @@ class OffersViewBodyBlocBuilerForClinets extends StatelessWidget {
       GetAllClientOrdersWithOffersState
     >(
       listener: (context, state) {
-        if (state is GetClientOrdersWithOffersFailure) {
-          showfaulireSnackBar(context, message: state.errorMessage);
-        }
-        if (state is GetClientOrdersWithOffersSuccess) {
-          showSuccessSnackBar(
-            context,
-            message: 'لقد تم جلب البيانات  ${state.ordersList.length}',
-          );
-        }
-        if (state is ClinetOrderLoading) {
-          showSuccessSnackBar(context, message: 'لقد تم جلب البيانات');
-        }
+        // if (state is GetClientOrdersWithOffersFailure) {
+        //   showfaulireSnackBar(context, message: state.errorMessage);
+        // }
+        // if (state is GetClientOrdersWithOffersSuccess) {
+        //   showSuccessSnackBar(
+        //     context,
+        //     message: 'لقد تم جلب البيانات  ${state.ordersList.length}',
+        //   );
+        // }
+        // if (state is ClinetOrderLoading) {
+        //   showSuccessSnackBar(context, message: 'لقد تم جلب البيانات');
+        // }
       },
       builder: (context, state) {
         if (state is GetClientOrdersWithOffersSuccess) {

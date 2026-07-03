@@ -20,15 +20,16 @@ class ProfileHeader extends StatelessWidget {
           width: double.infinity,
 
           decoration: BoxDecoration(
+            // c: AppColor.kPrimaryColor,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(12),
               bottomRight: Radius.circular(12),
             ),
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(Assets.imagesBannerProfile),
-            ),
-            // color: Color(0xffDCE9FF),
+            // image: DecorationImage(
+            //   fit: BoxFit.fill,
+            //   image: AssetImage(Assets.imagesBannerProfile),
+            // ),
+            color: Color(0xffDCE9FF),
           ),
         ),
         Positioned(
@@ -40,7 +41,7 @@ class ProfileHeader extends StatelessWidget {
             },
             child: Icon(
               Icons.arrow_circle_left_rounded,
-              color: Colors.white,
+              color: Colors.black,
               size: 34,
             ),
           ),
@@ -55,7 +56,7 @@ class ProfileHeader extends StatelessWidget {
             },
             child: Icon(
               Icons.wifi_protected_setup,
-              color: Colors.white,
+              color: Colors.black,
               size: 34,
             ),
           ),

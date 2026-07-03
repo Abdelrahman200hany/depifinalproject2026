@@ -9,9 +9,11 @@ class MessagesListView extends StatelessWidget {
     super.key,
     required this.messages,
     required this.currentUserId,
+    required this.scrollController,
   });
 
   final List<MessageEntity> messages;
+  final ScrollController scrollController;
   final String currentUserId;
 
   @override
@@ -21,6 +23,7 @@ class MessagesListView extends StatelessWidget {
     }
 
     return ListView.builder(
+      controller: scrollController,
       padding: const EdgeInsets.all(16),
       itemCount: messages.length,
       itemBuilder: (context, index) {

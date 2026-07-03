@@ -1,10 +1,12 @@
 import 'package:depifinalproject/core/consts/consts.dart';
+import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/methods/show_dilog.dart';
 import 'package:depifinalproject/core/serviecs/auth_services/fire_base_auth_services.dart';
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_app_bar.dart';
 import 'package:depifinalproject/feature/auth/presentation/views/sign_in_view.dart';
+import 'package:depifinalproject/feature/chat/presentation/views/chat_list_view.dart';
 import 'package:depifinalproject/feature/localtaion/presentation/views/language_view.dart';
 import 'package:depifinalproject/feature/profile/pepesentation/views/my_profile_view.dart';
 import 'package:depifinalproject/feature/profile_setting/presentaion/views/widgets/about_us_view_body.dart';
@@ -50,23 +52,40 @@ class ProfileViewBody extends StatelessWidget {
               ),
 
               CustomProfileSecDetails(
-                onTap: (){
-                  Navigator.pushNamed(context, ValidationConditionView.routeName);
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    ValidationConditionView.routeName,
+                  );
                 },
                 title: 'توثيق الحساب',
                 icon: Icons.verified_outlined,
               ),
               CustomProfileSecDetails(
-                title: 'المدفوعات',
-                icon: Icons.payments_outlined,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ChatsListView(
+                        userId: getUserData().userID!,
+                        isClient: getUserData().userType == kClinet
+                            ? true
+                            : false, // أو false للمندوب
+                      ),
+                    ),
+                  );
+                },
+
+                title: 'الرسائل',
+                icon: Icons.message_outlined,
               ),
 
               CustomProfileSecDetailswithSwitchBottom(
                 image: Assets.imagesNotification,
-                title: 'الإشعارات',
+                title: 'الاشعارات',
               ),
               CustomProfileSecDetails(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, LanguageView.routeName);
                 },
                 title: 'اللغة',
@@ -102,24 +121,20 @@ class ProfileViewBody extends StatelessWidget {
                     context: context,
                     onConfirm: () async {
                       await FirebaseAuthServiecs().signOut();
-                         Navigator.pop(context);
-                       Navigator.pushNamedAndRemoveUntil(
+                      Navigator.pop(context);
+                      Navigator.pushNamedAndRemoveUntil(
                         context,
                         SignInView.routeName,
                         (route) => false,
                       );
-                    
                     },
-                 
                   );
-
-               
-
                 },
                 iconcolor: Colors.redAccent,
                 icon: Icons.exit_to_app_outlined,
                 title: 'تسجيل الخروج ',
               ),
+              SizedBox(height: 24),
             ],
           ),
         ),

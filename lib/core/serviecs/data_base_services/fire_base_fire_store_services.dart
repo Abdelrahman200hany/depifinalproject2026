@@ -215,7 +215,7 @@ class FireStoreServices implements DataBaseServies {
   }) {
     return firestore
         .collection(path)
-        .where(field, isEqualTo: value)
+        .where(field, arrayContains: value)
         .snapshots()
         .map((event) => event.docs.map((e) => e.data()).toList());
   }

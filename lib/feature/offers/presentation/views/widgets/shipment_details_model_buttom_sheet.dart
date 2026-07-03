@@ -1,5 +1,6 @@
 import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/methods/cut_srting.dart';
+import 'package:depifinalproject/core/methods/url_lancher.dart';
 import 'package:depifinalproject/core/utils/app_color.dart' show AppColor;
 import 'package:depifinalproject/core/utils/app_style.dart';
 import 'package:depifinalproject/feature/home/domin/entity/order_entity.dart';
@@ -69,6 +70,9 @@ class ShipmentDetailsScreen extends StatelessWidget {
             // SizedBox(width: 8),
             Expanded(
               child: InfoItem(
+                onTap: () {
+                  UrlLauncherHelper.makePhoneCall(order.senderPhone);
+                },
                 title: "رقم التواصل",
                 value: order.senderPhone,
                 icon: Icons.phone_outlined,
@@ -155,6 +159,7 @@ class ShipmentDetailsScreen extends StatelessWidget {
             CancelorderStatus(order: order),
           ],
         ),
+        SizedBox(height: 24),
       ],
     );
   }
