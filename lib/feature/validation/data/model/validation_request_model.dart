@@ -1,3 +1,4 @@
+import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/feature/validation/domin/entity/validation_request_entity.dart';
 
 class ValidationRequestModel extends ValidationRequestEntity {
@@ -10,9 +11,9 @@ class ValidationRequestModel extends ValidationRequestEntity {
 
     required super.token,
 
-    super.status = "validationwaiting",
+    super.status , 
 
-    super.rejectedReason = "",
+    super.rejectedReason,
   });
 
   factory ValidationRequestModel.fromJson(Map<String, dynamic> json) {
@@ -25,7 +26,7 @@ class ValidationRequestModel extends ValidationRequestEntity {
 
       token: json['token'] ?? '',
 
-      status: json['status'] ?? "validationwaiting",
+      status: json['status'] ?? kValidationWaiting,
 
       rejectedReason: json['rejectedReason'] ?? "",
     );

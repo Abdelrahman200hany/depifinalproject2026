@@ -1,8 +1,10 @@
+import 'package:depifinalproject/core/consts/consts.dart';
 import 'package:depifinalproject/core/methods/get_user_local_data.dart';
 import 'package:depifinalproject/core/methods/show_snack_bar.dart';
 import 'package:depifinalproject/core/serviecs/single_ton_services/create_single_ton.dart';
 import 'package:depifinalproject/core/utils/assets.dart';
 import 'package:depifinalproject/core/widgets/custom_text_bottom_with_background.dart';
+import 'package:depifinalproject/feature/main_view/presentation/views/main_view.dart';
 
 import 'package:depifinalproject/feature/validation/data/model/validation_request_model.dart';
 import 'package:depifinalproject/feature/validation/presentation/manager/add_validation_request/add_validation_request_cubit.dart';
@@ -141,7 +143,7 @@ class _AccountValidationViewState extends State<AccountValidationView> {
                             message: "تم إرسال طلب التحقق بنجاح",
                           );
 
-                          Navigator.pop(context);
+                          Navigator.pushNamedAndRemoveUntil(context,MainView.routeName ,(route)=>false);
                         }
 
                         if (state is AddValidationRequestFailure) {
@@ -160,7 +162,7 @@ class _AccountValidationViewState extends State<AccountValidationView> {
                               : () {
                                   final request = ValidationRequestModel(
                                     frontIdImage: frontIdUrl!,
-
+status: kValidationWaiting,
                                     backIdImage: backIdUrl!,
 
                                     selfieImage: selfieUrl!,
